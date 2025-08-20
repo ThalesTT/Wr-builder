@@ -1,0 +1,11 @@
+.nav a {
+  color: #e3e3e3;
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 18px;
+  transition: color 0.3s;
+}
+
+.nav a:hover {
+  color: #00a9e0;
+}
