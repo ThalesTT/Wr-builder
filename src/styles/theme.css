@@ -1,0 +1,53 @@
+:root {
+  --background-color: #0a0a0f;
+  --primary-color: #c89b3c;
+  --secondary-color: #1e2a45;
+  --accent-color: #9f6dd8;
+  --text-color: #e0e6ed;
+  --text-muted: #a3abb2;
+  --border-color: #2c2f3a;
+}
+:root[data-theme='light'] {
+  --background-color: #f0f4f8; /* Fundo claro com um tom frio e suave */
+  --primary-color: #f1c40f; /* Amarelo mais vibrante para dar destaque */
+  --secondary-color: #3498db; /* Azul brilhante e moderno */
+  --accent-color: #9b59b6; /* Roxo mais suave e elegante */
+  --text-color: #2c3e50; /* Texto escuro e legível */
+  --text-muted: #95a5a6; /* Cor de texto suave */
+  --border-color: #bdc3c7; /* Cor de borda mais neutra e clara */
+}
+
+/* Cabeçalho */
+/* header {
+  background-color: var(--secondary-color);
+  padding: 1rem 2rem;
+  border-bottom: 2px solid var(--primary-color);
+  text-align: center;
+}
+
+header h1 {
+  color: var(--primary-color);
+  font-size: 2rem;
+  margin: 0;
+}
+
+/* Links */
+/* a {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+
+/* footer {
+  background-color: var(--secondary-color);
+  padding: 1rem;
+  text-align: center;
+  color: var(--text-muted);
+  margin-top: 2rem;
+  font-size: 0.9rem;
+}  */
+/* Definindo as variáveis de cor para o novo tema claro */

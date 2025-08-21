@@ -1,5 +1,5 @@
 .nav a {
-  color: #e3e3e3;
+  color: var(--text-color);
   text-decoration: none;
   margin-left: 20px;
   font-size: 18px;
