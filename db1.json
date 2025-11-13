@@ -1,0 +1,1489 @@
+{
+    "enchants": [
+        {
+            "name": "Barrier",
+            "nome": "Barreira"
+        },
+        {
+            "name": "Exhaust",
+            "nome": "Exaustão"
+        },
+        {
+            "name": "Flash",
+            "nome": "Flash"
+        },
+        {
+            "name": "Ghost",
+            "nome": "Fantasma"
+        },
+        {
+            "name": "Heal",
+            "nome": "Curar"
+        },
+        {
+            "name": "Ignite",
+            "nome": "Incendiar"
+        },
+        {
+            "name": "Smite",
+            "nome": "Smite"
+        }
+    ],
+    "char": [
+        {
+            "name": "Aatrox",
+            "lanes": [
+                "Top"
+            ]
+        },
+        {
+            "name": "Ahri",
+            "lanes": [
+                "Mid"
+            ]
+        },
+        {
+            "name": "Akali",
+            "lanes": [
+                "Mid"
+            ]
+        },
+        {
+            "name": "Akshan",
+            "lanes": [
+                "Mid"
+            ]
+        },
+        {
+            "name": "Alistar",
+            "lanes": [
+                "Sup"
+            ]
+        },
+        {
+            "name": "Ambessa",
+            "lanes": [
+                "Top",
+                "Jungle"
+            ]
+        },
+        {
+            "name": "Amumu",
+            "lanes": [
+                "Jungle"
+            ]
+        },
+        {
+            "name": "Annie",
+            "lanes": [
+                "Mid"
+            ]
+        },
+        {
+            "name": "Ashe",
+            "lanes": [
+                "ADC"
+            ]
+        },
+        {
+            "name": "AurelionSol",
+            "lanes": [
+                "Mid"
+            ]
+        },
+        {
+            "name": "Blitzcrank",
+            "lanes": [
+                "Sup"
+            ]
+        },
+        {
+            "name": "Brand",
+            "lanes": [
+                "Mid"
+            ]
+        },
+        {
+            "name": "Braum",
+            "lanes": [
+                "Sup"
+            ]
+        },
+        {
+            "name": "Caitlyn",
+            "lanes": [
+                "ADC"
+            ]
+        },
+        {
+            "name": "Camille",
+            "lanes": [
+                "Top",
+                "Jungle"
+            ]
+        },
+        {
+            "name": "Corki",
+            "lanes": [
+                "Mid",
+                "ADC"
+            ]
+        },
+        {
+            "name": "Darius",
+            "lanes": [
+                "Top"
+            ]
+        },
+        {
+            "name": "Diana",
+            "lanes": [
+                "Mid",
+                "Jungle"
+            ]
+        },
+        {
+            "name": "Dr-Mundo",
+            "lanes": [
+                "Top",
+                "Jungle"
+            ]
+        },
+        {
+            "name": "Draven",
+            "lanes": [
+                "ADC"
+            ]
+        },
+        {
+            "name": "Ekko",
+            "lanes": [
+                "Mid",
+                "Jungle"
+            ]
+        },
+        {
+            "name": "Evelynn",
+            "lanes": [
+                "Jungle"
+            ]
+        },
+        {
+            "name": "Ezreal",
+            "lanes": [
+                "ADC"
+            ]
+        },
+        {
+            "name": "Fiddlesticks",
+            "lanes": [
+                "Jungle"
+            ]
+        },
+        {
+            "name": "Fiora",
+            "lanes": [
+                "Top"
+            ]
+        },
+        {
+            "name": "Fizz",
+            "lanes": [
+                "Mid",
+                "Jungle"
+            ]
+        },
+        {
+            "name": "Galio",
+            "lanes": [
+                "Mid",
+                "Sup"
+            ]
+        },
+        {
+            "name": "Garen",
+            "lanes": [
+                "Top"
+            ]
+        },
+        {
+            "name": "Gragas",
+            "lanes": [
+                "Top",
+                "Jungle"
+            ]
+        },
+        {
+            "name": "Graves",
+            "lanes": [
+                "Jungle"
+            ]
+        },
+        {
+            "name": "Gwen",
+            "lanes": [
+                "Top"
+            ]
+        },
+        {
+            "name": "Heracarim",
+            "lanes": [
+                "Jungle"
+            ]
+        },
+        {
+            "name": "Irelia",
+            "lanes": [
+                "Mid",
+                "Top"
+            ]
+        },
+        {
+            "name": "Janna",
+            "lanes": [
+                "Sup"
+            ]
+        },
+        {
+            "name": "JarvanIV",
+            "lanes": [
+                "Jungle"
+            ]
+        },
+        {
+            "name": "Jax",
+            "lanes": [
+                "Top"
+            ]
+        },
+        {
+            "name": "Jayce",
+            "lanes": [
+                "Mid"
+            ]
+        },
+        {
+            "name": "Jhin",
+            "lanes": [
+                "ADC"
+            ]
+        },
+        {
+            "name": "Jinx",
+            "lanes": [
+                "ADC"
+            ]
+        },
+        {
+            "name": "Kaisa",
+            "lanes": [
+                "ADC"
+            ]
+        },
+        {
+            "name": "Kalista",
+            "lanes": [
+                "ADC"
+            ]
+        },
+        {
+            "name": "Karma",
+            "lanes": [
+                "Sup",
+                "Mid"
+            ]
+        },
+        {
+            "name": "kassadin",
+            "lanes": [
+                "Mid"
+            ]
+        },
+        {
+            "name": "Katarina",
+            "lanes": []
+        },
+        {
+            "name": "Kayle",
+            "lanes": [
+                "Top"
+            ]
+        },
+        {
+            "name": "Kayn",
+            "lanes": [
+                "Jungle"
+            ]
+        },
+        {
+            "name": "Kennen",
+            "lanes": [
+                "Top"
+            ]
+        },
+        {
+            "name": "Khazix",
+            "lanes": [
+                "Jungle"
+            ]
+        },
+        {
+            "name": "Kindred",
+            "lanes": [
+                "Jungle"
+            ]
+        },
+        {
+            "name": "LeeSin",
+            "lanes": [
+                "Jungle"
+            ]
+        },
+        {
+            "name": "Leona",
+            "lanes": [
+                "Sup"
+            ]
+        },
+        {
+            "name": "Lillia",
+            "lanes": [
+                "Jungle"
+            ]
+        },
+        {
+            "name": "Lucian",
+            "lanes": [
+                "ADC"
+            ]
+        },
+        {
+            "name": "Lulu",
+            "lanes": [
+                "Sup"
+            ]
+        },
+        {
+            "name": "Lux",
+            "lanes": [
+                "Mid",
+                "Sup"
+            ]
+        },
+        {
+            "name": "Malphite",
+            "lanes": [
+                "Top"
+            ]
+        },
+        {
+            "name": "Maokai",
+            "lanes": [
+                "Jungle"
+            ]
+        },
+        {
+            "name": "MasterYi",
+            "lanes": [
+                "Jungle"
+            ]
+        },
+        {
+            "name": "Miss-Fortune",
+            "lanes": [
+                "ADC"
+            ]
+        },
+        {
+            "name": "Wukong",
+            "lanes": [
+                "Jungle"
+            ]
+        },
+        {
+            "name": "Morgana",
+            "lanes": [
+                "Jungle",
+                "Mid",
+                "Sup"
+            ]
+        },
+        {
+            "name": "Nami",
+            "lanes": [
+                "Sup"
+            ]
+        },
+        {
+            "name": "Nasus",
+            "lanes": [
+                "Top"
+            ]
+        },
+        {
+            "name": "Nautilus",
+            "lanes": [
+                "Top",
+                "Jungle"
+            ]
+        },
+        {
+            "name": "Nilah",
+            "lanes": [
+                "ADC",
+                "Jungle"
+            ]
+        },
+        {
+            "name": "Nunu",
+            "lanes": [
+                "Jungle"
+            ]
+        },
+        {
+            "name": "Olaf",
+            "lanes": [
+                "Jungle",
+                "Top"
+            ]
+        },
+        {
+            "name": "Orianna",
+            "lanes": [
+                "Mid"
+            ]
+        },
+        {
+            "name": "Ornn",
+            "lanes": [
+                "Top"
+            ]
+        },
+        {
+            "name": "Pantheon",
+            "lanes": [
+                "Top",
+                "Jungle"
+            ]
+        },
+        {
+            "name": "Pyke",
+            "lanes": [
+                "Sup"
+            ]
+        },
+        {
+            "name": "Rakan",
+            "lanes": [
+                "Sup"
+            ]
+        },
+        {
+            "name": "Rammus",
+            "lanes": [
+                "Jungle"
+            ]
+        },
+        {
+            "name": "Renekton",
+            "lanes": [
+                "Top"
+            ]
+        },
+        {
+            "name": "Rengar",
+            "lanes": [
+                "Jungle"
+            ]
+        },
+        {
+            "name": "Riven",
+            "lanes": [
+                "Top"
+            ]
+        },
+        {
+            "name": "Samira",
+            "lanes": [
+                "ADC"
+            ]
+        },
+        {
+            "name": "Senna",
+            "lanes": [
+                "Sup"
+            ]
+        },
+        {
+            "name": "Seraphine",
+            "lanes": [
+                "Mid",
+                "Sup"
+            ]
+        },
+        {
+            "name": "Sett",
+            "lanes": [
+                "Top"
+            ]
+        },
+        {
+            "name": "Shen",
+            "lanes": [
+                "Top"
+            ]
+        },
+        {
+            "name": "Shyvana",
+            "lanes": [
+                "Top"
+            ]
+        },
+        {
+            "name": "Singed",
+            "lanes": [
+                "Top"
+            ]
+        },
+        {
+            "name": "Sion",
+            "lanes": [
+                "Top"
+            ]
+        },
+        {
+            "name": "Sivir",
+            "lanes": [
+                "ADC"
+            ]
+        },
+        {
+            "name": "Sona",
+            "lanes": [
+                "Sup"
+            ]
+        },
+        {
+            "name": "Soraka",
+            "lanes": [
+                "Sup"
+            ]
+        },
+        {
+            "name": "Swain",
+            "lanes": [
+                "Mid"
+            ]
+        },
+        {
+            "name": "Syndra",
+            "lanes": [
+                "Mid"
+            ]
+        },
+        {
+            "name": "Talon",
+            "lanes": [
+                "Mid",
+                "Jungle"
+            ]
+        },
+        {
+            "name": "Teemo",
+            "lanes": [
+                "Top"
+            ]
+        },
+        {
+            "name": "Thresh",
+            "lanes": [
+                "Sup"
+            ]
+        },
+        {
+            "name": "Tristana",
+            "lanes": [
+                "ADC"
+            ]
+        },
+        {
+            "name": "Tryndamere",
+            "lanes": [
+                "Top",
+                "Jungle"
+            ]
+        },
+        {
+            "name": "TwistedFate",
+            "lanes": [
+                "Mid"
+            ]
+        },
+        {
+            "name": "Twitch",
+            "lanes": [
+                "ADC",
+                "Jungle"
+            ]
+        },
+        {
+            "name": "Urgot",
+            "lanes": [
+                "Top"
+            ]
+        },
+        {
+            "name": "Varus",
+            "lanes": [
+                "ADC"
+            ]
+        },
+        {
+            "name": "Vayne",
+            "lanes": [
+                "ADC"
+            ]
+        },
+        {
+            "name": "Veigar",
+            "lanes": [
+                "Mid"
+            ]
+        },
+        {
+            "name": "Vex",
+            "lanes": [
+                "Mid"
+            ]
+        },
+        {
+            "name": "VI",
+            "lanes": [
+                "Jungle"
+            ]
+        },
+        {
+            "name": "Viego",
+            "lanes": [
+                "Jungle"
+            ]
+        },
+        {
+            "name": "Vladmir",
+            "lanes": [
+                "Mid"
+            ]
+        },
+        {
+            "name": "Volibear",
+            "lanes": [
+                "Top",
+                "Jungle"
+            ]
+        },
+        {
+            "name": "Warwick",
+            "lanes": [
+                "Jungle"
+            ]
+        },
+        {
+            "name": "Xayah",
+            "lanes": [
+                "ADC"
+            ]
+        },
+        {
+            "name": "XinZhao",
+            "lanes": [
+                "Jungle"
+            ]
+        },
+        {
+            "name": "Yasuo",
+            "lanes": [
+                "Mid",
+                "Top"
+            ]
+        },
+        {
+            "name": "Yone",
+            "lanes": [
+                "Mid",
+                "Top"
+            ]
+        },
+        {
+            "name": "Yuumi",
+            "lanes": [
+                "Sup"
+            ]
+        },
+        {
+            "name": "Zed",
+            "lanes": [
+                "Mid"
+            ]
+        },
+        {
+            "name": "Zeri",
+            "lanes": [
+                "ADC"
+            ]
+        },
+        {
+            "name": "Ziggs",
+            "lanes": [
+                "Mid"
+            ]
+        },
+        {
+            "name": "Zoe",
+            "lanes": [
+                "Mid"
+            ]
+        },
+        {
+            "name": "Zyra",
+            "lanes": [
+                "Mid",
+                "Sup"
+            ]
+        }
+    ],
+    "itens": [
+        {
+            "atack": [
+                {
+                    "name": "black-cleaver",
+                    "nome": "Cutelo Negro",
+                    "price": 3000
+                },
+                {
+                    "name": "Blade_of_the_Ruined_King",
+                    "nome": "Espada do Rei Destruído",
+                    "price": 3000
+                },
+                {
+                    "name": "bloodthirster",
+                    "nome": "Sedenta por Sangue",
+                    "price": 3300
+                },
+                {
+                    "name": "chempunk-chainsword",
+                    "nome": "Serrespada Quimiopunk",
+                    "price": 2800
+                },
+                {
+                    "name": "deaths-dance",
+                    "nome": "Dançarina Fantasma",
+                    "price": 3000
+                },
+                {
+                    "name": "divine-sunderer",
+                    "nome": "Ruptor Divino",
+                    "price": 3400
+                },
+                {
+                    "name": "duskblade-of-draktharr",
+                    "nome": "Crepúsculo de Draktharr",
+                    "price": 3000
+                },
+                {
+                    "name": "edge-of-night",
+                    "nome": "Limiar da Noite",
+                    "price": 3150
+                },
+                {
+                    "name": "essence-reaver",
+                    "nome": "Colhedor de Essência",
+                    "price": 3050
+                },
+                {
+                    "name": "guardian-angel",
+                    "nome": "Anjo Guardião",
+                    "price": 34000
+                },
+                {
+                    "name": "immortal-shieldbow",
+                    "nome": "Arco-escudo Imortal",
+                    "price": 3200
+                },
+                {
+                    "name": "Infinity_Edge_item",
+                    "nome": "Gume do Infinito",
+                    "price": 3200
+                },
+                {
+                    "name": "magnetic-blaster",
+                    "nome": "Canhão Magnético",
+                    "price": 2900
+                },
+                {
+                    "name": "manamune",
+                    "nome": "manamune",
+                    "price": 2700
+                },
+                {
+                    "name": "maw-of-malmortius",
+                    "nome": "Mandíbula de Malmortius",
+                    "price": 3000
+                },
+                {
+                    "name": "mortal-reminder",
+                    "nome": "Lembrete Mortal",
+                    "price": 3300
+                },
+                {
+                    "name": "navori-quickblades",
+                    "nome": "Laminas rápidas de Navori",
+                    "price": 3000
+                },
+                {
+                    "name": "phantom-dancer",
+                    "nome": "Dançarina Fantasma",
+                    "price": 3000
+                },
+                {
+                    "name": "runaans-hurricane",
+                    "nome": "Furacão de Runaan",
+                    "price": 3000
+                },
+                {
+                    "name": "serpents-fang",
+                    "nome": "Presa da serpente",
+                    "price": 2800
+                },
+                {
+                    "name": "seryldas-grudge",
+                    "nome": "Rancor de Serylda",
+                    "price": 3100
+                },
+                {
+                    "name": "solari-chargeblade",
+                    "nome": "Lâminna Impetuosa de Solari",
+                    "price": 3000
+                },
+                {
+                    "name": "spear-of-shojin",
+                    "nome": "Lança de Shojin",
+                    "price": 3200
+                },
+                {
+                    "name": "stormrazor",
+                    "nome": "Chuva de Canivete",
+                    "price": 3100
+                },
+                {
+                    "name": "terminus",
+                    "nome": "terminus",
+                    "price": 3200
+                },
+                {
+                    "name": "the-collector",
+                    "nome": "A coletora",
+                    "price": 2900
+                },
+                {
+                    "name": "titanic-hydra",
+                    "nome": "Hidra Titanica",
+                    "price": 3000
+                },
+                {
+                    "name": "trinity-force",
+                    "nome": "Força da Trindade",
+                    "price": 3333
+                },
+                {
+                    "name": "wits-end",
+                    "nome": "Limite da Razão",
+                    "price": 2700
+                },
+                {
+                    "name": "Youmuus-Ghostblade",
+                    "nome": "Lâmina Fantasma de Youmuu",
+                    "price": 3200
+                }
+            ]
+        },
+        {
+            "magick": [
+                {
+                    "name": "archangels-staff",
+                    "nome": "Cajado do Arcanjo",
+                    "price": 2950
+                },
+                {
+                    "name": "ardent-censer",
+                    "nome": "Turíbulo Ardente",
+                    "price": 2800
+                },
+                {
+                    "name": "awakened-soulstealer",
+                    "nome": "Ladrão de Almas Desperto",
+                    "price": 3000
+                },
+                {
+                    "name": "cosmic-drive",
+                    "nome": "Ímpeto Cósmico",
+                    "price": 2800
+                },
+                {
+                    "name": "crown-of-the-shattered-queen",
+                    "nome": "Coroa da Rainha Despedaçada",
+                    "price": 3000
+                },
+                {
+                    "name": "crystalline-reflector",
+                    "nome": "Refletor Cristalino",
+                    "price": 3000
+                },
+                {
+                    "name": "Horizon_Focus",
+                    "nome": "Foco do Horizonte",
+                    "price": 3100
+                },
+                {
+                    "name": "Infinity-Orb",
+                    "nome": "Orbe do Infinito",
+                    "price": 3400
+                },
+                {
+                    "name": "imperial-mandate",
+                    "nome": "Mandato Imperial",
+                    "price": 2500
+                },
+                {
+                    "name": "liandrys-torment",
+                    "nome": "Tormento de Liandry",
+                    "price": 3000
+                },
+                {
+                    "name": "lich-bane",
+                    "nome": "Perdição de Lich",
+                    "price": 2950
+                },
+                {
+                    "name": "harmonic-echo",
+                    "nome": "Eco Harmônico",
+                    "price": 3000
+                },
+                {
+                    "name": "ludens-echo",
+                    "nome": "Eco de Luden",
+                    "price": 3000
+                },
+                {
+                    "name": "mejais-soulstealer",
+                    "nome": "Ladrão de Almas de Mejai",
+                    "price": 1000
+                },
+                {
+                    "name": "morellonomicon",
+                    "nome": "morellonomicon",
+                    "price": 2600
+                },
+                {
+                    "name": "nashors-tooth",
+                    "nome": "Dente de Na'shor",
+                    "price": 3000
+                },
+                {
+                    "name": "Psychic-Projector",
+                    "nome": "Projetor Psiquico",
+                    "price": 3100
+                },
+                
+                {
+                    "name": "oceanids-trident",
+                    "nome": "Tridente dos oceanids",
+                    "price": 2600
+                },
+                {
+                    "name": "Rabadon's_Deathca",
+                    "nome": "Capuz da Morte de Rabadon",
+                    "price": 3400
+                },
+                {
+                    "name": "Riftmaker",
+                    "nome": "Criafendas",
+                    "price": 3300
+                },
+                {
+                    "name": "rod-of-ages",
+                    "nome": "Bastão das Eras",
+                    "price": 2800
+                },
+                {
+                    "name": "rylais-crystal-scepter",
+                    "nome": "Cetro de Cristal de Rylai",
+                    "price": 2700
+                },
+                {
+                    "name": "staff-of-flowing-water",
+                    "nome": "Cajado Aquafluxo",
+                    "price": 2500
+                }
+            ]
+        },
+        {
+            "defense": [
+                {
+                    "name": "abyssal-mask",
+                    "nome": "Máscara Abissal",
+                    "price": 2800
+                },
+                {
+                    "name": "dead-mans-plate",
+                    "nome": "Couraça do Defunto",
+                    "price": 2800
+                },
+                {
+                    "name": "fimbulwinter",
+                    "nome": "Aproximação Invernal",
+                    "price": 2600
+                },
+                {
+                    "name": "ruin-amaranths-twinguard",
+                    "nome": "Duplaguarda de Amarantho",
+                    "price": 3100
+                },
+                {
+                    "name": "randuins-omen",
+                    "nome": "Presságio de Randuin",
+                    "price": 2800
+                },
+                {
+                    "name": "spirit-visage",
+                    "nome": "Semblante Espiritual",
+                    "price": 2800
+                },
+                {
+                    "name": "sunfire-aegis",
+                    "nome": "Capa de fogo solar",
+                    "price": 2900
+                },
+                {
+                    "name": "thornmail",
+                    "nome": "Armadura de Espinhos",
+                    "price": 2700
+                },
+                {
+                    "name": "Warmog",
+                    "nome": "Armadura de Warmog",
+                    "price": 2850
+                },
+                {
+                    "name": "zekes-convergence",
+                    "nome": "Convergência de Zeke",
+                    "price": 2700
+                },{
+                    "name": "Force-of-Nature",
+                    "nome": "Força da Natureza",
+                    "price": 2750
+                },{
+                    "name": "Ixtali-Seedjar",
+                    "nome": "Fertilizante Ixtalense",
+                    "price": 2400
+                },{
+                    "name": "Iceborn-Gauntlet",
+                    "nome": "Manopla dos Glacinatas",
+                    "price": 3100
+                },{
+                    "name": "Heartsteel",
+                    "nome": "Coração de Aço",
+                    "price": 2800
+                },{
+                    "name": "Mantle-of-the-Twelfth-Hour",
+                    "nome": "Manto da Meia-noite",
+                    "price": 2900
+                },{
+                    "name": "Light-Dawnshroud",
+                    "nome": "Manto de Aurora",
+                    "price": 3000
+                },{
+                    "name": "Protectors-Vow",
+                    "nome": "Juramento Protetor",
+                    "price": 2700
+                },{
+                    "name": "Searing-Crown",
+                    "nome": "Coroa Calcinante",
+                    "price": 2700
+                },{
+                    "name": "Sterak",
+                    "nome": "Sinal dee Sterak",
+                    "price": 3200
+                }
+                
+            ]
+        },
+        {
+            "sup": [
+                {
+                    "name": "ancient-coin",
+                    "nome": "Moeda Antiga",
+                    "price": 500
+                },
+                {
+                    "name": "relic-shield",
+                    "nome": "Escudo Relicário",
+                    "price": 500
+                },
+                {
+                    "name": "Spectral-Sickle",
+                    "nome": "Foice Espectral",
+                    "price": 0
+                }
+            ]
+        }
+    ],
+   
+    "botas": [
+        {
+            "name": "Boots of Dynamism",
+            "nome": "Bota do dinamismo"
+        },
+        {
+            "name": " Boots of Mana",
+            "nome": "Bota de mana"
+        },
+        {
+            "name": "Gluttonous Greaves",
+            "nome": "Grevas vorazes"
+        },
+        {
+            "name": "Ionian Boots of Lucidity",
+            "nome": "Botas Ionianas da Lucidez"
+        },
+        {
+            "name": "Mercurys-treads",
+            "nome": "Passos de Mercúrio"
+        },
+        {
+            "name": "Plated Steelcaps",
+            "nome": "Botas Galvanizadas de Aço"
+        },
+        {
+            "name": "Berserker's Greaves",
+            "nome": "Grevaz do Berserker"
+        }
+    ],
+    "botas-enchant": [
+        {
+            "name": "Gargoyle Stoneplate",
+            "nome": "Placa"
+        },
+        {
+            "name": "Glorious",
+            "nome": "Glorioso"
+        },
+        {
+            "name": "Hextech Rocketbelt",
+            "nome": "Protocinturão"
+        },
+        {
+            "name": "Locket",
+            "nome": "Medalhão"
+        },
+        {
+            "name": "Magnetron",
+            "nome": "Magnetron"
+        },
+        {
+            "name": "Meteor",
+            "nome": "Meteoro"
+        },
+        {
+            "name": "Quicksilver Sash",
+            "nome": "Mercúrio"
+        },
+        {
+            "name": "Redemption",
+            "nome": "Redenção"
+        },
+        {
+            "name": "Repulsor ",
+            "nome": "Repulsor"
+        },
+        {
+            "name": "Revitalizing",
+            "nome": "Ressurreição"
+        },
+        {
+            "name": "Teleport",
+            "nome": "Teleporte"
+        },
+        {
+            "name": "Veil",
+            "nome": "Banshee Encantada"
+        },
+        {
+            "name": "Ravenous Hydra",
+            "nome": "Hidra Raivosa"
+        },
+        {
+            "name": "Zhonya's Hourglass",
+            "nome": "Estase"
+        }
+    ],
+    "runas":[
+    {
+        "Keystone": [
+            {
+                "name": "First_Strike",
+                "image": "First_Strike.WEBP"
+            },
+            {
+                "name": "Conqueror",
+                "image": "Conqueror.WEBP"
+            },
+            {
+                "name": "Arcane_Comet",
+                "image": "Arcane_Comet.WEBP"
+            },
+            {
+                "name": "Electrocute",
+                "image": "Electrocute.WEBP"
+            },
+            {
+                "name": "AfterShock",
+                "image": "AfterShock.WEBP"
+            },
+            {
+                "name": "Phase_Rush",
+                "image": "Phase_Rush.WEBP"
+            },
+            {
+                "name": "Fleet_Footwork",
+                "image": "Fleet_Footwork.WEBP"
+            },
+            {
+                "name": "Aery",
+                "image": "Aery.WEBP"
+            },
+            {
+                "name": "Empowerment",
+                "image": "Empowerment.WEBP"
+            }
+        ]
+    },
+    {
+        "Domination": [
+                        {
+                        "name": "Sudden_Impact",
+                        "image": "Sudden_Impact.WEBP",
+                        "type":1
+                        },
+                        {
+                        "name": "Scorch",
+                        "image": "Scorch.WEBP",
+                        "type":1
+                        },  
+                        {
+                        "name": "Shield_Bash",
+                        "image": "Shield_Bash.WEBP",
+                        "type":1
+                        },
+                        {
+                        "name": "Psychic_Wave",
+                        "image": "Psychic_Wave.WEBP",
+                        "type":1
+                        },
+                        {
+                            "name": "Empowered_Attack",
+                            "image": "Empowered_Attack.WEBP",
+                            "type":2
+                        }, 
+                        {
+                            "name": "Cheap_Shot",
+                            "image": "Cheap_Shot.WEBP",
+                            "type":2
+                        },
+                        {
+                            "name": "Mark_of_the_Weak",
+                            "image": "Mark_of_the_Weak.WEBP",
+                            "type":2
+                        },
+                        {
+                            "name": "Eyeball_Collector",
+                            "image": "Eyeball_Collector.WEBP",
+                            "type":3
+                        },
+                        {
+                            "name": "Zombie_Ward",
+                            "image": "Zombie_Ward.WEBP",
+                            "type":3
+                        },
+                        {
+                            "name": "Ingenious_Hunter",
+                            "image": "Ingenious_Hunter.WEBP",
+                            "type":3
+                        }
+                
+                
+        ]
+    },
+    {
+        "Inspiration": [
+            {
+                "name": "Sweet_Tooth",
+                "image": "Sweet_Tooth.WEBP",
+                "type":1
+            },
+            {
+                "name": "Hextech_Flashtraption",
+                "image": "Hextech_Flashtraption.WEBP",
+                "type":1
+            },
+            {
+                "name": "Item_Crafting",
+                "image": "Item_Crafting.WEBP",
+                "type":1
+            },
+            {
+                "name": "Transcendence",
+                "image": "Transcendence.WEBP",
+                "type":2
+            },
+            {
+                "name": "Ixtali_Seedjar",
+                "image": "Ixtali_Seedjar.WEBP",
+                "type":2
+            },
+            {
+                "name": "Pathfinder",
+                "image": "Pathfinder.WEBP",
+                "type":2
+            },
+
+            {
+                "name": "Futures_Market",
+                "image": "Futures_Market.WEBP",
+                "type":2
+            },
+            {
+                "name": "Manaflow_Band",
+                "image": "Manaflow_Band.WEBP",
+                "type":3
+            },
+            {
+                "name": "Demolish",
+                "image": "Demolish.WEBP",
+                "type":3
+            },
+            {
+                "name": "Nimbus_Cloak",
+                "image": "Nimbus_Cloak.WEBP",
+                "type":3
+            }
+        ]
+    },
+    {
+        "Precision": [
+            {
+            "name": "Triumph",
+            "image": "Triumph.WEBP",
+            "type":1
+            
+            },
+            {
+            "name": "Brutal",
+            "image": "Brutal.WEBP",
+            "type":1
+            },
+            {
+            "name": "Gathering_Storm",
+            "image": "Gathering_Storm.WEBP",
+            "type":1
+            },          
+            {
+            "name": "Coup_de_Grace",
+            "image": "Coup_de_Grace.WEBP",
+            "type":2
+            },
+            {
+            "name": "Giant_Slayer",
+            "image": "Giant_Slayer.WEBP",
+            "type":2
+            },
+            {
+            "name": "Last_Stand",
+            "image": "Last_Stand.WEBP",
+            "type":2
+            },
+            {
+            "name": "Legend_Bloodline",
+            "image": "Legend_Bloodline.WEBP",
+            "type":3
+            },
+            {
+            "name": "Legend_Alacrity",
+            "image": "Legend_Alacrity.WEBP",
+            "type":3
+            },
+            {
+            "name": "Legend_Tenacity",
+            "image": "Legend_Tenacity.WEBP",
+            "type":3
+            }
+        ]
+    },
+    {
+        "Resolve": [
+            {
+                "name": "Font_of_Life",
+                "image": "Font_of_Life.WEBP",
+                "type":1
+            },
+            {
+                "name": "Courage_of_the_Colossus",
+                "image": "Courage_of_the_Colossus.WEBP",
+                "type":1
+            },
+            {
+                "name": "Nullifying_Orb",
+                "image": "Nullifying_Orb.WEBP",
+                "type":1
+            },
+            {
+                "name": "Loyalty",
+                "image": "Loyalty.WEBP",
+                "type":2
+            },
+            {
+                "name": "Second_Wind",
+                "image": "Second_Wind.WEBP",
+                "type":2
+            },
+            {
+                "name": "Bone_Plating",
+                "image": "Bone_Plating.WEBP",
+                "type":2
+            },
+            {
+                "name": "Overgrowth",
+                "image": "Overgrowth.WEBP",
+                "type":3
+            },
+            {
+                "name": "Perseverance",
+                "image": "Perseverance.WEBP",
+                "type":3
+            },
+            {
+                "name": "Revitalize",
+                "image": "Revitalize.WEBP",
+                "type":3
+            },
+            {
+                "name": "Onslaught",
+                "image": "Onslaught.WEBP",
+                "type":3
+            }
+
+        ]
+
+
+    }
+    ]
+}

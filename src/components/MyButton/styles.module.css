@@ -1,0 +1,29 @@
+button {
+  width: 100px;
+  height: 40px;
+  margin: 5px;
+  background-color: #152036;
+  border: 1px solid #152036;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: #e0bf7a;
+  padding: 3px;
+  /* font-size: 0.9rem; */
+  cursor: pointer;
+}
+button:hover {
+  color: #faf0cd;
+  border: 2px solid #e0bf7a;
+}
+/* p{
+      font-size: 1.0rem;
+      padding: 3px;
+    } */
+img {
+  /* border-radius: 50%;/ */
+  border: none;
+  margin-left: 5px;
+}
