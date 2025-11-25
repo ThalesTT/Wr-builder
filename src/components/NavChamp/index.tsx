@@ -5,12 +5,11 @@ import { NavButtons } from '../NavButtons';
 export function NavChamp() {
   return (
     <NavButtons>
-      <MyButton lane='Top' laneImage={adc}></MyButton>
-      <MyButton lane='Top' laneImage='ccc'></MyButton>
-      <MyButton lane='Top' laneImage='ccc'></MyButton>
-      <MyButton lane='Top' laneImage='ccc'></MyButton>
-      <MyButton lane='Top' laneImage='ccc'></MyButton>
-      <MyButton lane='Top' laneImage='ccc'></MyButton>
+      <MyButton variety='top' />
+      <MyButton variety='jungle' />
+      <MyButton variety='mid' />
+      <MyButton variety='adc' />
+      <MyButton variety='sup' />
     </NavButtons>
   );
 }

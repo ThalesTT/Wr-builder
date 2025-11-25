@@ -1,0 +1,256 @@
+{
+  "runas": [
+    {
+      "Keystone": [
+        {
+          "name": "First_Strike",
+          "image": "First_Strike.WEBP"
+        },
+        {
+          "name": "Conqueror",
+          "image": "Conqueror.WEBP"
+        },
+        {
+          "name": "Arcane_Comet",
+          "image": "Arcane_Comet.WEBP"
+        },
+        {
+          "name": "Electrocute",
+          "image": "Electrocute.WEBP"
+        },
+        {
+          "name": "AfterShock",
+          "image": "AfterShock.WEBP"
+        },
+        {
+          "name": "Phase_Rush",
+          "image": "Phase_Rush.WEBP"
+        },
+        {
+          "name": "Fleet_Footwork",
+          "image": "Fleet_Footwork.WEBP"
+        },
+        {
+          "name": "Aery",
+          "image": "Aery.WEBP"
+        },
+        {
+          "name": "Empowerment",
+          "image": "Empowerment.WEBP"
+        }
+      ]
+    },
+    {
+      "Domination": [
+        {
+          "name": "Sudden_Impact",
+          "image": "Sudden_Impact.WEBP",
+          "type": 1
+        },
+        {
+          "name": "Scorch",
+          "image": "Scorch.WEBP",
+          "type": 1
+        },
+        {
+          "name": "Shield_Bash",
+          "image": "Shield_Bash.WEBP",
+          "type": 1
+        },
+        {
+          "name": "Psychic_Wave",
+          "image": "Psychic_Wave.WEBP",
+          "type": 1
+        },
+        {
+          "name": "Empowered_Attack",
+          "image": "Empowered_Attack.WEBP",
+          "type": 2
+        },
+        {
+          "name": "Cheap_Shot",
+          "image": "Cheap_Shot.WEBP",
+          "type": 2
+        },
+        {
+          "name": "Mark_of_the_Weak",
+          "image": "Mark_of_the_Weak.WEBP",
+          "type": 2
+        },
+        {
+          "name": "Eyeball_Collector",
+          "image": "Eyeball_Collector.WEBP",
+          "type": 3
+        },
+        {
+          "name": "Zombie_Ward",
+          "image": "Zombie_Ward.WEBP",
+          "type": 3
+        },
+        {
+          "name": "Ingenious_Hunter",
+          "image": "Ingenious_Hunter.WEBP",
+          "type": 3
+        }
+      ]
+    },
+    {
+      "Inspiration": [
+        {
+          "name": "Sweet_Tooth",
+          "image": "Sweet_Tooth.WEBP",
+          "type": 1
+        },
+        {
+          "name": "Hextech_Flashtraption",
+          "image": "Hextech_Flashtraption.WEBP",
+          "type": 1
+        },
+        {
+          "name": "Item_Crafting",
+          "image": "Item_Crafting.WEBP",
+          "type": 1
+        },
+        {
+          "name": "Transcendence",
+          "image": "Transcendence.WEBP",
+          "type": 2
+        },
+        {
+          "name": "Ixtali_Seedjar",
+          "image": "Ixtali_Seedjar.WEBP",
+          "type": 2
+        },
+        {
+          "name": "Pathfinder",
+          "image": "Pathfinder.WEBP",
+          "type": 2
+        },
+
+        {
+          "name": "Futures_Market",
+          "image": "Futures_Market.WEBP",
+          "type": 2
+        },
+        {
+          "name": "Manaflow_Band",
+          "image": "Manaflow_Band.WEBP",
+          "type": 3
+        },
+        {
+          "name": "Demolish",
+          "image": "Demolish.WEBP",
+          "type": 3
+        },
+        {
+          "name": "Nimbus_Cloak",
+          "image": "Nimbus_Cloak.WEBP",
+          "type": 3
+        }
+      ]
+    },
+    {
+      "Precision": [
+        {
+          "name": "Triumph",
+          "image": "Triumph.WEBP",
+          "type": 1
+        },
+        {
+          "name": "Brutal",
+          "image": "Brutal.WEBP",
+          "type": 1
+        },
+        {
+          "name": "Gathering_Storm",
+          "image": "Gathering_Storm.WEBP",
+          "type": 1
+        },
+        {
+          "name": "Coup_de_Grace",
+          "image": "Coup_de_Grace.WEBP",
+          "type": 2
+        },
+        {
+          "name": "Giant_Slayer",
+          "image": "Giant_Slayer.WEBP",
+          "type": 2
+        },
+        {
+          "name": "Last_Stand",
+          "image": "Last_Stand.WEBP",
+          "type": 2
+        },
+        {
+          "name": "Legend_Bloodline",
+          "image": "Legend_Bloodline.WEBP",
+          "type": 3
+        },
+        {
+          "name": "Legend_Alacrity",
+          "image": "Legend_Alacrity.WEBP",
+          "type": 3
+        },
+        {
+          "name": "Legend_Tenacity",
+          "image": "Legend_Tenacity.WEBP",
+          "type": 3
+        }
+      ]
+    },
+    {
+      "Resolve": [
+        {
+          "name": "Font_of_Life",
+          "image": "Font_of_Life.WEBP",
+          "type": 1
+        },
+        {
+          "name": "Courage_of_the_Colossus",
+          "image": "Courage_of_the_Colossus.WEBP",
+          "type": 1
+        },
+        {
+          "name": "Nullifying_Orb",
+          "image": "Nullifying_Orb.WEBP",
+          "type": 1
+        },
+        {
+          "name": "Loyalty",
+          "image": "Loyalty.WEBP",
+          "type": 2
+        },
+        {
+          "name": "Second_Wind",
+          "image": "Second_Wind.WEBP",
+          "type": 2
+        },
+        {
+          "name": "Bone_Plating",
+          "image": "Bone_Plating.WEBP",
+          "type": 2
+        },
+        {
+          "name": "Overgrowth",
+          "image": "Overgrowth.WEBP",
+          "type": 3
+        },
+        {
+          "name": "Perseverance",
+          "image": "Perseverance.WEBP",
+          "type": 3
+        },
+        {
+          "name": "Revitalize",
+          "image": "Revitalize.WEBP",
+          "type": 3
+        },
+        {
+          "name": "Onslaught",
+          "image": "Onslaught.WEBP",
+          "type": 3
+        }
+      ]
+    }
+  ]
+}

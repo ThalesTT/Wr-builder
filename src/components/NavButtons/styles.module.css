@@ -10,3 +10,75 @@
   justify-content: center;
   /* border: 1px solid gold; */
 }
+
+/* Estilos globais e de reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: sans-serif;
+  padding: 20px;
+  background-color: #f4f4f4;
+}
+
+/* 🖼️ Contêiner Flexbox Principal */
+.galeria-flex {
+  display: flex; /* Habilita o Flexbox */
+  flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha */
+  justify-content: space-around; /* Distribui os itens uniformemente no eixo principal */
+  gap: 15px; /* Espaçamento entre os itens */
+  max-width: 1200px;
+  margin: 0 auto; /* Centraliza a galeria */
+}
+
+/* Item Individual da Galeria */
+.foto-item {
+  /* Define uma largura base para os itens. 
+       O 'flex-grow: 1' garante que eles se expandam no espaço disponível. */
+  flex: 1 1 250px;
+  /* flex: <flex-grow> <flex-shrink> <flex-basis>
+       - flex-grow: 1 (O item pode crescer)
+       - flex-shrink: 1 (O item pode encolher)
+       - flex-basis: 250px (Largura ideal de 250px antes de crescer/encolher)
+    */
+  overflow: hidden; /* Garante que a borda arredondada seja aplicada à imagem */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+/* Estilo da Imagem dentro do Item */
+.foto-item img {
+  display: block;
+  width: 100%; /* A imagem ocupa 100% da largura do seu contêiner (<figure>) */
+  height: auto; /* Mantém a proporção da imagem */
+  transition: transform 0.3s ease; /* Adiciona uma transição suave para o efeito hover */
+}
+
+/* Efeito ao passar o mouse */
+.foto-item img:hover {
+  transform: scale(1.05); /* Zoom sutil ao passar o mouse */
+}
+
+/* 📱 Responsividade (Ajuste para telas menores) */
+
+/* Se a tela tiver até 600px, os itens ocuparão 100% da linha, 
+   mostrando uma foto por linha */
+@media screen and (max-width: 600px) {
+  .foto-item {
+    /* Define uma largura ideal grande (ex: 90%) para forçar quebra de linha. 
+           O 'flex-basis' de 100% garante uma foto por linha em telas muito pequenas. */
+    flex: 1 1 100%;
+  }
+}
+
+/* Para telas entre 601px e 900px, pode-se ter 2 fotos por linha */
+@media screen and (min-width: 601px) and (max-width: 900px) {
+  .foto-item {
+    /* Largura ideal de cerca de 45% (o Flexbox cuida do restante) */
+    flex: 1 1 calc(50% - 20px);
+  }
+}

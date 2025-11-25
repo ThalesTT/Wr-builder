@@ -1,20 +1,39 @@
 .frame {
-  width: 70px;
-  height: 80px;
-  margin-bottom: 7px;
+  /* Define o pai como um contêiner flexível */
   display: flex;
-  align-items: center;
+  padding: 0;
+  margin-right: 2px;
+  margin-left: 2px;
+  margin-bottom: 10px;
+  /* Define a direção principal como coluna, para que o conteúdo do parágrafo
+     ocupe toda a largura, e o alinhamento vertical seja mais fácil. */
   flex-direction: column;
-  align-content: flex-end;
-  background-color: aqua;
+
+  /* Força a div a ter uma altura visível para que o alinhamento funcione.
+     Altere para a altura desejada, ex: 300px ou 50vh */
+
+  /* Define o alinhamento vertical dos itens (o parágrafo) para o final (bottom) */
+  justify-content: center;
+
+  /* A propriedade abaixo garante que o parágrafo ocupe 100% da largura do contêiner */
+  align-items: stretch; /* Padrão, mas bom ter certeza */
+
+  /* Para visualização */
+  /* border: 2px solid blue; */
 }
-.frame img {
-  width: 100%;
-  height: 75px;
-}
+
 .frame p {
+  /* O flexbox já fará o alinhamento, mas para garantir que o <p>
+     ocupe 100% da largura, não precisamos de mais nada */
+  margin: 0; /* Remove a margem padrão do parágrafo */
+  padding: 3px;
+  background-color: goldenrod; /* Para visualização */
   width: 100%;
   text-align: center;
-  background-color: goldenrod;
-  color: black;
+}
+.frame img {
+  padding: 0px;
+  margin: 0px;
+  height: 70px;
+  width: 100%;
 }

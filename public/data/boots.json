@@ -1,0 +1,90 @@
+{
+  "botas": [
+    {
+      "name": "Boots of Dynamism",
+      "nome": "Bota do dinamismo"
+    },
+    {
+      "name": " Boots of Mana",
+      "nome": "Bota de mana"
+    },
+    {
+      "name": "Gluttonous Greaves",
+      "nome": "Grevas vorazes"
+    },
+    {
+      "name": "Ionian Boots of Lucidity",
+      "nome": "Botas Ionianas da Lucidez"
+    },
+    {
+      "name": "Mercurys-treads",
+      "nome": "Passos de Mercúrio"
+    },
+    {
+      "name": "Plated Steelcaps",
+      "nome": "Botas Galvanizadas de Aço"
+    },
+    {
+      "name": "Berserker's Greaves",
+      "nome": "Grevaz do Berserker"
+    }
+  ],
+  "botas-enchant": [
+    {
+      "name": "Gargoyle Stoneplate",
+      "nome": "Placa"
+    },
+    {
+      "name": "Glorious",
+      "nome": "Glorioso"
+    },
+    {
+      "name": "Hextech Rocketbelt",
+      "nome": "Protocinturão"
+    },
+    {
+      "name": "Locket",
+      "nome": "Medalhão"
+    },
+    {
+      "name": "Magnetron",
+      "nome": "Magnetron"
+    },
+    {
+      "name": "Meteor",
+      "nome": "Meteoro"
+    },
+    {
+      "name": "Quicksilver Sash",
+      "nome": "Mercúrio"
+    },
+    {
+      "name": "Redemption",
+      "nome": "Redenção"
+    },
+    {
+      "name": "Repulsor ",
+      "nome": "Repulsor"
+    },
+    {
+      "name": "Revitalizing",
+      "nome": "Ressurreição"
+    },
+    {
+      "name": "Teleport",
+      "nome": "Teleporte"
+    },
+    {
+      "name": "Veil",
+      "nome": "Banshee Encantada"
+    },
+    {
+      "name": "Ravenous Hydra",
+      "nome": "Hidra Raivosa"
+    },
+    {
+      "name": "Zhonya's Hourglass",
+      "nome": "Estase"
+    }
+  ]
+}

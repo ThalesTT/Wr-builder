@@ -1,0 +1,14 @@
+ul {
+  list-style: none;
+  color: black;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0px;
+  margin: 0px auto;
+  justify-content: center;
+}
+ul li {
+  padding: 0px;
+  margin: 0px;
+  height: 91px;
+}

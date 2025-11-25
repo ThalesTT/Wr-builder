@@ -1,0 +1,454 @@
+{
+  "itens": [
+    {
+      "name": "black-cleaver",
+      "nome": "Cutelo Negro",
+      "type": "attack",
+      "price": 3000
+    },
+    {
+      "name": "Blade_of_the_Ruined_King",
+      "nome": "Espada do Rei Destruído",
+      "type": "attack",
+      "price": 3000
+    },
+    {
+      "name": "bloodthirster",
+      "nome": "Sedenta por Sangue",
+      "type": "attack",
+      "price": 3300
+    },
+    {
+      "name": "chempunk-chainsword",
+      "nome": "Serrespada Quimiopunk",
+      "type": "attack",
+      "price": 2800
+    },
+    {
+      "name": "deaths-dance",
+      "nome": "Dançarina Fantasma",
+      "type": "attack",
+      "price": 3000
+    },
+    {
+      "name": "divine-sunderer",
+      "nome": "Ruptor Divino",
+      "type": "attack",
+      "price": 3400
+    },
+    {
+      "name": "duskblade-of-draktharr",
+      "nome": "Crepúsculo de Draktharr",
+      "type": "attack",
+      "price": 3000
+    },
+    {
+      "name": "edge-of-night",
+      "nome": "Limiar da Noite",
+      "type": "attack",
+      "price": 3150
+    },
+    {
+      "name": "essence-reaver",
+      "nome": "Colhedor de Essência",
+      "type": "attack",
+      "price": 3050
+    },
+    {
+      "name": "guardian-angel",
+      "nome": "Anjo Guardião",
+      "type": "attack",
+      "price": 34000
+    },
+    {
+      "name": "immortal-shieldbow",
+      "nome": "Arco-escudo Imortal",
+      "type": "attack",
+      "price": 3200
+    },
+    {
+      "name": "Infinity_Edge_item",
+      "nome": "Gume do Infinito",
+      "type": "attack",
+      "price": 3200
+    },
+    {
+      "name": "magnetic-blaster",
+      "nome": "Canhão Magnético",
+      "type": "attack",
+      "price": 2900
+    },
+    {
+      "name": "manamune",
+      "nome": "manamune",
+      "type": "attack",
+      "price": 2700
+    },
+    {
+      "name": "maw-of-malmortius",
+      "nome": "Mandíbula de Malmortius",
+      "type": "attack",
+      "price": 3000
+    },
+    {
+      "name": "mortal-reminder",
+      "nome": "Lembrete Mortal",
+      "type": "attack",
+      "price": 3300
+    },
+    {
+      "name": "navori-quickblades",
+      "nome": "Laminas rápidas de Navori",
+      "type": "attack",
+      "price": 3000
+    },
+    {
+      "name": "phantom-dancer",
+      "nome": "Dançarina Fantasma",
+      "type": "attack",
+      "price": 3000
+    },
+    {
+      "name": "runaans-hurricane",
+      "nome": "Furacão de Runaan",
+      "type": "attack",
+      "price": 3000
+    },
+    {
+      "name": "serpents-fang",
+      "nome": "Presa da serpente",
+      "type": "attack",
+      "price": 2800
+    },
+    {
+      "name": "seryldas-grudge",
+      "nome": "Rancor de Serylda",
+      "price": 3100
+    },
+    {
+      "name": "solari-chargeblade",
+      "nome": "Lâminna Impetuosa de Solari",
+      "type": "attack",
+      "price": 3000
+    },
+    {
+      "name": "spear-of-shojin",
+      "nome": "Lança de Shojin",
+      "type": "attack",
+      "price": 3200
+    },
+    {
+      "name": "stormrazor",
+      "nome": "Chuva de Canivete",
+      "type": "attack",
+      "price": 3100
+    },
+    {
+      "name": "terminus",
+      "nome": "terminus",
+      "type": "attack",
+      "price": 3200
+    },
+    {
+      "name": "the-collector",
+      "nome": "A coletora",
+      "type": "attack",
+      "price": 2900
+    },
+    {
+      "name": "titanic-hydra",
+      "nome": "Hidra Titanica",
+      "type": "attack",
+      "price": 3000
+    },
+    {
+      "name": "trinity-force",
+      "nome": "Força da Trindade",
+      "type": "attack",
+      "price": 3333
+    },
+    {
+      "name": "wits-end",
+      "nome": "Limite da Razão",
+      "type": "attack",
+      "price": 2700
+    },
+    {
+      "name": "Youmuus-Ghostblade",
+      "nome": "Lâmina Fantasma de Youmuu",
+      "type": "attack",
+      "price": 3200
+    },
+    {
+      "name": "archangels-staff",
+      "nome": "Cajado do Arcanjo",
+      "type": "magic",
+      "price": 2950
+    },
+    {
+      "name": "ardent-censer",
+      "nome": "Turíbulo Ardente",
+      "type": "magic",
+      "price": 2800
+    },
+    {
+      "name": "awakened-soulstealer",
+      "nome": "Ladrão de Almas Desperto",
+      "type": "magic",
+      "price": 3000
+    },
+    {
+      "name": "cosmic-drive",
+      "nome": "Ímpeto Cósmico",
+      "type": "magic",
+      "price": 2800
+    },
+    {
+      "name": "crown-of-the-shattered-queen",
+      "nome": "Coroa da Rainha Despedaçada",
+      "type": "magic",
+      "price": 3000
+    },
+    {
+      "name": "crystalline-reflector",
+      "nome": "Refletor Cristalino",
+      "type": "magic",
+      "price": 3000
+    },
+    {
+      "name": "Horizon_Focus",
+      "nome": "Foco do Horizonte",
+      "type": "magic",
+      "price": 3100
+    },
+    {
+      "name": "Infinity-Orb",
+      "nome": "Orbe do Infinito",
+      "type": "magic",
+      "price": 3400
+    },
+    {
+      "name": "imperial-mandate",
+      "nome": "Mandato Imperial",
+      "type": "magic",
+      "price": 2500
+    },
+    {
+      "name": "liandrys-torment",
+      "nome": "Tormento de Liandry",
+      "type": "magic",
+      "price": 3000
+    },
+    {
+      "name": "lich-bane",
+      "nome": "Perdição de Lich",
+      "type": "magic",
+      "price": 2950
+    },
+    {
+      "name": "harmonic-echo",
+      "nome": "Eco Harmônico",
+      "type": "magic",
+      "price": 3000
+    },
+    {
+      "name": "ludens-echo",
+      "nome": "Eco de Luden",
+      "type": "magic",
+      "price": 3000
+    },
+    {
+      "name": "mejais-soulstealer",
+      "nome": "Ladrão de Almas de Mejai",
+      "type": "magic",
+      "price": 1000
+    },
+    {
+      "name": "morellonomicon",
+      "nome": "morellonomicon",
+      "type": "magic",
+      "price": 2600
+    },
+    {
+      "name": "nashors-tooth",
+      "nome": "Dente de Na'shor",
+      "type": "magic",
+      "price": 3000
+    },
+    {
+      "name": "Psychic-Projector",
+      "nome": "Projetor Psiquico",
+      "type": "magic",
+      "price": 3100
+    },
+
+    {
+      "name": "oceanids-trident",
+      "nome": "Tridente dos oceanids",
+      "type": "magic",
+      "price": 2600
+    },
+    {
+      "name": "Rabadon's_Deathca",
+      "nome": "Capuz da Morte de Rabadon",
+      "type": "magic",
+      "price": 3400
+    },
+    {
+      "name": "Riftmaker",
+      "nome": "Criafendas",
+      "type": "magic",
+      "price": 3300
+    },
+    {
+      "name": "rod-of-ages",
+      "nome": "Bastão das Eras",
+      "type": "magic",
+      "price": 2800
+    },
+    {
+      "name": "rylais-crystal-scepter",
+      "nome": "Cetro de Cristal de Rylai",
+      "type": "magic",
+      "price": 2700
+    },
+    {
+      "name": "staff-of-flowing-water",
+      "nome": "Cajado Aquafluxo",
+      "type": "magic",
+      "price": 2500
+    },
+    {
+      "name": "abyssal-mask",
+      "nome": "Máscara Abissal",
+      "type": "defense",
+      "price": 2800
+    },
+    {
+      "name": "dead-mans-plate",
+      "nome": "Couraça do Defunto",
+      "type": "defense",
+      "price": 2800
+    },
+    {
+      "name": "fimbulwinter",
+      "nome": "Aproximação Invernal",
+      "type": "defense",
+      "price": 2600
+    },
+    {
+      "name": "ruin-amaranths-twinguard",
+      "nome": "Duplaguarda de Amarantho",
+      "type": "defense",
+      "price": 3100
+    },
+    {
+      "name": "randuins-omen",
+      "nome": "Presságio de Randuin",
+      "type": "defense",
+      "price": 2800
+    },
+    {
+      "name": "spirit-visage",
+      "nome": "Semblante Espiritual",
+      "type": "defense",
+      "price": 2800
+    },
+    {
+      "name": "sunfire-aegis",
+      "nome": "Capa de fogo solar",
+      "type": "defense",
+      "price": 2900
+    },
+    {
+      "name": "thornmail",
+      "nome": "Armadura de Espinhos",
+      "type": "defense",
+      "price": 2700
+    },
+    {
+      "name": "Warmog",
+      "nome": "Armadura de Warmog",
+      "type": "defense",
+      "price": 2850
+    },
+    {
+      "name": "zekes-convergence",
+      "nome": "Convergência de Zeke",
+      "type": "defense",
+      "price": 2700
+    },
+    {
+      "name": "Force-of-Nature",
+      "nome": "Força da Natureza",
+      "type": "defense",
+      "price": 2750
+    },
+    {
+      "name": "Ixtali-Seedjar",
+      "nome": "Fertilizante Ixtalense",
+      "type": "defense",
+      "price": 2400
+    },
+    {
+      "name": "Iceborn-Gauntlet",
+      "nome": "Manopla dos Glacinatas",
+      "type": "defense",
+      "price": 3100
+    },
+    {
+      "name": "Heartsteel",
+      "nome": "Coração de Aço",
+      "type": "defense",
+      "price": 2800
+    },
+    {
+      "name": "Mantle-of-the-Twelfth-Hour",
+      "nome": "Manto da Meia-noite",
+      "type": "defense",
+      "price": 2900
+    },
+    {
+      "name": "Light-Dawnshroud",
+      "nome": "Manto de Aurora",
+      "type": "defense",
+      "price": 3000
+    },
+    {
+      "name": "Protectors-Vow",
+      "nome": "Juramento Protetor",
+      "type": "defense",
+      "price": 2700
+    },
+    {
+      "name": "Searing-Crown",
+      "nome": "Coroa Calcinante",
+      "type": "defense",
+      "price": 2700
+    },
+    {
+      "name": "Sterak",
+      "nome": "Sinal dee Sterak",
+      "type": "defense",
+      "price": 3200
+    },
+    {
+      "name": "ancient-coin",
+      "nome": "Moeda Antiga",
+      "type": "sup",
+      "price": 500
+    },
+    {
+      "name": "relic-shield",
+      "nome": "Escudo Relicário",
+      "type": "sup",
+      "price": 500
+    },
+    {
+      "name": "Spectral-Sickle",
+      "nome": "Foice Espectral",
+      "type": "sup",
+      "price": 0
+    }
+  ]
+}

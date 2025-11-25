@@ -1,14 +1,15 @@
 import './styles/theme.css';
 import './styles/global.css';
 import { Header } from './components/Header';
-import { NavChamp } from './components/NavChamp';
 import { Champions } from './components/Champions';
+import { AllItens } from './components/AllItens';
 
 export function App() {
   return (
     <>
       <Header />
-      <NavChamp />
+      {/* <Itens /> */}
+      <AllItens />
       <Champions />
     </>
   );

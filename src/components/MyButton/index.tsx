@@ -1,15 +1,35 @@
+//TODO adicionar a imagem e tranformar em dinaminca
+
 import styles from './styles.module.css';
 
-type MyButtonProps = {
-  lane: string;
-  laneImage: string;
+const Variety = {
+  adc: 'ADC',
+  jungle: 'Jungle',
+  mid: 'MID',
+  top: 'TOP',
+  sup: 'SUP',
+  assa: 'assassin',
+  tank: 'tank',
+  mage: 'mage',
+  shoo: 'shooter',
+  heal: 'support',
+  all: 'all',
 };
 
-export function MyButton({ lane, laneImage }: MyButtonProps) {
+type MyButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+  variety: keyof typeof Variety;
+};
+
+export function MyButton({ onClick, variety }: MyButtonProps) {
   return (
-    <button className={styles.button}>
-      {lane}
-      <img alt='' src={laneImage} width={30} height={30} />
+    <button className={styles.button} onClick={onClick}>
+      {Variety[variety]}
+      <img
+        alt={`${Variety[variety]} lane`}
+        src={`../../../public/images/lanes/${Variety[variety]}.png`}
+        width={30}
+        height={30}
+      />
     </button>
   );
 }
