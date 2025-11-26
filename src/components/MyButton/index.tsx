@@ -1,5 +1,3 @@
-//TODO adicionar a imagem e tranformar em dinaminca
-
 import styles from './styles.module.css';
 
 const Variety = {
@@ -26,7 +24,7 @@ export function MyButton({ onClick, variety }: MyButtonProps) {
       {Variety[variety]}
       <img
         alt={`${Variety[variety]} lane`}
-        src={`../../../public/images/lanes/${Variety[variety]}.png`}
+        src={`/images/lanes/${Variety[variety]}.png`}
         width={30}
         height={30}
       />

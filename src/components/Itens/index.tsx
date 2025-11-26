@@ -1,70 +1,111 @@
-import { Container } from '../Container';
-import { Frame } from '../Frame';
-import { MyButton } from '../MyButton';
-import { NavButtons } from '../NavButtons';
 import styles from './styles.module.css';
-import { useState, useEffect } from 'react';
+import { Container } from '../Container';
+import { useEffect, useMemo, useState } from 'react';
+import { Frame } from '../Frame';
+import { NavButtons } from '../NavButtons';
+import { MyButton } from '../MyButton';
+import { SearchBar } from '../SearchBar';
+// TODO lista de champs e itens conforme role e tipo, verificar JSON
 
-export type LANE = 'Top' | 'Jungle' | 'Mid' | 'ADC' | 'Sup';
+// type ChampionsProps = {
+//   role: 'Top' | 'Mid' | 'jgl' | 'Adc' | 'Sup';
+// };
 
-interface ChampionData {
+type ITEM_TYPE = 'attack' | 'magic' | 'defense' | 'sup';
+type FilterType = ITEM_TYPE | 'all';
+
+interface ItemData {
   name: string;
-  lanes: LANE[];
+  nome: string;
+  price: number;
+  type: ITEM_TYPE;
 }
 
-interface ChampionsJson {
-  champ: ChampionData[];
+interface ItensJson {
+  itens: ItemData[];
 }
-type FilterLane = LANE | 'all';
 
 export function Itens() {
-  const [dados, setDados] = useState<ChampionData[]>([]);
-  const [laneFilter, setLaneFilter] = useState<FilterLane>('Top');
+  const [itens, setItens] = useState<ItemData[]>([]);
+  const [itemFilter, setItemFilter] = useState<FilterType>('attack');
+  const [searchName, setSearchName] = useState<string>('');
 
-  useEffect(() => {
-    fetch('../../../public/data/champions.json')
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json() as Promise<ChampionsJson>;
-      })
-      .then(data => setDados(data.champ));
+  const isPortuguese = useMemo(() => {
+    return navigator.language.toLocaleLowerCase().startsWith('pt');
   }, []);
 
-  const champsRender = dados.filter(champion => {
-    if (laneFilter === 'all') {
+  const getDisplayName = (item: ItemData) => {
+    // / Se for Português, usa item.nome. Caso contrário, usa item.name.
+    // Garante que o campo correto seja usado para renderização e pesquisa.
+    return isPortuguese ? item.nome : item.name;
+  };
+
+  useEffect(() => {
+    fetch('../../../public/data/itens.json')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status:${response.status}`);
+        }
+        return response.json() as Promise<ItensJson>;
+      })
+      .then(data => setItens(data.itens));
+  }, []);
+
+  const itensRender = itens.filter(item => {
+    if (itemFilter === 'all') {
       return true;
     }
-    return champion.lanes.includes(laneFilter);
+    return item.type === itemFilter;
   });
 
-  console.log(dados.length);
-  if (dados.length < 1) {
-    return <div>Carregando...</div>;
-  }
+  const itensNameRender = itens.filter(item => {
+    const normalizedSearchTerm = searchName.toLocaleLowerCase().trim();
+    const normalizedItemName = getDisplayName(item).toLocaleLowerCase();
+
+    // Filtra apenas se o nome do item incluir o termo de pesquisa (case-insensitive)
+    return normalizedItemName.includes(normalizedSearchTerm);
+  });
+
+  const handleSearchChange = (newTerm: string) => {
+    setItemFilter('all');
+    setSearchName(newTerm);
+  };
 
   return (
     <>
       <NavButtons>
-        <MyButton variety='top' onClick={() => setLaneFilter('Top')} />
-        <MyButton variety='jungle' onClick={() => setLaneFilter('Jungle')} />
-        <MyButton variety='mid' onClick={() => setLaneFilter('Mid')} />
-        <MyButton variety='adc' onClick={() => setLaneFilter('ADC')} />
-        <MyButton variety='sup' onClick={() => setLaneFilter('Sup')} />
-        <MyButton variety='all' onClick={() => setLaneFilter('all')} />
+        <MyButton variety='mage' onClick={() => setItemFilter('magic')} />
+        <MyButton variety='adc' onClick={() => setItemFilter('attack')} />
+        <MyButton variety='tank' onClick={() => setItemFilter('defense')} />
+        <MyButton variety='sup' onClick={() => setItemFilter('sup')} />
+        <MyButton variety='all' onClick={() => setItemFilter('all')} />
       </NavButtons>
-
+      <SearchBar
+        placeholder='Pesquise seu item'
+        searchName={searchName}
+        onSearchChange={handleSearchChange}
+      />
       <Container>
         <ul className={styles.ul}>
-          {champsRender.map((dado, index) => (
-            <li key={index}>
-              <Frame
-                name={dado.name}
-                picture={`../../../public/images/champs/${dado.name}.WEBP`}
-              />
-            </li>
-          ))}
+          {itemFilter == 'all'
+            ? itensNameRender.map((dado, index) => (
+                <li key={index}>
+                  <Frame
+                    // name={dado.nome}
+                    name={getDisplayName(dado)}
+                    picture={`../../../public/images/itens/${dado.name}.WEBP`}
+                  />
+                </li>
+              ))
+            : itensRender.map((dado, index) => (
+                <li key={index}>
+                  <Frame
+                    // name={dado.nome}
+                    name={getDisplayName(dado)}
+                    picture={`/images/itens/${dado.name}.WEBP`}
+                  />
+                </li>
+              ))}
         </ul>
       </Container>
     </>

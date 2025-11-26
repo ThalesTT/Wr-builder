@@ -8,9 +8,8 @@ export function App() {
   return (
     <>
       <Header />
-      {/* <Itens /> */}
+      <Champions />/
       <AllItens />
-      <Champions />
     </>
   );
 }

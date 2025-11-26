@@ -46,7 +46,7 @@ export function AllItens() {
   const [usePortugueseName, setUsePortugueseName] = useState(isPortugueseBr);
 
   // 3. Função Auxiliar para Escolher o Nome Correto.
-  // useCallback memoiza a função, recriando-a apenas se 'usePortugueseName' mudar.
+  // useCallback memoizar a função, recriando-a apenas se 'usePortugueseName' mudar.
   const getDisplayName = useCallback(
     (item: ItemData): string => {
       // Se o estado de PT estiver ativo, usa 'item.nome', senão 'item.name'.
@@ -59,7 +59,7 @@ export function AllItens() {
   // useEffect com array de dependências vazio ([]) garante que o fetch ocorra apenas
   // uma vez após a montagem inicial do componente.
   useEffect(() => {
-    fetch('../../../public/data/itens.json')
+    fetch('/data/itens.json')
       .then(response => {
         if (!response.ok) {
           throw new Error(`HTTP error! Status:${response.status}`);
@@ -162,7 +162,7 @@ export function AllItens() {
                 // Renderiza o nome correto (PT ou EN) usando a função getDisplayName.
                 name={getDisplayName(dado)}
                 // O caminho da imagem usa o nome original (dado.name) que deve ser o nome do arquivo.
-                picture={`../../../public/images/itens/${dado.name}.WEBP`}
+                picture={`/images/itens/${dado.name}.WEBP`}
               />
             </li>
           ))}

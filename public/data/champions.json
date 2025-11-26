@@ -169,7 +169,7 @@
       "lanes": ["Sup", "Mid"]
     },
     {
-      "name": "kassadin",
+      "name": "Kassadin",
       "lanes": ["Mid"]
     },
     {
@@ -326,7 +326,7 @@
     },
     {
       "name": "Shyvana",
-      "lanes": ["Top"]
+      "lanes": ["Jungle"]
     },
     {
       "name": "Singed",

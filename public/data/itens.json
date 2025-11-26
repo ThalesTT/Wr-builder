@@ -7,7 +7,7 @@
       "price": 3000
     },
     {
-      "name": "Blade_of_the_Ruined_King",
+      "name": "blade-of-the-ruined-king",
       "nome": "Espada do Rei Destruído",
       "type": "attack",
       "price": 3000
@@ -67,7 +67,7 @@
       "price": 3200
     },
     {
-      "name": "Infinity_Edge_item",
+      "name": "infinity-edge",
       "nome": "Gume do Infinito",
       "type": "attack",
       "price": 3200
@@ -216,13 +216,13 @@
       "price": 3000
     },
     {
-      "name": "Horizon_Focus",
+      "name": "horizon-focus",
       "nome": "Foco do Horizonte",
       "type": "magic",
       "price": 3100
     },
     {
-      "name": "Infinity-Orb",
+      "name": "infinity-orb",
       "nome": "Orbe do Infinito",
       "type": "magic",
       "price": 3400
@@ -276,7 +276,7 @@
       "price": 3000
     },
     {
-      "name": "Psychic-Projector",
+      "name": "psychic-projector",
       "nome": "Projetor Psiquico",
       "type": "magic",
       "price": 3100
@@ -289,13 +289,13 @@
       "price": 2600
     },
     {
-      "name": "Rabadon's_Deathca",
+      "name": "rabadon's-deathcap",
       "nome": "Capuz da Morte de Rabadon",
       "type": "magic",
       "price": 3400
     },
     {
-      "name": "Riftmaker",
+      "name": "riftmaker",
       "nome": "Criafendas",
       "type": "magic",
       "price": 3300
@@ -367,7 +367,7 @@
       "price": 2700
     },
     {
-      "name": "Warmog",
+      "name": "warmog",
       "nome": "Armadura de Warmog",
       "type": "defense",
       "price": 2850
@@ -379,55 +379,55 @@
       "price": 2700
     },
     {
-      "name": "Force-of-Nature",
+      "name": "force-of-nature",
       "nome": "Força da Natureza",
       "type": "defense",
       "price": 2750
     },
     {
-      "name": "Ixtali-Seedjar",
+      "name": "ixtali-seedjar",
       "nome": "Fertilizante Ixtalense",
       "type": "defense",
       "price": 2400
     },
     {
-      "name": "Iceborn-Gauntlet",
+      "name": "iceborn-gauntlet",
       "nome": "Manopla dos Glacinatas",
       "type": "defense",
       "price": 3100
     },
     {
-      "name": "Heartsteel",
+      "name": "heartsteel",
       "nome": "Coração de Aço",
       "type": "defense",
       "price": 2800
     },
     {
-      "name": "Mantle-of-the-Twelfth-Hour",
+      "name": "mantle-of-the-twelfth-hour",
       "nome": "Manto da Meia-noite",
       "type": "defense",
       "price": 2900
     },
     {
-      "name": "Light-Dawnshroud",
+      "name": "light-dawnshroud",
       "nome": "Manto de Aurora",
       "type": "defense",
       "price": 3000
     },
     {
-      "name": "Protectors-Vow",
+      "name": "protectors-vow",
       "nome": "Juramento Protetor",
       "type": "defense",
       "price": 2700
     },
     {
-      "name": "Searing-Crown",
+      "name": "searing-crown",
       "nome": "Coroa Calcinante",
       "type": "defense",
       "price": 2700
     },
     {
-      "name": "Sterak",
+      "name": "sterak",
       "nome": "Sinal dee Sterak",
       "type": "defense",
       "price": 3200
@@ -445,7 +445,7 @@
       "price": 500
     },
     {
-      "name": "Spectral-Sickle",
+      "name": "spectral-sickle",
       "nome": "Foice Espectral",
       "type": "sup",
       "price": 0
