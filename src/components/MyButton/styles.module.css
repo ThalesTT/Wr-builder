@@ -1,22 +1,21 @@
 button {
-  width: 100px;
+  width: 75px;
   height: 40px;
-  margin: 5px;
   background-color: #152036;
   border: 1px solid #152036;
-  border-radius: 10px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   color: #e0bf7a;
-  padding: 3px;
+  padding: 5px;
   /* font-size: 0.9rem; */
   cursor: pointer;
 }
 button:hover {
   color: #faf0cd;
-  border: 2px solid #e0bf7a;
+  border-bottom: 2px solid #e0bf7a;
+  /* background-color: #213354; */
 }
 /* p{
       font-size: 1.0rem;
@@ -24,6 +23,6 @@ button:hover {
     } */
 img {
   /* border-radius: 50%;/ */
+
   border: none;
-  margin-left: 5px;
 }

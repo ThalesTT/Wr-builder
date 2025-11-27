@@ -1,0 +1,22 @@
+/* 🖼️ Contêiner Flexbox Principal */
+ul {
+  list-style: none;
+  color: black;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0px;
+  margin: 0px auto;
+  justify-content: center;
+  overflow-x: scroll;
+  height: auto;
+}
+ul li {
+  padding: 0px;
+  margin-bottom: 10px;
+  height: 91px;
+}
+ul li:hover {
+  transform: translateY(-3px); /* Leve levantamento ao passar o mouse */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5); /* Sombra maior para destacar */
+  background: rgba(0, 0, 0, 0);
+}

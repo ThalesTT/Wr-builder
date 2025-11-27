@@ -4,7 +4,6 @@
   padding: 0;
   margin-right: 2px;
   margin-left: 2px;
-  margin-bottom: 10px;
   /* Define a direção principal como coluna, para que o conteúdo do parágrafo
      ocupe toda a largura, e o alinhamento vertical seja mais fácil. */
   flex-direction: column;
@@ -18,6 +17,11 @@
   /* A propriedade abaixo garante que o parágrafo ocupe 100% da largura do contêiner */
   align-items: stretch; /* Padrão, mas bom ter certeza */
 
+  position: relative;
+  border-radius: 4px; /* Bordas arredondadas suaves */
+  overflow: hidden; /* Garante que a imagem siga o border-radius */
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  cursor: pointer;
   /* Para visualização */
   /* border: 2px solid blue; */
 }
@@ -30,8 +34,11 @@
   background-color: goldenrod; /* Para visualização */
   width: 100%;
   text-align: center;
+  border: 2px solid black;
+  border-top: 0;
 }
 .frame img {
+  border: 2px solid black;
   padding: 0px;
   margin: 0px;
   height: 70px;

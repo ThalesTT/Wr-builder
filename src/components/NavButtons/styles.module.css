@@ -4,11 +4,22 @@
   flex-wrap: nowrap;
   align-items: center;
   margin-top: 80px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 2px;
+  margin-left: 0;
+  margin-right: 0;
   justify-content: center;
-  /* border: 1px solid gold; */
+  border: 1px solid black;
+}
+.nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-decoration: none;
+  color: #888;
+  width: 100%;
+  padding: 0;
+  margin-bottom: 2px;
+  transition: background-color 0.2s, color 0.2s, border-left 0.2s;
+  border-left: 3px solid transparent;
 }
 
 /* Estilos globais e de reset */
@@ -20,7 +31,6 @@
 
 body {
   font-family: sans-serif;
-  padding: 20px;
   background-color: #f4f4f4;
 }
 

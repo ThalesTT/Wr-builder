@@ -11,4 +11,14 @@ body {
   color: var(--text-color);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 1.6 rem;
+
+  background: #020024;
+  background: #020024;
+  background: #152036;
+  background: radial-gradient(
+    circle,
+    rgba(21, 32, 54, 1) 80%,
+    rgba(11, 11, 38, 1) 100%,
+    rgba(9, 93, 110, 1) 88%
+  );
 }

@@ -21,7 +21,6 @@ type MyButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
 export function MyButton({ onClick, variety }: MyButtonProps) {
   return (
     <button className={styles.button} onClick={onClick}>
-      {Variety[variety]}
       <img
         alt={`${Variety[variety]} lane`}
         src={`/images/lanes/${Variety[variety]}.png`}
