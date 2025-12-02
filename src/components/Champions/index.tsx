@@ -5,6 +5,7 @@ import { NavButtons } from '../NavButtons';
 import { SearchBar } from '../SearchBar';
 import styles from './styles.module.css';
 import { useState, useEffect, useMemo } from 'react';
+import { Reorder } from 'motion/react';
 
 // Definição dos tipos de dados utilizados.
 type LANE = 'Top' | 'Jungle' | 'Mid' | 'ADC' | 'Sup';
@@ -21,13 +22,25 @@ interface championsJson {
   champ: championsData[]; // O arquivo JSON contém um array sob a chave 'champ'.
 }
 
-export function Champions() {
-  // 1. Estados do Componente
-  const [champions, setChampions] = useState<championsData[]>([]); // Armazena a lista completa de campeões.
-  const [laneFilter, setLaneFilter] = useState<FilterLane>('Top'); // Armazena o filtro de rota/lane ativo.
-  const [searchName, setSearchName] = useState<string>(''); // Armazena o termo de pesquisa digitado pelo usuário.
+// Importa o Custom Hook
+import { useSearchAndFilter } from '../useSearchAndFilter';
 
-  // 2. Efeito de Carregamento de Dados (useEffect)
+export function Champions() {
+  const [champions, setChampions] = useState<championsData[]>([]);
+  const [laneFilter, setLaneFilter] = useState<FilterLane>('Top');
+  const [reorderedChampions, setReorderedChampions] = useState<championsData[]>(
+    [],
+  );
+  // --- NOVO: Uso do Custom Hook ---
+  // O getNameFn é simples aqui: pega o nome da propriedade 'name'.
+  const {
+    searchTerm: searchName,
+    handleSearchChange,
+    filteredItems: championsByName,
+  } = useSearchAndFilter(champions, champion => champion.name);
+  // --------------------------------
+
+  // (useEffect para carregar dados permanece o mesmo)
   useEffect(() => {
     // Busca os dados dos campeões do arquivo champions.json.
     fetch('/data/champions.json')
@@ -39,74 +52,39 @@ export function Champions() {
         // Converte a resposta para JSON e a tipa.
         return response.json() as Promise<championsJson>;
       })
-      .then(data => setChampions(data.champ)); // Atualiza o estado com o array de campeões.
+      .then(data => {
+        setChampions(data.champ); // Atualiza o estado com o array de campeões.
+        setReorderedChampions(data.champ);
+      });
     // O array de dependências vazio ([]) garante que este efeito rode apenas uma vez,
     // após a montagem inicial do componente.
   }, []);
 
-  // 3. Lógica de Filtragem por Lane (useMemo)
+  // 3. Lógica de Filtragem por Lane (Permanece)
   const championsRender = useMemo(() => {
-    // Filtra a lista completa de campeões com base no 'laneFilter'.
-    return champions.filter(champion => {
-      // Se o filtro for 'all', retorna todos os campeões.
+    // ... (lógica de filtro por lane)
+    return reorderedChampions.filter(champion => {
       if (laneFilter === 'all') {
         return true;
       }
-      // Se não for 'all', retorna apenas os campeões que incluem a lane filtrada.
       return champion.lanes.includes(laneFilter);
     });
-    // Este cálculo só será refeito se 'champions' (dados originais) ou 'laneFilter' (estado) mudar.
-  }, [champions, laneFilter]);
+  }, [reorderedChampions, laneFilter]);
 
-  // 4. Lógica de Filtragem por Nome (useMemo)
-  const championNameRender = useMemo(() => {
-    // Filtra a lista completa de campeões com base no 'searchName'.
-    return champions.filter(champion => {
-      // Prepara o termo de pesquisa (minúsculas e sem espaços extras).
-      const normalizedSearchTerm = searchName.toLocaleLowerCase().trim();
-
-      // Se o termo de pesquisa estiver vazio, retorna todos os campeões (não filtra nada).
-      if (!normalizedSearchTerm) {
-        return true;
-      }
-
-      // Prepara o nome do campeão para comparação.
-      const normalizedChampionName = champion.name.toLocaleLowerCase();
-
-      // Retorna true se o nome do campeão incluir o termo de pesquisa.
-      return normalizedChampionName.includes(normalizedSearchTerm);
-    });
-    // Este cálculo só será refeito se 'champions' (dados originais) ou 'searchName' (estado) mudar.
-  }, [champions, searchName]);
-
-  // 5. Lógica de Seleção Final (useMemo)
+  // 4. Lógica de Seleção Final (Simplificada)
   const finalChampions = useMemo(() => {
-    // Verifica se o usuário digitou algo na barra de pesquisa.
     const isSearchActive = searchName.trim().length > 0;
 
-    // Se a pesquisa estiver ativa, a lista final é a filtrada por NOME (prioridade).
     if (isSearchActive) {
-      return championNameRender;
+      // Usa a lista fornecida pelo Hook
+      return championsByName;
     }
 
-    // Se a pesquisa não estiver ativa, a lista final é a filtrada por LANE.
     return championsRender;
-    // Este cálculo é refeito se qualquer uma das listas filtradas ou o termo de pesquisa mudar.
-  }, [championNameRender, championsRender, searchName]);
+  }, [championsByName, championsRender, searchName]); // Alterei de championNameRender para championsByName
 
-  // 6. Função de Callback para a Busca
-  const handleSearchChange = (newTerm: string) => {
-    // Atualiza o estado 'searchName' quando o texto na barra de pesquisa muda.
-    setSearchName(newTerm);
-  };
+  // ... (Renderização Condicional e JSX)
 
-  // 7. Renderização Condicional (Loading)
-  // Exibe "Carregando..." enquanto a lista de campeões não foi carregada (array vazio).
-  if (champions.length < 1) {
-    return <div>Carregando...</div>;
-  }
-
-  // 8. Renderização Principal (JSX)
   return (
     <>
       {/* Componente para os botões de navegação/filtro de Lane */}
@@ -120,30 +98,33 @@ export function Champions() {
         <MyButton variety='all' onClick={() => setLaneFilter('all')} />
       </NavButtons>
 
-      {/* Barra de pesquisa para filtrar por nome */}
       <SearchBar
         placeholder='Digite seu campeão'
-        onSearchChange={handleSearchChange} // Passa a função para atualizar o estado.
-        searchName={searchName} // Passa o estado atual para o componente SearchBar.
+        onSearchChange={handleSearchChange} // Handler do Hook
+        searchName={searchName} // Estado do Hook
       />
-
-      {/* Container principal para a lista de campeões */}
       <Container>
-        <ul className={styles.ul}>
-          {/* Mapeia a lista FINAL de campeões (filtrada por lane OU nome) */}
-          {finalChampions.map((champion, index) => (
-            // Nota: Para melhor performance, seria ideal usar 'key={champion.name}'
-            // se o nome for único, em vez de 'key={index}'.
-            <li key={index}>
-              {/* Componente que exibe a imagem e o nome do campeão */}
+        <Reorder.Group
+          values={finalChampions}
+          onReorder={setReorderedChampions}
+          className={styles.ul}
+          axis='y'
+        >
+          {/* <ul className={styles.ul}> */}
+          {finalChampions.map(champion => (
+            <Reorder.Item
+              className={styles.ul}
+              value={champion}
+              key={champion.name}
+            >
               <Frame
                 name={champion.name}
-                // Constrói o caminho da imagem baseado no nome do campeão.
                 picture={`/images/champs/${champion.name}.WEBP`}
               />
-            </li>
+            </Reorder.Item>
           ))}
-        </ul>
+          {/* </ul> */}
+        </Reorder.Group>
       </Container>
     </>
   );

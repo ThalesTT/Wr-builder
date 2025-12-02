@@ -44,3 +44,27 @@
   height: 70px;
   width: 100%;
 }
+/* Novo Estilo para o Botão */
+.frame button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 10px;
+  height: 10px;
+  text-align: center;
+  color: var(--primary-color);
+
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  font-size: 8px;
+  line-height: 1;
+  z-index: 10;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.2s;
+}
+
+.frame button:hover {
+  background-color: black;
+}

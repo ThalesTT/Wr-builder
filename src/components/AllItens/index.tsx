@@ -34,6 +34,8 @@ export function AllItens() {
   // Estado que armazena o texto digitado na barra de pesquisa.
   const [searchName, setSearchName] = useState<string>('');
 
+  const [selectedItens, setSelectedItens] = useState<ItemData[]>([]);
+
   // 1. Lógica de Localização (Idioma do Browser)
   // useMemo calcula o idioma uma única vez ([]), garantindo que o valor é estável.
   const isPortugueseBr = useMemo(() => {
@@ -53,6 +55,20 @@ export function AllItens() {
       return usePortugueseName ? item.nome : item.name;
     },
     [usePortugueseName],
+  );
+
+  const handleFrameClick = useCallback(
+    (itemToAdd: ItemData) => {
+      // Verifica o limite antes de adicionar
+      if (selectedItens.length >= 6) return;
+      setSelectedItens(prev => {
+        if (prev.find(item => item.name === itemToAdd.name)) {
+          return prev;
+        }
+        return [...prev, itemToAdd];
+      });
+    },
+    [selectedItens],
   );
 
   // 4. Efeito para Carregar Dados
@@ -123,6 +139,13 @@ export function AllItens() {
     // permitindo que o 'finalItens' combine a lógica de forma fluida.
   };
 
+  // ⭐️ NOVA FUNÇÃO: Para remover um item da lista selecionada (opcional, mas recomendado)
+  const handleRemoveItem = useCallback((itemToRemove: ItemData) => {
+    setSelectedItens(prev =>
+      prev.filter(item => item.name !== itemToRemove.name),
+    );
+  }, []);
+
   return (
     <>
       {/* Botões de Filtro por Tipo */}
@@ -159,6 +182,8 @@ export function AllItens() {
           {finalItens.map((dado, index) => (
             <li key={index}>
               <Frame
+                remove={false}
+                onClick={() => handleFrameClick(dado)}
                 // Renderiza o nome correto (PT ou EN) usando a função getDisplayName.
                 name={getDisplayName(dado)}
                 // O caminho da imagem usa o nome original (dado.name) que deve ser o nome do arquivo.
@@ -169,6 +194,21 @@ export function AllItens() {
         </ul>
         {/* Mensagem de "Nenhum resultado" se a lista final estiver vazia. */}
         {finalItens.length === 0 && <p>Nenhum item encontrado.</p>}
+        <div className={styles['item-list']}>
+          <h3>Build</h3>
+          <ul className={styles['item-list']}>
+            {selectedItens.map((dado, index) => (
+              <Frame
+                remove={true}
+                key={dado.name + index}
+                name={getDisplayName(dado)}
+                picture={`/images/itens/${dado.name}.WEBP`}
+                onClick={() => handleRemoveItem(dado)}
+              ></Frame>
+            ))}
+            {selectedItens.length === 0 && <p>Crie sua build</p>}
+          </ul>
+        </div>
       </Container>
     </>
   );

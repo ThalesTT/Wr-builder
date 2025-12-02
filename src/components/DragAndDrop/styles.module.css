@@ -1,0 +1,48 @@
+/* Container Flexbox para a Lista Horizontal */
+.box-list-container {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Espaço entre as caixas */
+  padding: 20px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  max-width: fit-content; /* Para conter a linha de caixas */
+}
+
+/* Estilo para cada DIV reordenável (Reorder.Item) */
+.reorder-box {
+  /* --- DIMENSÕES FIXAS --- */
+  width: 70px;
+  height: 70px;
+  /* ---------------------- */
+
+  /* Estilização da caixa */
+  background-color: #007bff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: grab;
+
+  /* Centralizar o conteúdo do link */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* Efeito de elevação ao arrastar */
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+/* Estilo para o Link/Conteúdo Interno */
+.box-link {
+  color: white;
+  text-decoration: none;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+/* Estilo para o item enquanto está sendo arrastado (Framer Motion adiciona a classe) */
+/* Isso usa a prop 'style' no Reorder.Item, mas podemos adicionar um estilo para o hover */
+.reorder-box:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  /* Transform: scale(1.05); - opcional para efeito visual */
+}
