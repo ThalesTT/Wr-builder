@@ -23,6 +23,7 @@ interface championsJson {
 
 // Importa o Custom Hook
 import { useSearchAndFilter } from '../useSearchAndFilter';
+import { Link } from 'react-router-dom';
 
 export function AllChampions() {
   const [champions, setChampions] = useState<championsData[]>([]);
@@ -100,12 +101,14 @@ export function AllChampions() {
       <Container>
         <ul className={styles.ul}>
           {finalChampions.map(champion => (
-            <li key={champion.name}>
-              <Frame
-                name={champion.name}
-                picture={`/images/champs/${champion.name}.WEBP`}
-              />
-            </li>
+            <Link to={`/itens/${champion.name}`}>
+              <li key={champion.name}>
+                <Frame
+                  name={champion.name}
+                  picture={`/images/champs/${champion.name}.WEBP`}
+                />
+              </li>
+            </Link>
           ))}
         </ul>
       </Container>

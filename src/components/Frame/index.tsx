@@ -3,7 +3,7 @@ import styles from './styles.module.css';
 export type FrameProps = {
   name: string;
   picture: string;
-  remove: boolean;
+  remove?: boolean;
   onClick?: () => void;
 };
 
