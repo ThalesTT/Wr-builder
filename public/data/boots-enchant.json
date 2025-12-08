@@ -1,0 +1,60 @@
+{
+  "enchants": [
+    {
+      "name": "Gargoyle Stoneplate",
+      "nome": "Placa"
+    },
+    {
+      "name": "Glorious",
+      "nome": "Glorioso"
+    },
+    {
+      "name": "Hextech Rocketbelt",
+      "nome": "Protocinturão"
+    },
+    {
+      "name": "Locket",
+      "nome": "Medalhão"
+    },
+    {
+      "name": "Magnetron",
+      "nome": "Magnetron"
+    },
+    {
+      "name": "Meteor",
+      "nome": "Meteoro"
+    },
+    {
+      "name": "Quicksilver Sash",
+      "nome": "Mercúrio"
+    },
+    {
+      "name": "Redemption",
+      "nome": "Redenção"
+    },
+    {
+      "name": "Repulsor ",
+      "nome": "Repulsor"
+    },
+    {
+      "name": "Revitalizing",
+      "nome": "Ressurreição"
+    },
+    {
+      "name": "Teleport",
+      "nome": "Teleporte"
+    },
+    {
+      "name": "Veil",
+      "nome": "Banshee Encantada"
+    },
+    {
+      "name": "Ravenous Hydra",
+      "nome": "Hidra Raivosa"
+    },
+    {
+      "name": "Zhonya's Hourglass",
+      "nome": "Estase"
+    }
+  ]
+}

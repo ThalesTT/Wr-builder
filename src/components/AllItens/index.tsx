@@ -6,6 +6,10 @@ import { NavButtons } from '../NavButtons';
 import { MyButton } from '../MyButton';
 import { SearchBar } from '../SearchBar';
 import { useParams, useSearchParams, type Params } from 'react-router-dom';
+import { BuildName } from '../BuildName';
+import { Boots } from '../Boots';
+import { useFetchData } from '../useFetchData';
+import { BootsEnch } from '../BootsEnch';
 
 // --- Tipagens (TypeScript Interfaces e Types) ---
 // Define os tipos válidos para a propriedade 'type' dos itens.
@@ -35,10 +39,15 @@ interface ItensJson {
 export function AllItens() {
   // Estado que armazena todos os itens carregados do JSON.
   const [itens, setItens] = useState<ItemData[]>([]);
+
+  const { data: itensJson } = useFetchData<ItensJson>('/data/itens.json');
+
   // Estado que rastreia o filtro de tipo ativo (attack, magic, sup, etc.).
   const [itemFilter, setItemFilter] = useState<FilterType>('attack');
   // Estado que armazena o texto digitado na barra de pesquisa.
   const [searchName, setSearchName] = useState<string>('');
+
+  const [buildName, setBuildName] = useState<string>('');
 
   const [selectedItens, setSelectedItens] = useState<ItemData[]>([]);
 
@@ -61,9 +70,23 @@ export function AllItens() {
       //filter() para remover quaisquer valores inválidos que resultem em NaN.
       // Set para garantir IDs únicos e converte de volta para array
       const uniqueIds: number[] = Array.from(new Set(parsedIds));
-      setIds(uniqueIds);
+      if (uniqueIds.length > 6) {
+        // Se houver mais de 6 IDs, trate como se não houvesse nenhum.
+        setIds([]);
+      } else {
+        // Se for 0 a 6 IDs, armazene-os.
+        setIds(uniqueIds);
+      }
     } else {
       setIds([]);
+    }
+  }, [searchParams]);
+
+  useEffect(() => {
+    const buildName: string | null = searchParams.get('bd');
+    console.log('aqruiii', buildName);
+    if (buildName) {
+      setBuildName(buildName);
     }
   }, [searchParams]);
 
@@ -85,7 +108,7 @@ export function AllItens() {
 
       // Atualiza o estado selectedItens com os itens da URL
       setSelectedItens(urlItens);
-    } else if (ids.length === 0) {
+    } else {
       // Se a URL não tiver IDs, limpa a lista selecionada.
       setSelectedItens([]);
     }
@@ -132,17 +155,24 @@ export function AllItens() {
   // 4. Efeito para Carregar Dados
   // useEffect com array de dependências vazio ([]) garante que o fetch ocorra apenas
   // uma vez após a montagem inicial do componente.
+
   useEffect(() => {
-    fetch('/data/itens.json')
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status:${response.status}`);
-        }
-        return response.json() as Promise<ItensJson>;
-      })
-      .then(data => setItens(data.itens))
-      .catch(error => console.error('Erro ao carregar itens:', error));
-  }, []);
+    if (itensJson) {
+      setItens(itensJson.itens);
+    }
+  }, [itensJson]);
+
+  // useEffect(() => {
+  //   fetch('/data/itens.json')
+  //     .then(response => {
+  //       if (!response.ok) {
+  //         throw new Error(`HTTP error! Status:${response.status}`);
+  //       }
+  //       return response.json() as Promise<ItensJson>;
+  //     })
+  //     .then(data => setItens(data.itens))
+  //     .catch(error => console.error('Erro ao carregar itens:', error));
+  // }, []);
 
   // 5. Filtragem por Tipo (Otimizada)
   // useMemo garante que esta lista filtrada seja recalculada apenas quando
@@ -254,6 +284,13 @@ export function AllItens() {
         {finalItens.length === 0 && <p>Nenhum item encontrado.</p>}
         <div className={styles['item-list']}>
           <h3>Build</h3>
+          <BuildName
+            name={buildName}
+            placeholder='Nome da build'
+            onNameChange={setBuildName}
+          />
+          {/* <Boots />
+          <BootsEnch /> */}
           <Frame
             name={championName}
             picture={`/images/champs/${champion}.WEBP`}
