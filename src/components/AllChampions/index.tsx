@@ -24,6 +24,8 @@ interface championsJson {
 // Importa o Custom Hook
 import { useSearchAndFilter } from '../useSearchAndFilter';
 import { Link } from 'react-router-dom';
+import { Header } from '../Header';
+import { BuildName } from '../BuildName';
 
 export function AllChampions() {
   const [champions, setChampions] = useState<championsData[]>([]);
@@ -82,6 +84,7 @@ export function AllChampions() {
 
   return (
     <>
+      <Header />
       {/* Componente para os botões de navegação/filtro de Lane */}
       <NavButtons>
         {/* Botões que definem o filtro de lane (setLaneFilter) */}
@@ -92,20 +95,20 @@ export function AllChampions() {
         <MyButton variety='sup' onClick={() => setLaneFilter('Sup')} />
         <MyButton variety='all' onClick={() => setLaneFilter('all')} />
       </NavButtons>
-
-      <SearchBar
-        placeholder='Digite seu campeão'
-        onSearchChange={handleSearchChange} // Handler do Hook
-        searchName={searchName} // Estado do Hook
+      <BuildName
+        name={searchName}
+        placeholder='Digite seu Campeão'
+        onNameChange={handleSearchChange}
       />
       <Container>
-        <ul className={styles.ul}>
+        <ul className={styles.champions}>
           {finalChampions.map(champion => (
-            <Link to={`/itens/${champion.name}`}>
-              <li key={champion.name}>
+            <Link to={`/itens/${champion.name}`} key={champion.name}>
+              <li>
                 <Frame
-                  name={champion.name}
                   picture={`/images/champs/${champion.name}.WEBP`}
+                  name={champion.name}
+                  classStyles={'champion'}
                 />
               </li>
             </Link>

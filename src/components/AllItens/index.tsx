@@ -7,15 +7,15 @@ import { MyButton } from '../MyButton';
 import { SearchBar } from '../SearchBar';
 import { useParams, useSearchParams, type Params } from 'react-router-dom';
 import { BuildName } from '../BuildName';
-import { Boots } from '../Boots';
 import { useFetchData } from '../useFetchData';
-import { BootsEnch } from '../BootsEnch';
 
 // --- Tipagens (TypeScript Interfaces e Types) ---
 // Define os tipos válidos para a propriedade 'type' dos itens.
-type ITEM_TYPE = 'attack' | 'magic' | 'defense' | 'sup';
+type ITEM_TYPE = 'attack' | 'magic' | 'defense' | 'sup' | 'boots' | 'enchant';
 // Define os tipos válidos para o filtro, incluindo 'all' para mostrar todos.
 type FilterType = ITEM_TYPE | 'all';
+
+// type NORMAL_ITEM_TYPE = 'attack' | 'magic' | 'defense';
 
 // Interface que define a estrutura de um item carregado do JSON.
 interface ItemData {
@@ -25,6 +25,7 @@ interface ItemData {
   id: number;
   type: ITEM_TYPE;
 }
+
 //  interface
 interface ChampionParam extends Record<string, string | undefined> {
   champion: string;
@@ -34,6 +35,19 @@ interface ChampionParam extends Record<string, string | undefined> {
 interface ItensJson {
   itens: ItemData[];
 }
+// const NORMAL_TYPES: ITEM_TYPE[] = ['attack', 'magic', 'defense', 'sup'];
+// const UNIQUE_TYPES: ITEM_TYPE[] = ['boots', 'enchant', 'sup'];
+const MAX_BUILD_SIZE = 7;
+const BOOTS_SLOT_INDEX = 5;
+const ENCHANT_SLOT_INDEX = 6;
+
+// function isTypePresent(
+//   selectedItems: (ItemData | null)[],
+//   itemType: ITEM_TYPE,
+// ) {
+//   if (!UNIQUE_TYPES.includes(itemType)) return false;
+//   return selectedItems.some(item => item && item.type === itemType);
+// }
 
 // --- Componente Principal ---
 export function AllItens() {
@@ -49,13 +63,42 @@ export function AllItens() {
 
   const [buildName, setBuildName] = useState<string>('');
 
-  const [selectedItens, setSelectedItens] = useState<ItemData[]>([]);
-
+  const [selectedItens, setSelectedItens] = useState<(ItemData | null)[]>(
+    new Array(MAX_BUILD_SIZE).fill(null),
+  );
+  const [activeSlotIndex, setActiveSlotIndex] = useState<number>(0);
   const [searchParams] = useSearchParams();
   const [ids, setIds] = useState<number[]>([]);
 
   const { champion } = useParams<ChampionParam & Params>();
   const championName: string = champion!;
+
+  // Verifica se o tipo que está sendo testado é um dos tipos que deve ser único.
+
+  // useEffect(() => {
+  //   const idsString: string | null = searchParams.get('ids');
+  //   if (idsString) {
+  //     // 1. Converte a string de volta para um array de strings
+  //     const stringArray: string[] = idsString.split(',');
+
+  //     // 2. Transforma o array de strings em um array de números (number[])
+  //     const parsedIds: number[] = stringArray
+  //       .map(id => parseInt(id, 10))
+  //       .filter(id => !isNaN(id));
+  //     //filter() para remover quaisquer valores inválidos que resultem em NaN.
+  //     // Set para garantir IDs únicos e converte de volta para array
+  //     const uniqueIds: number[] = Array.from(new Set(parsedIds));
+  //     if (uniqueIds.length > 7) {
+  //       // Se houver mais de 6 IDs, trate como se não houvesse nenhum.
+  //       setIds([]);
+  //     } else {
+  //       // Se for 0 a 6 IDs, armazene-os.
+  //       setIds(uniqueIds);
+  //     }
+  //   } else {
+  //     setIds([]);
+  //   }
+  // }, [searchParams]);
 
   useEffect(() => {
     const idsString: string | null = searchParams.get('ids');
@@ -70,15 +113,10 @@ export function AllItens() {
       //filter() para remover quaisquer valores inválidos que resultem em NaN.
       // Set para garantir IDs únicos e converte de volta para array
       const uniqueIds: number[] = Array.from(new Set(parsedIds));
-      if (uniqueIds.length > 6) {
-        // Se houver mais de 6 IDs, trate como se não houvesse nenhum.
-        setIds([]);
-      } else {
-        // Se for 0 a 6 IDs, armazene-os.
-        setIds(uniqueIds);
-      }
+      setIds(uniqueIds.slice(0, MAX_BUILD_SIZE));
     } else {
       setIds([]);
+      // Se for 0 a 6 IDs, armazene-os.
     }
   }, [searchParams]);
 
@@ -91,29 +129,56 @@ export function AllItens() {
   }, [searchParams]);
 
   useEffect(() => {
-    //será executada sempre que 'itens' (dados carregados) ou 'ids' (da URL) mudar.
     if (ids.length > 0 && itens.length > 0) {
-      const urlItens: ItemData[] = [];
+      // MODIFICAÇÃO 2.1: Inicializa um array de 7 slots com null
+      const urlItens: (ItemData | null)[] = new Array(MAX_BUILD_SIZE).fill(
+        null,
+      );
 
-      // Itera sobre o array de IDs da URL
-      ids.forEach(idDaUrl => {
-        // Encontra o item correspondente na lista completa de itens
+      ids.forEach((idDaUrl, index) => {
         const itemFind = itens.find(item => item.id === idDaUrl);
-
-        // Se o item for encontrado (id existe), adicione à lista
         if (itemFind) {
-          urlItens.push(itemFind);
+          urlItens[index] = itemFind; // Coloca o item no slot
         }
       });
 
-      // Atualiza o estado selectedItens com os itens da URL
-      setSelectedItens(urlItens);
+      setSelectedItens(urlItens); // MODIFICAÇÃO 2.2: Define o próximo slot ativo (primeiro vazio ou o último se tudo estiver cheio)
+
+      const firstEmptyIndex = urlItens.findIndex(item => item === null);
+      setActiveSlotIndex(
+        firstEmptyIndex !== -1 ? firstEmptyIndex : MAX_BUILD_SIZE - 1,
+      );
     } else {
-      // Se a URL não tiver IDs, limpa a lista selecionada.
-      setSelectedItens([]);
-    }
-    // Dependências: 'ids' (muda se a URL muda) e 'itens' (muda quando o JSON é carregado)
+      // Se não houver IDs, reseta e ativa o slot 0
+      setSelectedItens(new Array(MAX_BUILD_SIZE).fill(null));
+      setActiveSlotIndex(0);
+    } // Dependências: 'ids' (muda se a URL muda) e 'itens' (muda quando o JSON é carregado)
   }, [ids, itens]);
+
+  // useEffect(() => {
+  //   //será executada sempre que 'itens' (dados carregados) ou 'ids' (da URL) mudar.
+  //   if (ids.length > 0 && itens.length > 0) {
+  //     const urlItens: ItemData[] = [];
+
+  //     // Itera sobre o array de IDs da URL
+  //     ids.forEach(idDaUrl => {
+  //       // Encontra o item correspondente na lista completa de itens
+  //       const itemFind = itens.find(item => item.id === idDaUrl);
+
+  //       // Se o item for encontrado (id existe), adicione à lista
+  //       if (itemFind) {
+  //         urlItens.push(itemFind);
+  //       }
+  //     });
+
+  //     // Atualiza o estado selectedItens com os itens da URL
+  //     setSelectedItens(urlItens);
+  //   } else {
+  //     // Se a URL não tiver IDs, limpa a lista selecionada.
+  //     setSelectedItens([]);
+  //   }
+  //   // Dependências: 'ids' (muda se a URL muda) e 'itens' (muda quando o JSON é carregado)
+  // }, [ids, itens]);
 
   console.log(champion);
   console.log(ids);
@@ -136,21 +201,119 @@ export function AllItens() {
       return usePortugueseName ? item.nome : item.name;
     },
     [usePortugueseName],
-  );
+  ); // FUNÇÃO 3.1: Adicionar ou Substituir Item no Slot Ativo
+
+  // const handleFrameClick = useCallback(
+  //   (itemToAdd: ItemData) => {
+  //     // Verifica o limite antes de adicionar
+  //     if (selectedItens.length >= 7) return;
+  //     setSelectedItens(prev => {
+  //       if (prev.find(item => item.name === itemToAdd.name)) {
+  //         return prev;
+  //       }
+  //       if (isTypePresent(prev, itemToAdd.type)) return prev;
+  //       const isItemNormal = NORMAL_TYPES.includes(itemToAdd.type);
+  //       // Conta quantos itens normais já estão na lista
+  //       if (isItemNormal) {
+  //         const normalItemCount = prev.filter(item =>
+  //           NORMAL_TYPES.includes(item.type),
+  //         ).length;
+
+  //         if (normalItemCount >= 5) {
+  //           return prev;
+  //         }
+  //       }
+  //       return [...prev, itemToAdd];
+  //     });
+  //   },
+  //   [selectedItens.length],
+  // );
+
+  // ... (getDisplayName)
 
   const handleFrameClick = useCallback(
     (itemToAdd: ItemData) => {
-      // Verifica o limite antes de adicionar
-      if (selectedItens.length >= 6) return;
       setSelectedItens(prev => {
-        if (prev.find(item => item.name === itemToAdd.name)) {
-          return prev;
+        const newItems = [...prev];
+        let targetIndex = activeSlotIndex;
+
+        // NOVO PONTO 1: VERIFICAÇÃO DE DUPLICAÇÃO GERAL
+        // Verifica se o itemToAdd já está presente em QUALQUER lugar do array (prev)
+        const isItemAlreadyPresent = prev.some(
+          item => item && item.name === itemToAdd.name,
+        );
+        if (isItemAlreadyPresent) {
+          return prev; // Impede a duplicação
         }
-        return [...prev, itemToAdd];
+
+        // NOVO PONTO 2: VERIFICAÇÃO DE UNICIDADE DO TIPO 'SUP'
+        const isSupportItem = itemToAdd.type === 'sup';
+        if (isSupportItem) {
+          const isSupPresent = prev.some(
+            (item, index) =>
+              item && item.type === 'sup' && index < BOOTS_SLOT_INDEX,
+          );
+
+          // Se já houver um item 'sup' nos slots normais (0-4), impede a adição.
+          if (isSupPresent) {
+            return prev;
+          }
+        }
+
+        // Lógica de Slots Fixos (BOOTS e ENCHANT)
+        if (itemToAdd.type === 'boots') {
+          targetIndex = BOOTS_SLOT_INDEX;
+        } else if (itemToAdd.type === 'enchant') {
+          targetIndex = ENCHANT_SLOT_INDEX;
+        } else if (targetIndex >= BOOTS_SLOT_INDEX) {
+          // Se item normal (ou sup) for clicado, mas o slot ativo for fixo (5 ou 6),
+          // busca o primeiro slot normal vazio (0-4).
+          const firstEmptyNormalSlot = prev.findIndex(
+            (item, index) => item === null && index < BOOTS_SLOT_INDEX,
+          );
+          if (firstEmptyNormalSlot !== -1) {
+            targetIndex = firstEmptyNormalSlot;
+          } else {
+            // Se todos os slots normais (0-4) estiverem cheios, usa o slot ativo (pode ser 5 ou 6, substituindo).
+            targetIndex = -1;
+          }
+        }
+
+        // Se o slot alvo já tiver um item, e esse item não for o mesmo (já verificado), ele será substituído.
+        // Se for um slot normal (0-4) e estiver cheio, o targetIndex cairá aqui e substituirá o item.
+        // Se for um slot fixo (5 ou 6) e estiver cheio, ele substituirá (o que é o esperado para boots/enchant).
+
+        if (targetIndex < 0 || targetIndex >= MAX_BUILD_SIZE) return prev;
+
+        // Substitui o item no slot de destino
+        newItems[targetIndex] = itemToAdd;
+
+        // Define o próximo slot ativo: primeiro slot normal vazio (0-4), ou 0 se todos cheios.
+        const nextActiveIndex = newItems.findIndex(
+          (item, index) => item === null && index < BOOTS_SLOT_INDEX,
+        );
+
+        setActiveSlotIndex(nextActiveIndex !== -1 ? nextActiveIndex : 0);
+
+        return newItems;
       });
     },
-    [selectedItens],
+    [activeSlotIndex],
   );
+  // FUNÇÃO 3.2: Selecionar um slot da build para se tornar o ativo
+  const handleSlotClick = useCallback((index: number) => {
+    setActiveSlotIndex(index);
+  }, []);
+
+  // FUNÇÃO 3.3: Remover item de um slot específico
+  const handleRemoveItem = useCallback((indexToRemove: number) => {
+    setSelectedItens(prev => {
+      const newItems = [...prev];
+      newItems[indexToRemove] = null; // Apenas define o slot como vazio
+      return newItems;
+    }); // Após remover, define o slot removido como o novo slot ativo.
+    setActiveSlotIndex(indexToRemove);
+  }, []); // ... (efeitos para carregar dados, itensRender, itensNameRender, finalItens)
 
   // 4. Efeito para Carregar Dados
   // useEffect com array de dependências vazio ([]) garante que o fetch ocorra apenas
@@ -228,32 +391,112 @@ export function AllItens() {
   };
 
   // remover um item da lista selecionada (opcional, mas recomendado)
-  const handleRemoveItem = useCallback((itemToRemove: ItemData) => {
-    setSelectedItens(prev =>
-      prev.filter(item => item.name !== itemToRemove.name),
-    );
-  }, []);
+  // const handleRemoveItem = useCallback((itemToRemove: ItemData) => {
+  //   setSelectedItens(prev =>
+  //     prev.filter(item => item.name !== itemToRemove.name),
+  //   );
+  // }, []);
+
+  //   return (
+  //     <>
+  //       {/* Botões de Filtro por Tipo */}
+  //       <NavButtons>
+  //         <MyButton variety='mage' onClick={() => setItemFilter('magic')} />
+  //         <MyButton variety='adc' onClick={() => setItemFilter('attack')} />
+  //         <MyButton variety='tank' onClick={() => setItemFilter('defense')} />
+  //         <MyButton variety='sup' onClick={() => setItemFilter('sup')} />
+  //         <MyButton variety='all' onClick={() => setItemFilter('all')} />
+  //         <MyButton variety='all' onClick={() => setItemFilter('boots')} />
+  //         <MyButton variety='all' onClick={() => setItemFilter('enchant')} />
+  //       </NavButtons>
+
+  //       {/* Botão de Toggle de Idioma (Debug/Funcionalidade) */}
+  //       <button
+  //         onClick={() => setUsePortugueseName(prev => !prev)}
+  //         style={{ margin: '10px' }}
+  //       >
+  //         Mudar Idioma: {usePortugueseName ? 'Português (ON)' : 'Inglês (OFF)'}
+  //       </button>
+
+  //       {/* Barra de Pesquisa */}
+  //       <SearchBar
+  //         // Placeholder localizado, dependendo do idioma ativo.
+  //         placeholder={
+  //           usePortugueseName ? 'Pesquise seu item (PT)' : 'Search your item (EN)'
+  //         }
+  //         searchName={searchName}
+  //         onSearchChange={handleSearchChange}
+  //       />
+
+  //       {/* Conteúdo Principal (Lista de Itens) */}
+  //       <Container>
+  //         <ul className={styles.itens}>
+  //           {/* Mapeia e renderiza a lista final determinada pela lógica de prioridade. */}
+  //           {finalItens.map((dado, index) => (
+  //             <li key={index}>
+  //               <Frame
+  //                 classStyles={'item'}
+  //                 remove={false}
+  //                 onClick={() => handleFrameClick(dado)}
+  //                 // Renderiza o nome correto (PT ou EN) usando a função getDisplayName.
+  //                 name={getDisplayName(dado)}
+  //                 // O caminho da imagem usa o nome original (dado.name) que deve ser o nome do arquivo.
+  //                 picture={`/images/itens/${dado.name}.WEBP`}
+  //               />
+  //             </li>
+  //           ))}
+  //         </ul>
+  //         {/* Mensagem de "Nenhum resultado" se a lista final estiver vazia. */}
+  //         {finalItens.length === 0 && <p>Nenhum item encontrado.</p>}
+  //         <div className={styles['item-list']}>
+  //           <h3>Build</h3>
+  //           <BuildName
+  //             name={buildName}
+  //             placeholder='Nome da build'
+  //             onNameChange={setBuildName}
+  //           />
+  //           <Frame
+  //             name={championName}
+  //             picture={`/images/champs/${champion}.WEBP`}
+  //             classStyles='champion'
+  //           />
+  //           {selectedItens.length > 0 && (
+  //             <ul className={styles['item-list']}>
+  //               {selectedItens.map((dado, index) => (
+  //                 <Frame
+  //                   classStyles='item'
+  //                   remove={true}
+  //                   key={dado.name + index}
+  //                   name={getDisplayName(dado)}
+  //                   picture={`/images/itens/${dado.name}.WEBP`}
+  //                   onClick={() => handleRemoveItem(dado)}
+  //                 ></Frame>
+  //               ))}
+  //             </ul>
+  //           )}
+  //         </div>
+  //       </Container>
+  //     </>
+  //   );
+  // }
 
   return (
     <>
-      {/* Botões de Filtro por Tipo */}
       <NavButtons>
         <MyButton variety='mage' onClick={() => setItemFilter('magic')} />
         <MyButton variety='adc' onClick={() => setItemFilter('attack')} />
         <MyButton variety='tank' onClick={() => setItemFilter('defense')} />
         <MyButton variety='sup' onClick={() => setItemFilter('sup')} />
         <MyButton variety='all' onClick={() => setItemFilter('all')} />
+        <MyButton variety='all' onClick={() => setItemFilter('boots')} />
+        <MyButton variety='all' onClick={() => setItemFilter('enchant')} />
       </NavButtons>
-
-      {/* Botão de Toggle de Idioma (Debug/Funcionalidade) */}
       <button
         onClick={() => setUsePortugueseName(prev => !prev)}
         style={{ margin: '10px' }}
       >
         Mudar Idioma: {usePortugueseName ? 'Português (ON)' : 'Inglês (OFF)'}
       </button>
-
-      {/* Barra de Pesquisa */}
       <SearchBar
         // Placeholder localizado, dependendo do idioma ativo.
         placeholder={
@@ -262,20 +505,19 @@ export function AllItens() {
         searchName={searchName}
         onSearchChange={handleSearchChange}
       />
-
-      {/* Conteúdo Principal (Lista de Itens) */}
       <Container>
-        <ul className={styles.ul}>
+        <ul className={styles.itens}>
           {/* Mapeia e renderiza a lista final determinada pela lógica de prioridade. */}
           {finalItens.map((dado, index) => (
             <li key={index}>
               <Frame
+                classStyles={'item'}
                 remove={false}
                 onClick={() => handleFrameClick(dado)}
                 // Renderiza o nome correto (PT ou EN) usando a função getDisplayName.
-                name={getDisplayName(dado)}
                 // O caminho da imagem usa o nome original (dado.name) que deve ser o nome do arquivo.
                 picture={`/images/itens/${dado.name}.WEBP`}
+                name={getDisplayName(dado).replaceAll('-', ' ')}
               />
             </li>
           ))}
@@ -289,25 +531,48 @@ export function AllItens() {
             placeholder='Nome da build'
             onNameChange={setBuildName}
           />
-          {/* <Boots />
-          <BootsEnch /> */}
           <Frame
             name={championName}
             picture={`/images/champs/${champion}.WEBP`}
+            classStyles='champion'
           />
-          {selectedItens.length > 0 && (
-            <ul className={styles['item-list']}>
-              {selectedItens.map((dado, index) => (
-                <Frame
-                  remove={true}
-                  key={dado.name + index}
-                  name={getDisplayName(dado)}
-                  picture={`/images/itens/${dado.name}.WEBP`}
-                  onClick={() => handleRemoveItem(dado)}
-                ></Frame>
-              ))}
-            </ul>
-          )}
+          <ul className={styles['item-list']}>
+            {selectedItens.map((dado, index) => {
+              const isActive = index === activeSlotIndex;
+              const isEmpty = dado === null;
+              const isBootsSlot = index === BOOTS_SLOT_INDEX;
+              const isEnchantSlot = index === ENCHANT_SLOT_INDEX;
+              let slotName = 'Slot Vazio';
+              if (isBootsSlot) slotName = 'Bota';
+              else if (isEnchantSlot) slotName = 'Encantamento';
+              else if (index < BOOTS_SLOT_INDEX) slotName = `Item ${index + 1}`;
+
+              return (
+                <li
+                  key={index} // Classe para destacar o slot ativo (requer CSS)
+                  className={`${styles['slot-container']} ${
+                    isActive ? styles['active-slot'] : ''
+                  }`}
+                  onClick={() => handleSlotClick(index)} // Torna o slot ativo
+                >
+                  <Frame
+                    classStyles='item'
+                    remove={!isEmpty} // Só permite remover se houver item
+                    key={index} // Verificação de nulo: usa 'dado' ou o placeholder
+                    name={
+                      dado ? getDisplayName(dado).replace('-', ' ') : slotName
+                    }
+                    picture={
+                      dado
+                        ? `/images/itens/${dado.name}.WEBP`
+                        : '/images/placeholder.WEBP'
+                    }
+                    onClick={dado ? () => handleRemoveItem(index) : undefined}
+                  ></Frame>
+                </li>
+              );
+            })}
+          </ul>
         </div>
       </Container>
     </>

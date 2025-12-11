@@ -1,4 +1,3 @@
-import { Container } from '../Container';
 import styles from './styles.module.css';
 
 interface BuildName {
@@ -12,14 +11,15 @@ export function BuildName({ name, onNameChange, placeholder }: BuildName) {
     onNameChange(event.target.value);
   };
   return (
-    <Container>
+    <div className={styles['build-name-container']}>
       <input
-        className={styles.input}
+        className={styles['build-name']}
         type='text'
         placeholder={placeholder}
         value={name}
         onChange={handleChange}
+        maxLength={30}
       ></input>
-    </Container>
+    </div>
   );
 }

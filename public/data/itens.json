@@ -523,6 +523,153 @@
       "nome": "Foice Espectral",
       "type": "sup",
       "price": 500
+    },
+    {
+      "id": 76,
+      "type": "boots",
+      "price": 500,
+      "name": "Boots of Dynamism",
+      "nome": "Bota do dinamismo"
+    },
+    {
+      "id": 77,
+      "type": "boots",
+      "price": 500,
+      "name": " Boots of Mana",
+      "nome": "Bota de mana"
+    },
+    {
+      "id": 78,
+      "type": "boots",
+      "price": 500,
+      "name": "Gluttonous Greaves",
+      "nome": "Grevas vorazes"
+    },
+    {
+      "id": 79,
+      "type": "boots",
+      "price": 500,
+      "name": "Ionian Boots of Lucidity",
+      "nome": "Botas Ionianas da Lucidez"
+    },
+    {
+      "id": 80,
+      "type": "boots",
+      "price": 500,
+      "name": "Mercurys-treads",
+      "nome": "Passos de Mercúrio"
+    },
+    {
+      "id": 81,
+      "type": "boots",
+      "price": 500,
+      "name": "Plated Steelcaps",
+      "nome": "Botas Galvanizadas de Aço"
+    },
+    {
+      "id": 82,
+      "type": "boots",
+      "price": 500,
+      "name": "Berserker's Greaves",
+      "nome": "Grevaz do Berserker"
+    },
+    {
+      "id": 83,
+      "type": "enchant",
+      "price": 500,
+      "name": "Gargoyle Stoneplate",
+      "nome": "Placa"
+    },
+    {
+      "id": 84,
+      "type": "enchant",
+      "price": 500,
+      "name": "Glorious",
+      "nome": "Glorioso"
+    },
+    {
+      "id": 85,
+      "type": "enchant",
+      "price": 500,
+      "name": "Hextech Rocketbelt",
+      "nome": "Protocinturão"
+    },
+    {
+      "id": 86,
+      "type": "enchant",
+      "price": 500,
+      "name": "Locket",
+      "nome": "Medalhão"
+    },
+    {
+      "id": 87,
+      "type": "enchant",
+      "price": 500,
+      "name": "Magnetron",
+      "nome": "Magnetron"
+    },
+    {
+      "id": 88,
+      "type": "enchant",
+      "price": 500,
+      "name": "Meteor",
+      "nome": "Meteoro"
+    },
+    {
+      "id": 89,
+      "type": "enchant",
+      "price": 500,
+      "name": "Quicksilver Sash",
+      "nome": "Mercúrio"
+    },
+    {
+      "id": 90,
+      "type": "enchant",
+      "price": 500,
+      "name": "Redemption",
+      "nome": "Redenção"
+    },
+    {
+      "id": 91,
+      "type": "enchant",
+      "price": 500,
+      "name": "Repulsor ",
+      "nome": "Repulsor"
+    },
+    {
+      "id": 92,
+      "type": "enchant",
+      "price": 500,
+      "name": "Revitalizing",
+      "nome": "Ressurreição"
+    },
+    {
+      "id": 93,
+      "type": "enchant",
+      "price": 500,
+      "name": "Teleport",
+      "nome": "Teleporte"
+    },
+    {
+      "id": 94,
+      "type": "enchant",
+      "price": 500,
+      "name": "Veil",
+      "nome": "Banshee Encantada"
+    },
+    {
+      "id": 95,
+      "type": "enchant",
+      "price": 500,
+      "name": "Ravenous Hydra",
+      "nome": "Hidra Raivosa"
+    },
+    {
+      "id": 96,
+      "type": "enchant",
+      "price": 500,
+      "name": "Zhonya's Hourglass",
+      "nome": "Estase"
     }
   ]
 }

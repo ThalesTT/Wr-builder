@@ -17,16 +17,6 @@
   height: auto;
 }
 
-/* ... (Classes item-build, item-list existentes) ... */
-
-.item-list li {
-  /* ... (Estilos existentes) ... */
-  position: relative;
-  background-color: #f1c40f;
-  border: 3px solid #f39c12;
-  color: #1e2328;
-}
-
 /* 🆕 NOVO: Classe Contêiner do Slot (para a lista de build) */
 .slot-container {
   box-sizing: border-box; /* Garante que padding/borda não afetem o tamanho 70x70 */

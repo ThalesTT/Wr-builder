@@ -1,44 +1,45 @@
-import styles from './styles.module.css';
-import { Container } from '../Container';
+// AllItens.tsx (Refatorado)
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { Frame } from '../Frame';
-import { NavButtons } from '../NavButtons';
-import { MyButton } from '../MyButton';
-import { SearchBar } from '../SearchBar';
-import { useSearchAndFilter } from '../useSearchAndFilter';
+import { useParams, useSearchParams, type Params } from 'react-router-dom';
+import { useFetchData } from '../useFetchData';
+import { ItemFilterControls } from '../ItemFilterControls'; // NOVO
+import { ItemListDisplay } from '../ItemDisplay'; // NOVO
+import { BuildDisplay } from '../BuildDisplay'; // NOVO
+import { Container } from '../Container';
+import type {
+  FilterType,
+  ItemData,
+  ChampionParam,
+  ItensJson,
+} from '../../types/Itens';
 
-// --- Tipagens (TypeScript Interfaces e Types) ---
-// Define os tipos válidos para a propriedade 'type' dos itens.
-type ITEM_TYPE = 'attack' | 'magic' | 'defense' | 'sup';
-// Define os tipos válidos para o filtro, incluindo 'all' para mostrar todos.
-type FilterType = ITEM_TYPE | 'all';
-
-// Interface que define a estrutura de um item carregado do JSON.
-interface ItemData {
-  name: string; // Nome original (geralmente em inglês)
-  nome: string; // Nome em português (para localização)
-  price: number;
-  type: ITEM_TYPE;
-}
-
-// Interface que define a estrutura do arquivo JSON completo.
-interface ItensJson {
-  itens: ItemData[];
-}
+const MAX_BUILD_SIZE = 7;
+const BOOTS_SLOT_INDEX = 5;
+const ENCHANT_SLOT_INDEX = 6;
+// --------------------------------------------------------
 
 export function Itens() {
+  // --- Estados e URL ---
   const [itens, setItens] = useState<ItemData[]>([]);
+  const { data: itensJson } = useFetchData<ItensJson>('/data/itens.json');
   const [itemFilter, setItemFilter] = useState<FilterType>('attack');
-  const [usePortugueseName, setUsePortugueseName] = useState(() => {
-    if (typeof navigator !== 'undefined' && navigator.language) {
-      // Verifica se o idioma do navegador começa com 'pt' (pt-BR, pt-PT, etc.)
-      return navigator.language.toLocaleLowerCase().startsWith('pt');
-    }
-    // Valor padrão se 'navigator' não estiver disponível (ex: SSR)
-    return false;
-  });
+  const [searchName, setSearchName] = useState<string>('');
+  const [buildName, setBuildName] = useState<string>('');
+  const [selectedItens, setSelectedItens] = useState<(ItemData | null)[]>(
+    new Array(MAX_BUILD_SIZE).fill(null),
+  );
+  const [activeSlotIndex, setActiveSlotIndex] = useState<number>(0);
+  const [searchParams] = useSearchParams();
+  const [ids, setIds] = useState<number[]>([]);
+  const { champion } = useParams<ChampionParam & Params>();
+  const championSlug = champion ?? 'Garen';
+  const championName: string = championSlug;
 
-  // 3. Função Auxiliar para Escolher o Nome Correto (Permanece)
+  // --- Lógica de Localização ---
+  const isPortugueseBr = useMemo(() => {
+    return navigator.language.toLocaleLowerCase().startsWith('pt');
+  }, []);
+  const [usePortugueseName, setUsePortugueseName] = useState(isPortugueseBr);
   const getDisplayName = useCallback(
     (item: ItemData): string => {
       return usePortugueseName ? item.nome : item.name;
@@ -46,30 +47,129 @@ export function Itens() {
     [usePortugueseName],
   );
 
-  // --- NOVO: Uso do Custom Hook ---
-  // Passamos o getDisplayName como getNameFn.
-  const {
-    searchTerm: searchName,
-    handleSearchChange,
-    filteredItems: itensByName,
-  } = useSearchAndFilter(itens, getDisplayName);
-  // --------------------------------
-
-  // (useEffect para carregar dados permanece o mesmo)
+  // --- Efeitos de Dados e URL (Mantidos aqui pois são a espinha dorsal) ---
   useEffect(() => {
-    fetch('/data/itens.json')
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status:${response.status}`);
+    const idsString: string | null = searchParams.get('ids');
+    if (idsString) {
+      const stringArray: string[] = idsString.split(',');
+      const parsedIds: number[] = stringArray
+        .map(id => parseInt(id, 10))
+        .filter(id => !isNaN(id));
+      const uniqueIds: number[] = Array.from(new Set(parsedIds));
+      setIds(uniqueIds.slice(0, MAX_BUILD_SIZE));
+    } else {
+      setIds([]);
+    }
+  }, [searchParams]);
+
+  useEffect(() => {
+    const buildName: string | null = searchParams.get('bd');
+    if (buildName) {
+      setBuildName(buildName);
+    }
+  }, [searchParams]);
+
+  useEffect(() => {
+    if (itensJson) {
+      setItens(itensJson.itens);
+    }
+  }, [itensJson]);
+
+  useEffect(() => {
+    if (ids.length > 0 && itens.length > 0) {
+      const urlItens: (ItemData | null)[] = new Array(MAX_BUILD_SIZE).fill(
+        null,
+      );
+      ids.forEach((idDaUrl, index) => {
+        const itemFind = itens.find(item => item.id === idDaUrl);
+        if (itemFind) {
+          urlItens[index] = itemFind;
         }
-        return response.json() as Promise<ItensJson>;
-      })
-      .then(data => setItens(data.itens))
-      .catch(error => console.error('Erro ao carregar itens:', error));
+      });
+      setSelectedItens(urlItens);
+      const firstEmptyIndex = urlItens.findIndex(item => item === null);
+      setActiveSlotIndex(
+        firstEmptyIndex !== -1 ? firstEmptyIndex : MAX_BUILD_SIZE - 1,
+      );
+    } else {
+      setSelectedItens(new Array(MAX_BUILD_SIZE).fill(null));
+      setActiveSlotIndex(0);
+    }
+  }, [ids, itens]);
+
+  // --- Handlers (Mantidos aqui, pois dependem dos estados principais) ---
+  const handleFrameClick = useCallback(
+    (itemToAdd: ItemData) => {
+      setSelectedItens(prev => {
+        const newItems = [...prev];
+        let targetIndex = activeSlotIndex;
+
+        const isItemAlreadyPresent = prev.some(
+          item => item && item.name === itemToAdd.name,
+        );
+        if (isItemAlreadyPresent) {
+          return prev;
+        }
+
+        const isSupportItem = itemToAdd.type === 'sup';
+        if (isSupportItem) {
+          const isSupPresent = prev.some(
+            (item, index) =>
+              item && item.type === 'sup' && index < BOOTS_SLOT_INDEX,
+          );
+          if (isSupPresent) {
+            return prev;
+          }
+        }
+
+        if (itemToAdd.type === 'boots') {
+          targetIndex = BOOTS_SLOT_INDEX;
+        } else if (itemToAdd.type === 'enchant') {
+          targetIndex = ENCHANT_SLOT_INDEX;
+        } else if (targetIndex >= BOOTS_SLOT_INDEX) {
+          const firstEmptyNormalSlot = prev.findIndex(
+            (item, index) => item === null && index < BOOTS_SLOT_INDEX,
+          );
+          if (firstEmptyNormalSlot !== -1) {
+            targetIndex = firstEmptyNormalSlot;
+          } else {
+            targetIndex = -1;
+          }
+        }
+
+        if (targetIndex < 0 || targetIndex >= MAX_BUILD_SIZE) return prev;
+        newItems[targetIndex] = itemToAdd;
+
+        const nextActiveIndex = newItems.findIndex(
+          (item, index) => item === null && index < BOOTS_SLOT_INDEX,
+        );
+        setActiveSlotIndex(nextActiveIndex !== -1 ? nextActiveIndex : 0);
+
+        return newItems;
+      });
+    },
+    [activeSlotIndex],
+  );
+
+  const handleSlotClick = useCallback((index: number) => {
+    setActiveSlotIndex(index);
   }, []);
-  // 5. Filtragem por Tipo (Permanece como itensRender)
+
+  const handleRemoveItem = useCallback((indexToRemove: number) => {
+    setSelectedItens(prev => {
+      const newItems = [...prev];
+      newItems[indexToRemove] = null;
+      return newItems;
+    });
+    setActiveSlotIndex(indexToRemove);
+  }, []);
+
+  const handleSearchChange = (newTerm: string) => {
+    setSearchName(newTerm);
+  };
+
+  // --- Lógicas de Filtro e Busca (Memoizadas) ---
   const itensRender = useMemo(() => {
-    // ... (lógica de filtro por tipo)
     return itens.filter(item => {
       if (itemFilter === 'all') {
         return true;
@@ -78,65 +178,54 @@ export function Itens() {
     });
   }, [itens, itemFilter]);
 
-  // 6. Filtragem por Nome (DELETADA! Substituída pelo Custom Hook)
-  // Remova o useMemo 'itensNameRender'.
+  const itensNameRender = useMemo(() => {
+    return itens.filter(item => {
+      const normalizedSearchTerm = searchName.toLocaleLowerCase().trim();
+      if (!normalizedSearchTerm) {
+        return true;
+      }
+      const normalizedItemName = getDisplayName(item).toLocaleLowerCase();
+      return normalizedItemName.includes(normalizedSearchTerm);
+    });
+  }, [getDisplayName, itens, searchName]);
 
-  // 7. Lógica de Exibição Final (Simplificada)
   const finalItens = useMemo(() => {
     const isSearchActive = searchName.trim().length > 0;
-
     if (isSearchActive) {
-      // Usa a lista fornecida pelo Hook
-      return itensByName;
+      return itensNameRender;
     }
-
-    // Se a busca está vazia, usa a lista filtrada pelo botão de tipo.
     return itensRender;
-  }, [searchName, itensByName, itensRender]); // Alterei de itensNameRender para itensByName
+  }, [searchName, itensNameRender, itensRender]);
 
-  // 8. Handler da SearchBar (DELETADO! Substituído pelo handleSearchChange do Hook)
-  // Remova a função 'handleSearchChange' local.
-
-  // ... (JSX)
-
+  // --- Renderização Principal (Delegando aos novos componentes) ---
   return (
     <>
-      <NavButtons>
-        <MyButton variety='mage' onClick={() => setItemFilter('magic')} />
-        <MyButton variety='adc' onClick={() => setItemFilter('attack')} />
-        <MyButton variety='tank' onClick={() => setItemFilter('defense')} />
-        <MyButton variety='sup' onClick={() => setItemFilter('sup')} />
-        <MyButton variety='all' onClick={() => setItemFilter('all')} />
-      </NavButtons>
-      <button
-        onClick={() => setUsePortugueseName(prev => !prev)}
-        style={{ margin: '10px' }}
-      >
-        Mudar Idioma: {usePortugueseName ? 'Português (ON)' : 'Inglês (OFF)'}
-      </button>
-      <SearchBar
-        placeholder={
-          usePortugueseName ? 'Pesquise seu item (PT)' : 'Search your item (EN)'
-        }
+      <ItemFilterControls
+        setItemFilter={setItemFilter}
+        usePortugueseName={usePortugueseName}
+        setUsePortugueseName={setUsePortugueseName}
         searchName={searchName}
-        onSearchChange={handleSearchChange} // Handler do Hook
+        handleSearchChange={handleSearchChange}
       />
 
-      {/* ... Conteúdo Principal (Lista de Itens) ... */}
+      <ItemListDisplay
+        finalItens={finalItens}
+        getDisplayName={getDisplayName}
+        handleFrameClick={handleFrameClick}
+      />
+
       <Container>
-        <ul className={styles.ul}>
-          {/* Mapeia e renderiza a lista final determinada pela lógica de prioridade. */}
-          {finalItens.map((dado, index) => (
-            <li key={index}>
-              <Frame
-                // Renderiza o nome correto (PT ou EN) usando a função getDisplayName.
-                name={getDisplayName(dado)}
-                // O caminho da imagem usa o nome original (dado.name) que deve ser o nome do arquivo.
-                picture={`/images/itens/${dado.name}.WEBP`}
-              />
-            </li>
-          ))}
-        </ul>
+        <BuildDisplay
+          championName={championName}
+          champion={championSlug}
+          buildName={buildName}
+          setBuildName={setBuildName}
+          selectedItens={selectedItens}
+          activeSlotIndex={activeSlotIndex}
+          getDisplayName={getDisplayName}
+          handleSlotClick={handleSlotClick}
+          handleRemoveItem={handleRemoveItem}
+        />
       </Container>
     </>
   );

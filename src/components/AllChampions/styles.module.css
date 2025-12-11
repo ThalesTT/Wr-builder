@@ -1,5 +1,5 @@
 /* 🖼️ Contêiner Flexbox Principal */
-ul {
+.champions {
   list-style: none;
   color: black;
   display: flex;
@@ -7,16 +7,21 @@ ul {
   padding: 0px;
   margin: 0px auto;
   justify-content: center;
-  overflow-x: scroll;
   height: auto;
+  gap: 10px;
+  margin: 8px;
 }
-ul li {
-  padding: 0px;
-  margin-bottom: 10px;
-  height: 91px;
+.champions li {
+  padding: 0rem;
+  margin-bottom: 1rem;
+  height: 9.1rem;
 }
-ul li:hover {
+.champions li:hover {
   transform: translateY(-3px); /* Leve levantamento ao passar o mouse */
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5); /* Sombra maior para destacar */
   background: rgba(0, 0, 0, 0);
+}
+.champions a {
+  text-decoration: none;
+  color: var(--text-color);
 }

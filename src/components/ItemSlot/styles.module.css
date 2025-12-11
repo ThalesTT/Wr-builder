@@ -1,0 +1,20 @@
+/* 🌟 NOVO: Classe para destacar o Slot Ativo */
+
+.active-slot {
+  /* Efeito de destaque visual */
+  box-shadow: 0 0 0 3px #3498db, 0 5px 15px rgba(52, 152, 219, 0.5); /* Anel azul */
+  border-color: #3498db; /* Altera a borda principal */
+  transform: scale(1.05); /* Pequeno zoom para destaque */
+}
+
+.item-list li:hover:not(.active-slot) {
+  /* Mantém o hover original, mas ignora se já for o ativo */
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+}
+
+.active-slot:hover {
+  /* Garante que o hover no ativo mantenha o destaque */
+  transform: scale(1.05);
+  box-shadow: 0 0 0 3px #3498db, 0 5px 15px rgba(52, 152, 219, 0.7);
+}

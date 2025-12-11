@@ -1,18 +1,20 @@
 /* 🖼️ Contêiner Flexbox Principal */
-ul {
+.itens {
   list-style: none;
   color: black;
   display: flex;
   flex-wrap: wrap;
-  padding: 0px;
-  margin: 0px auto;
+  padding: 0;
+  margin: 0 auto;
   justify-content: center;
   overflow-x: scroll;
+  gap: 8px;
 }
-ul li {
+.itens li {
   padding: 0px;
   margin: 0px;
-  height: 91px;
+  height: auto;
+  /* border: 1px solid green; */
 }
 
 .item-build {

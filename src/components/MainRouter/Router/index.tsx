@@ -1,7 +1,6 @@
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { AllChampions } from '../../AllChampions';
-import { AllItens } from '../../AllItens';
-import { Boots } from '../../Boots';
+import { Itens } from '../../Itens';
 
 export function Router() {
   return (
@@ -9,8 +8,7 @@ export function Router() {
       <Routes>
         <Route path='*' element={<AllChampions />} />
         <Route path='/' element={<AllChampions />} />
-        <Route path='/itens/:champion' element={<AllItens />} />
-        <Route path='/boots' element={<Boots />} />
+        <Route path='/itens/:champion' element={<Itens />} />
       </Routes>
     </BrowserRouter>
   );
