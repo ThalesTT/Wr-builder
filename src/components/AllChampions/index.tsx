@@ -1,8 +1,6 @@
-import { Container } from '../Container';
 import { Frame } from '../Frame';
 import { MyButton } from '../MyButton';
 import { NavButtons } from '../NavButtons';
-import { SearchBar } from '../SearchBar';
 import styles from './styles.module.css';
 import { useState, useEffect, useMemo } from 'react';
 
@@ -29,7 +27,7 @@ import { BuildName } from '../BuildName';
 
 export function AllChampions() {
   const [champions, setChampions] = useState<championsData[]>([]);
-  const [laneFilter, setLaneFilter] = useState<FilterLane>('Top');
+  const [laneFilter, setLaneFilter] = useState<FilterLane>('Mid');
 
   // --- NOVO: Uso do Custom Hook ---
   // O getNameFn é simples aqui: pega o nome da propriedade 'name'.
@@ -88,22 +86,46 @@ export function AllChampions() {
       {/* Componente para os botões de navegação/filtro de Lane */}
       <NavButtons>
         {/* Botões que definem o filtro de lane (setLaneFilter) */}
-        <MyButton variety='top' onClick={() => setLaneFilter('Top')} />
-        <MyButton variety='jungle' onClick={() => setLaneFilter('Jungle')} />
-        <MyButton variety='mid' onClick={() => setLaneFilter('Mid')} />
-        <MyButton variety='adc' onClick={() => setLaneFilter('ADC')} />
-        <MyButton variety='sup' onClick={() => setLaneFilter('Sup')} />
-        <MyButton variety='all' onClick={() => setLaneFilter('all')} />
+        <MyButton
+          variety='top'
+          isActive={laneFilter === 'Top'}
+          onClick={() => setLaneFilter('Top')}
+        />
+        <MyButton
+          variety='jungle'
+          isActive={laneFilter === 'Jungle'}
+          onClick={() => setLaneFilter('Jungle')}
+        />
+        <MyButton
+          variety='mid'
+          isActive={laneFilter === 'Mid'}
+          onClick={() => setLaneFilter('Mid')}
+        />
+        <MyButton
+          variety='adc'
+          isActive={laneFilter === 'ADC'}
+          onClick={() => setLaneFilter('ADC')}
+        />
+        <MyButton
+          variety='sup'
+          isActive={laneFilter === 'Sup'}
+          onClick={() => setLaneFilter('Sup')}
+        />
+        <MyButton
+          variety='all'
+          isActive={laneFilter === 'all'}
+          onClick={() => setLaneFilter('all')}
+        />
       </NavButtons>
       <BuildName
         name={searchName}
         placeholder='Digite seu Campeão'
         onNameChange={handleSearchChange}
       />
-      <Container>
+      <div className={styles['champios-container']}>
         <ul className={styles.champions}>
           {finalChampions.map(champion => (
-            <Link to={`/itens/${champion.name}`} key={champion.name}>
+            <Link to={`/allitens/${champion.name}`} key={champion.name}>
               <li>
                 <Frame
                   picture={`/images/champs/${champion.name}.WEBP`}
@@ -114,7 +136,7 @@ export function AllChampions() {
             </Link>
           ))}
         </ul>
-      </Container>
+      </div>
     </>
   );
 }

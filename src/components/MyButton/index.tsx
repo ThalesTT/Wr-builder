@@ -16,11 +16,20 @@ const Variety = {
 
 type MyButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   variety: keyof typeof Variety;
+  isActive: boolean;
 };
 
-export function MyButton({ onClick, variety }: MyButtonProps) {
+export function MyButton({ onClick, isActive, variety }: MyButtonProps) {
+  // 1. classe principal e a classe condicional
+  const buttonClasses = `${styles.buttonBase} ${styles[variety]}`;
+
+  // 2. Aplica o estilo de borda/destaque se isActive for true
+  const finalClasses = isActive
+    ? `${buttonClasses} ${styles.activeButton}`
+    : buttonClasses;
+
   return (
-    <button className={styles.button} onClick={onClick}>
+    <button className={finalClasses} onClick={onClick}>
       <img
         alt={`${Variety[variety]} lane`}
         src={`/images/lanes/${Variety[variety]}.png`}

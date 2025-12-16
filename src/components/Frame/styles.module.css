@@ -26,14 +26,13 @@
   cursor: pointer;
   /* Para visualização */
   border: 2px solid var(--primary-color);
-  border: 2px solid #5b4c30;
-  /* border: 2px solid black; */
+  /* border: 2px solid #5b4c30; */
   color: var(--secondary-color);
   font-weight: 600;
 }
 .item:hover {
-  border: 2px solid var(--primary-color);
-  /* border: 2px solid black; */
+  border: 2px solid #5b4c30;
+  /* border: 2px solid var(--primary-color); */
   transform: translateY(-3px); /* Leve levantamento ao passar o mouse */
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5); /* Sombra maior para destacar */
   background: rgba(0, 0, 0, 0);
@@ -57,6 +56,7 @@
   text-align: center;
 }
 .champion img {
+  display: block;
   border: 2px solid black;
   padding: 0;
   margin: 0;
@@ -65,15 +65,14 @@
 }
 
 .item p {
+  border: 2px solid #5b4c30;
   /* O flexbox já fará o alinhamento, mas para garantir que o <p>
   ocupe 100% da largura, não precisamos de mais nada */
   margin: 0; /* Remove a margem padrão do parágrafo */
-  padding-top: 4px;
+  padding-top: 0px;
   background-color: var(--primary-color); /* Para visualização */
   width: 6.8rem;
   height: 38px;
-  border: 2px solid black;
-  border-top: 0;
   white-space: wrap;
   position: relative;
   font-size: 1rem;
@@ -82,6 +81,7 @@
 }
 
 .item img {
+  display: block;
   border: 2px solid black;
   padding: 0;
   margin: 0;
@@ -92,12 +92,13 @@
   height: 80px;
   width: 60px;
   border: 1px solid blue;
+  background-color: black;
+  margin: 0px;
 }
 .item-in-build p {
-  margin: 0;
   background-color: var(--primary-color);
   height: 24px;
-  border: 2px solid black;
+  border: 1px solid black;
   border-top: 0;
   white-space: wrap;
   position: relative;
@@ -107,7 +108,6 @@
 }
 
 .item-in-build img {
-  border: 2px solid black;
   padding: 0;
   margin: 0;
   height: 60px;

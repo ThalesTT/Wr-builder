@@ -33,8 +33,8 @@
 /* 📦 3 & 4. Estilos Comuns e Base dos Slots (li) */
 /* Os estilos de tamanho, borda e fundo se aplicam a todos os <li> dentro de .item-list */
 .item-list li {
-  background-color: chocolate;
-  border: 2px solid red;
+  background-color: rgb(210, 30, 141);
+  /* border: 2px solid violet; */
   width: auto; /* Tamanho do ícone do item */
   height: auto;
   display: flex;

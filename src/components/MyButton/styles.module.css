@@ -11,6 +11,7 @@ button {
   padding: 5px;
   /* font-size: 0.9rem; */
   cursor: pointer;
+  border: 1px solid red;
 }
 button:hover {
   color: #faf0cd;
@@ -22,7 +23,9 @@ button:hover {
       padding: 3px;
     } */
 img {
-  /* border-radius: 50%;/ */
-
   border: none;
+}
+.activeButton {
+  /* Exemplo: Borda mais espessa e colorida */
+  border-bottom: 3px solid #e0bf7a; /* Use a cor que você deseja */
 }

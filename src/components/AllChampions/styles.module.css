@@ -1,4 +1,17 @@
 /* 🖼️ Contêiner Flexbox Principal */
+.champios-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 30px auto 0px auto;
+  margin-top: 0px;
+  border: 3px solid red;
+  width: 80%;
+  max-height: 376px;
+  overflow-y: auto;
+}
+
 .champions {
   list-style: none;
   color: black;

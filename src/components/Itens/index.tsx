@@ -1,9 +1,14 @@
 // AllItens.tsx (Refatorado)
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { useParams, useSearchParams, type Params } from 'react-router-dom';
+import {
+  useNavigate,
+  useParams,
+  useSearchParams,
+  type Params,
+} from 'react-router-dom';
 import { useFetchData } from '../useFetchData';
 import { ItemFilterControls } from '../ItemFilterControls'; // NOVO
-import { ItemListDisplay } from '../ItemDisplay'; // NOVO
+import { ItemDisplay } from '../ItemDisplay'; // NOVO
 import { BuildDisplay } from '../BuildDisplay'; // NOVO
 import { Container } from '../Container';
 import type {
@@ -11,14 +16,21 @@ import type {
   ItemData,
   ChampionParam,
   ItensJson,
+  SavedUrl,
 } from '../../types/Itens';
 
+const ALL_BUILDS_KEY = 'wrBuilderAllSavedUrls';
 const MAX_BUILD_SIZE = 7;
 const BOOTS_SLOT_INDEX = 5;
 const ENCHANT_SLOT_INDEX = 6;
 // --------------------------------------------------------
 
 export function Itens() {
+  // Hooks de Roteamento
+  const [searchParams] = useSearchParams();
+  const { champion } = useParams<ChampionParam & Params>();
+  const championSlug = champion ?? 'Garen';
+  const navigate = useNavigate();
   // --- Estados e URL ---
   const [itens, setItens] = useState<ItemData[]>([]);
   const { data: itensJson } = useFetchData<ItensJson>('/data/itens.json');
@@ -29,10 +41,7 @@ export function Itens() {
     new Array(MAX_BUILD_SIZE).fill(null),
   );
   const [activeSlotIndex, setActiveSlotIndex] = useState<number>(0);
-  const [searchParams] = useSearchParams();
   const [ids, setIds] = useState<number[]>([]);
-  const { champion } = useParams<ChampionParam & Params>();
-  const championSlug = champion ?? 'Garen';
   const championName: string = championSlug;
 
   // --- Lógica de Localização ---
@@ -61,6 +70,31 @@ export function Itens() {
       setIds([]);
     }
   }, [searchParams]);
+
+  useEffect(() => {
+    // 1. Converte Itens Selecionados para IDs
+    const itemIds: number[] = selectedItens
+      // Garante que item não é null
+      .filter((item): item is ItemData => item !== null)
+      .map(item => item.id);
+
+    const idsString = itemIds.join(',');
+    const newSearchParams = new URLSearchParams();
+
+    // 2. Define IDs dos Itens
+    if (idsString) {
+      newSearchParams.set('ids', idsString);
+    }
+
+    // 3. Define Nome da Build
+    if (buildName.trim()) {
+      newSearchParams.set('bd', buildName.trim());
+    }
+
+    // 4. ATUALIZA A URL: Isso faz com que o navegador tenha o '?ids=...'
+    // O { replace: true } evita que a mudança de URL crie histórico no navegador.
+    navigate(`?${newSearchParams.toString()}`, { replace: true });
+  }, [selectedItens, buildName, navigate]); // As dependências são cruciais
 
   useEffect(() => {
     const buildName: string | null = searchParams.get('bd');
@@ -151,6 +185,61 @@ export function Itens() {
     [activeSlotIndex],
   );
 
+  // Obtém a URL base (ex: /itens/Garen?ids=...)
+  const getCurrentBuildUrl = useCallback(() => {
+    // A URL completa será algo como: /itens/Garen?ids=1,2,3&bd=Minha+Build
+    return window.location.pathname + window.location.search;
+  }, []);
+
+  // --- 1. Exportar URL (Copiar) ---
+  const handleExportUrl = useCallback(() => {
+    const fullUrl = window.location.origin + getCurrentBuildUrl();
+
+    // Usa a API do navegador para copiar para a área de transferência
+    navigator.clipboard
+      .writeText(fullUrl)
+      .then(() => {
+        alert('URL da build copiada para a área de transferência!');
+      })
+      .catch(err => {
+        console.error('Falha ao copiar URL:', err);
+        alert('Erro ao copiar URL. Por favor, copie manualmente: ' + fullUrl);
+      });
+  }, [getCurrentBuildUrl]);
+
+  // --- 2. Salvar URL no LocalStorage ---
+  const handleSaveUrl = useCallback(() => {
+    const buildUrl = getCurrentBuildUrl();
+
+    const newSavedUrl: SavedUrl = {
+      id: Date.now().toString(),
+      name:
+        buildName.trim() ||
+        `Build de ${championSlug} (${new Date().toLocaleDateString()})`,
+      url: buildUrl,
+      savedAt: Date.now(),
+    };
+
+    try {
+      // Carrega o array existente, ou inicia um array vazio
+      const savedUrlsJson = localStorage.getItem(ALL_BUILDS_KEY);
+      const existingUrls: SavedUrl[] = savedUrlsJson
+        ? JSON.parse(savedUrlsJson)
+        : [];
+
+      // Adiciona a nova URL salva
+      existingUrls.push(newSavedUrl);
+
+      // Salva o array de volta no LocalStorage
+      localStorage.setItem(ALL_BUILDS_KEY, JSON.stringify(existingUrls));
+
+      alert(`Build "${newSavedUrl.name}" salva localmente!`);
+    } catch (error) {
+      console.error('Falha ao salvar build localmente:', error);
+      alert('Erro ao salvar a URL no navegador.');
+    }
+  }, [buildName, championSlug, getCurrentBuildUrl]);
+
   const handleSlotClick = useCallback((index: number) => {
     setActiveSlotIndex(index);
   }, []);
@@ -208,13 +297,15 @@ export function Itens() {
         handleSearchChange={handleSearchChange}
       />
 
-      <ItemListDisplay
+      <ItemDisplay
         finalItens={finalItens}
         getDisplayName={getDisplayName}
         handleFrameClick={handleFrameClick}
       />
 
       <Container>
+        <button onClick={handleExportUrl}>Exportar</button>
+        <button onClick={handleSaveUrl}>Salvar</button>
         <BuildDisplay
           championName={championName}
           champion={championSlug}

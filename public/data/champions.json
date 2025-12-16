@@ -41,6 +41,14 @@
       "lanes": ["Mid"]
     },
     {
+      "name": "Aurora",
+      "lanes": ["Mid"]
+    },
+    {
+      "name": "Bardo",
+      "lanes": ["Sup"]
+    },
+    {
       "name": "Blitzcrank",
       "lanes": ["Sup"]
     },
@@ -113,6 +121,10 @@
       "lanes": ["Top"]
     },
     {
+      "name": "Gnar",
+      "lanes": ["Top"]
+    },
+    {
       "name": "Gragas",
       "lanes": ["Top", "Jungle"]
     },
@@ -123,6 +135,10 @@
     {
       "name": "Gwen",
       "lanes": ["Top"]
+    },
+    {
+      "name": "Heimerdinger",
+      "lanes": ["Mid"]
     },
     {
       "name": "Heracarim",
@@ -209,6 +225,10 @@
       "lanes": ["Jungle"]
     },
     {
+      "name": "Lissandra",
+      "lanes": ["Mid"]
+    },
+    {
       "name": "Lucian",
       "lanes": ["ADC"]
     },
@@ -233,12 +253,16 @@
       "lanes": ["Jungle"]
     },
     {
+      "name": "Milio",
+      "lanes": ["Sup"]
+    },
+    {
       "name": "Miss-Fortune",
       "lanes": ["ADC"]
     },
     {
-      "name": "Wukong",
-      "lanes": ["Jungle"]
+      "name": "Mordekaiser",
+      "lanes": ["Top"]
     },
     {
       "name": "Morgana",
@@ -257,8 +281,16 @@
       "lanes": ["Top", "Jungle"]
     },
     {
+      "name": "Nidalee",
+      "lanes": ["Jungle"]
+    },
+    {
       "name": "Nilah",
       "lanes": ["ADC", "Jungle"]
+    },
+    {
+      "name": "Nocturne",
+      "lanes": ["Jungle"]
     },
     {
       "name": "Nunu",
@@ -281,6 +313,10 @@
       "lanes": ["Top", "Jungle"]
     },
     {
+      "name": "Poppy",
+      "lanes": ["Top"]
+    },
+    {
       "name": "Pyke",
       "lanes": ["Sup"]
     },
@@ -293,6 +329,10 @@
       "lanes": ["Jungle"]
     },
     {
+      "name": "Rell",
+      "lanes": ["Sup"]
+    },
+    {
       "name": "Renekton",
       "lanes": ["Top"]
     },
@@ -303,6 +343,14 @@
     {
       "name": "Riven",
       "lanes": ["Top"]
+    },
+    {
+      "name": "Rumble",
+      "lanes": ["Top"]
+    },
+    {
+      "name": "Ryze",
+      "lanes": ["Mid"]
     },
     {
       "name": "Samira",
@@ -401,6 +449,10 @@
       "lanes": ["Mid"]
     },
     {
+      "name": "Velkoz",
+      "lanes": ["Mid"]
+    },
+    {
       "name": "Vex",
       "lanes": ["Mid"]
     },
@@ -413,6 +465,10 @@
       "lanes": ["Jungle"]
     },
     {
+      "name": "Viktor",
+      "lanes": ["Mid"]
+    },
+    {
       "name": "Vladmir",
       "lanes": ["Mid"]
     },
@@ -422,6 +478,10 @@
     },
     {
       "name": "Warwick",
+      "lanes": ["Jungle"]
+    },
+    {
+      "name": "Wukong",
       "lanes": ["Jungle"]
     },
     {
@@ -455,6 +515,10 @@
     {
       "name": "Ziggs",
       "lanes": ["Mid"]
+    },
+    {
+      "name": "Zilean",
+      "lanes": ["Sup"]
     },
     {
       "name": "Zoe",

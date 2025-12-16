@@ -32,14 +32,19 @@ export interface BuildDisplayProps {
 
 // Interface que define a estrutura de um item carregado do JSON.
 export interface ItemData {
+  image: any;
   name: string; // Nome original (geralmente em inglês)
   nome: string; // Nome em português (para localização)
   price: number;
   id: number;
   type: ITEM_TYPE;
 }
-
-// Interface que define a estrutura do arquivo JSON completo.
+export interface SavedUrl {
+  id: string;
+  name: string;
+  url: string; // A URL completa com os parâmetros ?ids=...&bd=...
+  savedAt: number;
+}
 export interface ItensJson {
   itens: ItemData[];
 }

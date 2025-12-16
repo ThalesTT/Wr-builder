@@ -4,17 +4,17 @@ import { Container } from '../Container';
 import { Frame } from '../Frame';
 import type { ItemData } from '../../types/Itens';
 
-interface ItemListDisplayProps {
+interface ItemDisplayProps {
   finalItens: ItemData[];
   getDisplayName: (item: ItemData) => string;
   handleFrameClick: (item: ItemData) => void;
 }
 
-export function ItemListDisplay({
+export function ItemDisplay({
   finalItens,
   getDisplayName,
   handleFrameClick,
-}: ItemListDisplayProps) {
+}: ItemDisplayProps) {
   return (
     <Container>
       <ul className={styles.itens}>

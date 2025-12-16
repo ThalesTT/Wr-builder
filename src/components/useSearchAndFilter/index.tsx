@@ -15,6 +15,7 @@ interface SearchResult<T> {
  * @param {(item: T) => string} getNameFn - Uma função que recebe um item (T) e retorna a string a ser pesquisada (o nome localizado, por exemplo).
  * @returns {SearchResult<T>} Um objeto contendo o estado, o handler e a lista filtrada.
  */
+
 export function useSearchAndFilter<T>(
   items: T[],
   getNameFn: (item: T) => string,

@@ -528,148 +528,204 @@
       "id": 76,
       "type": "boots",
       "price": 500,
-      "name": "Boots of Dynamism",
+      "name": "boots-of-dynamism",
       "nome": "Bota do dinamismo"
     },
     {
       "id": 77,
       "type": "boots",
       "price": 500,
-      "name": " Boots of Mana",
+      "name": "boots-of-mana",
       "nome": "Bota de mana"
     },
     {
       "id": 78,
       "type": "boots",
       "price": 500,
-      "name": "Gluttonous Greaves",
+      "name": "gluttonous-greaves",
       "nome": "Grevas vorazes"
     },
     {
       "id": 79,
       "type": "boots",
       "price": 500,
-      "name": "Ionian Boots of Lucidity",
+      "name": "ionian-boots-of-lucidity",
       "nome": "Botas Ionianas da Lucidez"
     },
     {
       "id": 80,
       "type": "boots",
       "price": 500,
-      "name": "Mercurys-treads",
+      "name": "mercurys-treads",
       "nome": "Passos de Mercúrio"
     },
     {
       "id": 81,
       "type": "boots",
       "price": 500,
-      "name": "Plated Steelcaps",
+      "name": "plated-steelcaps",
       "nome": "Botas Galvanizadas de Aço"
     },
     {
       "id": 82,
       "type": "boots",
       "price": 500,
-      "name": "Berserker's Greaves",
+      "name": "berserkers-greaves",
       "nome": "Grevaz do Berserker"
     },
     {
       "id": 83,
       "type": "enchant",
       "price": 500,
-      "name": "Gargoyle Stoneplate",
+      "name": "gargoyle-stoneplate",
       "nome": "Placa"
     },
     {
       "id": 84,
       "type": "enchant",
       "price": 500,
-      "name": "Glorious",
+      "name": "glorious",
       "nome": "Glorioso"
     },
     {
       "id": 85,
       "type": "enchant",
       "price": 500,
-      "name": "Hextech Rocketbelt",
+      "name": "hextech-rocketbelt",
       "nome": "Protocinturão"
     },
     {
       "id": 86,
       "type": "enchant",
       "price": 500,
-      "name": "Locket",
+      "name": "locket",
       "nome": "Medalhão"
     },
     {
       "id": 87,
       "type": "enchant",
       "price": 500,
-      "name": "Magnetron",
-      "nome": "Magnetron"
+      "name": "galeforce",
+      "nome": "GaleForce"
     },
     {
       "id": 88,
       "type": "enchant",
       "price": 500,
-      "name": "Meteor",
-      "nome": "Meteoro"
+      "name": "stridebreaker",
+      "nome": "Stridebreaker"
     },
     {
       "id": 89,
       "type": "enchant",
       "price": 500,
-      "name": "Quicksilver Sash",
+      "name": "quicksilver-sash",
       "nome": "Mercúrio"
     },
     {
       "id": 90,
       "type": "enchant",
       "price": 500,
-      "name": "Redemption",
-      "nome": "Redenção"
+      "name": "goredrinker",
+      "nome": "Goredrinker"
     },
     {
       "id": 91,
       "type": "enchant",
       "price": 500,
-      "name": "Repulsor ",
-      "nome": "Repulsor"
-    },
-    {
-      "id": 92,
-      "type": "enchant",
-      "price": 500,
-      "name": "Revitalizing",
-      "nome": "Ressurreição"
+      "name": "dream-maker",
+      "nome": "Dream maker"
     },
     {
       "id": 93,
       "type": "enchant",
       "price": 500,
-      "name": "Teleport",
-      "nome": "Teleporte"
+      "name": "veil",
+      "nome": "Banshee Encantada"
     },
     {
       "id": 94,
       "type": "enchant",
       "price": 500,
-      "name": "Veil",
-      "nome": "Banshee Encantada"
+      "name": "stasis",
+      "nome": "Zhonyas"
     },
     {
       "id": 95,
-      "type": "enchant",
-      "price": 500,
-      "name": "Ravenous Hydra",
-      "nome": "Hidra Raivosa"
+      "type": "magic",
+      "price": 0,
+      "name": "bandle-fantasy",
+      "nome": "Bandle Fantasy"
     },
     {
-      "id": 96,
-      "type": "enchant",
-      "price": 500,
-      "name": "Zhonya's Hourglass",
-      "nome": "Estase"
+      "id": 98,
+      "type": "magic",
+      "price": 0,
+      "name": "malignance",
+      "nome": "Malevolência"
+    },
+    {
+      "id": 99,
+      "type": "attack",
+      "price": 0,
+      "name": "eclipse",
+      "nome": "Eclipse"
+    },
+    {
+      "id": 100,
+      "type": "attack",
+      "price": 0,
+      "name": "hullbreaker",
+      "nome": "Quebra cascos"
+    },
+    {
+      "id": 101,
+      "type": "attack",
+      "price": 0,
+      "name": "sundered-sky",
+      "nome": "Céu dividido"
+    },
+    {
+      "id": 103,
+      "type": "defense",
+      "price": 0,
+      "name": "yordle-trap",
+      "nome": "Yordle-Trap"
+    },
+    {
+      "id": 104,
+      "type": "defense",
+      "price": 0,
+      "name": "kaenic-rookern",
+      "nome": "Rookern Lamúrico"
+    },
+    {
+      "id": 105,
+      "type": "defense",
+      "price": 0,
+      "name": "radiant-virtue",
+      "nome": "Virtude Radiante"
+    },
+    {
+      "id": 106,
+      "type": "defense",
+      "price": 0,
+      "name": "yordle-redemption",
+      "nome": "Redenção"
+    },
+    {
+      "id": 107,
+      "type": "attack",
+      "price": 0,
+      "name": "soul-transfer",
+      "nome": "Soul-Transfer"
+    },
+    {
+      "id": 108,
+      "type": "attack",
+      "price": 0,
+      "name": "divine-sunderer",
+      "nome": "Ruptor Divino"
     }
   ]
 }
