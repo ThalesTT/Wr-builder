@@ -1,19 +1,23 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 import { Container } from '../Container';
 import { ItemFilterControls } from '../ItemFilterControls';
 import { ItemDisplay } from '../ItemDisplay';
 import { BuildDisplay } from '../BuildDisplay';
+import { SocialCardModal } from '../SocialCardModal';
+import { RunesSelector } from '../RuneSelector';
 import { useItemCatalog } from '../hooks/useItemCatalog';
 import { useBuildFromUrl } from '../hooks/useBuildFromUrl';
 import { useBuildManager } from '../hooks/useBuildManager';
-import { SocialCardModal } from '../SocialCardModal'; // import do modal
-import type { FilterType, ItemData } from '../../types/Itens';
+import type { FilterType } from '../../types/Itens';
+import type { SelectedRunes } from '../../types/runes';
+import type { ItemData } from '../../types/Itens';
 
-export function Itens() {
+export function ItensRunas() {
   const { champion } = useParams<{ champion: string }>();
   const championSlug = champion ?? 'Garen';
 
+  // Hooks customizados
   const { items, catalogMap } = useItemCatalog();
   const { ids, buildName, setBuildName } = useBuildFromUrl();
   const {
@@ -25,29 +29,52 @@ export function Itens() {
     setActiveSlotIndex,
   } = useBuildManager(ids, catalogMap);
 
+  // Filtros e busca
   const [itemFilter, setItemFilter] = useState<FilterType>('attack');
   const [searchName, setSearchName] = useState('');
   const [usePortugueseName, setUsePortugueseName] = useState(
     navigator.language.toLowerCase().startsWith('pt'),
   );
 
-  const [showCardModal, setShowCardModal] = useState(false);
+  // Estado para as runas
+  const [selectedRunes, setSelectedRunes] = useState<SelectedRunes>({
+    keystone: null,
+    primaryTree: null,
+    primaryRunes: [],
+    secondaryTree: null,
+    secondaryRunes: [],
+  });
 
-  const getDisplayName = (item: ItemData) =>
+  // Estado do modal do social card
+  const [showSocialCard, setShowSocialCard] = useState(false);
+
+  const getDisplayName = (item: any) =>
     usePortugueseName ? item.nome : item.name;
 
-  const finalItens = items
-    .filter(item => itemFilter === 'all' || item.type === itemFilter)
-    .filter(item => {
-      const term = searchName.trim().toLowerCase();
-      if (!term) return true;
-      return getDisplayName(item).toLowerCase().includes(term);
-    });
+  // Filtragem final combinando tipo e busca
+  const finalItens = useMemo(() => {
+    return items
+      .filter(item => itemFilter === 'all' || item.type === itemFilter)
+      .filter(item => {
+        const term = searchName.trim().toLowerCase();
+        if (!term) return true;
+        return getDisplayName(item).toLowerCase().includes(term);
+      });
+  }, [items, itemFilter, searchName, getDisplayName]);
 
+  // Handlers
   const handleSearchChange = (term: string) => setSearchName(term);
 
-  const handleExportClick = () => {
-    setShowCardModal(true); // abre o modal
+  const handleExportUrl = () => {
+    const queryString = buildItemIds.join(',');
+    const url = `${
+      window.location.origin
+    }/itens/${championSlug}?ids=${queryString}&bd=${encodeURIComponent(
+      buildName,
+    )}`;
+    navigator.clipboard.writeText(url).then(() => {
+      alert('URL da build copiada para a área de transferência!');
+    });
   };
 
   const handleSaveUrl = () => {
@@ -73,6 +100,12 @@ export function Itens() {
 
   return (
     <>
+      {/* Seletor de runas */}
+      <RunesSelector
+        selectedRunes={selectedRunes}
+        setSelectedRunes={setSelectedRunes}
+      />
+
       <ItemFilterControls
         setItemFilter={setItemFilter}
         usePortugueseName={usePortugueseName}
@@ -88,7 +121,7 @@ export function Itens() {
       />
 
       <Container>
-        <button onClick={handleExportClick}>Exportar</button>
+        <button onClick={handleExportUrl}>Exportar</button>
         <button onClick={handleSaveUrl}>Salvar</button>
 
         <BuildDisplay
@@ -104,15 +137,14 @@ export function Itens() {
         />
       </Container>
 
-      {/* Modal Social Card */}
+      {/* Social Card Modal */}
       <SocialCardModal
         championSlug={championSlug}
         buildName={buildName}
-        selectedItens={selectedItens.filter(
-          (item): item is ItemData => item !== null,
-        )}
-        show={showCardModal}
-        onClose={() => setShowCardModal(false)}
+        selectedItens={selectedItens}
+        selectedRunes={selectedRunes}
+        show={showSocialCard}
+        onClose={() => setShowSocialCard(false)}
       />
     </>
   );

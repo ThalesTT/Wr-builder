@@ -34,6 +34,13 @@ export function Builds({ itemCatalog }: MyBuildsProps) {
     return [];
   };
 
+  const extractChampionName = (url: string): string => {
+    const path = url.split('?')[0];
+    const pathParts = path.split('/');
+    const champion = pathParts[pathParts.length - 1];
+    return champion || 'Ahri';
+  };
+
   useEffect(() => {
     // Função para carregar os dados do LocalStorage
     const loadBuilds = () => {
@@ -93,22 +100,25 @@ export function Builds({ itemCatalog }: MyBuildsProps) {
             console.log('URL sendo passada para o Link:', build.url);
             // Mude o nome do estado para savedBuilds
             const itemIds = extractItemIdsFromUrl(build.url); // <--- Extração dos IDs
+            const championSlug = extractChampionName(build.url);
 
             return (
               <li key={build.id}>
                 <Link to={build.url}>
                   <h2>{build.name}</h2>
                 </Link>
-
                 {/* EXIBIÇÃO VISUAL AQUI */}
                 <BuildPreview
                   itemIds={itemIds}
                   itemCatalog={itemCatalog} // Passa o catálogo carregado
+                  champion={championSlug}
                 />
 
                 <p>Salvo em: {formatarData(build.savedAt)}</p>
 
-                {/* ... botão remover ... */}
+                <button onClick={() => handleRemoverBuild(build.id)}>
+                  Remover
+                </button>
               </li>
             );
           })}

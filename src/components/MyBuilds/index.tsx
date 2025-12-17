@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import type { ItensJson, ItemData, SavedUrl } from '../../types/Itens/';
 import { Link } from 'react-router-dom';
-import { useFetchData } from '../useFetchData';
+import { useFetchData } from '../hooks/useFetchData';
 import { BuildPreview } from '../BuildPreview';
 
 const ALL_BUILDS_KEY = 'wrBuilderAllSavedUrls';

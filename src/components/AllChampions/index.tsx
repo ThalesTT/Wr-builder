@@ -20,7 +20,7 @@ interface championsJson {
 }
 
 // Importa o Custom Hook
-import { useSearchAndFilter } from '../useSearchAndFilter';
+import { useSearchAndFilter } from '../hooks/useSearchAndFilter';
 import { Link } from 'react-router-dom';
 import { Header } from '../Header';
 import { BuildName } from '../BuildName';

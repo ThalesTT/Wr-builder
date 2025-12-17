@@ -23,7 +23,7 @@ interface championsJson {
 }
 
 // Importa o Custom Hook
-import { useSearchAndFilter } from '../useSearchAndFilter';
+import { useSearchAndFilter } from '../hooks/useSearchAndFilter';
 
 export function Champions() {
   const [champions, setChampions] = useState<championsData[]>([]);

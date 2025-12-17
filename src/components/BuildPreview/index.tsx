@@ -7,11 +7,13 @@ import type { ItemData } from '../../types/Itens';
 interface BuildPreviewProps {
   itemIds: number[];
   itemCatalog: ItemData[];
+  champion: string;
 }
 
 export const BuildPreview: React.FC<BuildPreviewProps> = ({
   itemIds,
   itemCatalog,
+  champion,
 }) => {
   if (itemCatalog.length === 0) return <div>Carregando itens...</div>;
 
@@ -25,15 +27,22 @@ export const BuildPreview: React.FC<BuildPreviewProps> = ({
       {itemsInBuild.length === 0 ? (
         <small>Build Vazia ou Itens Desatualizados</small>
       ) : (
-        itemsInBuild.map((item, index) => (
-          // Use seu componente Frame para renderizar
+        <>
           <Frame
-            key={index}
-            picture={`/images/itens/${item.name}.WEBP`} // Ajuste o path da imagem
-            name={item.name}
-            classStyles='item-preview' // Estilize isso no seu CSS
+            classStyles='build'
+            name={champion}
+            picture={`/images/champs/${champion}.WEBP`}
           />
-        ))
+
+          {itemsInBuild.map((item, index) => (
+            <Frame
+              key={index}
+              picture={`/images/itens/${item.name}.WEBP`}
+              name={item.name}
+              classStyles='build'
+            />
+          ))}
+        </>
       )}
     </div>
   );

@@ -5,6 +5,7 @@ export function Nav() {
     <nav className={styles.nav}>
       <a href=''>Campeões</a>
       <a href=''>Itens</a>
+      <a href='/build'>Minhas builds</a>
     </nav>
   );
 }

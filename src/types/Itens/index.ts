@@ -32,7 +32,7 @@ export interface BuildDisplayProps {
 
 // Interface que define a estrutura de um item carregado do JSON.
 export interface ItemData {
-  image: any;
+  image: string;
   name: string; // Nome original (geralmente em inglês)
   nome: string; // Nome em português (para localização)
   price: number;

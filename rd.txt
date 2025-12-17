@@ -1,50 +1,73 @@
-🌟 Visão Geral do ProjetoO Wild Rift Build Builder é uma ferramenta que permite 
-aos jogadores de Wild Rift (League of Legends Mobile) experimentarem e salvarem 
-sequências de itens para campeões específicos. Ele utiliza o localStorage para
- persistir as builds salvas, e o estado da build ativa é mantido internamente no 
- componente principal, sendo externalizado para a URL apenas no momento de Salvar 
- ou Exportar.⚙️ 
- Stack de TecnologiaFrontend: React (Hooks)Linguagem: TypeScriptRoteamento: 
- React Router DOMGerenciamento de Estado de Dados: Hooks (useState, useEffect, 
- useCallback, useMemo)
- Persistência de Dados: LocalStorage📁 Estrutura de Componentes 
- ChaveComponenteResponsabilidade PrincipalObservaçõesItens.tsx (AllItens.tsx)
- Componente principal. Gerencia a seleção de itens, filtros, nome da build e 
- estados globais da página.Contém a maior parte da lógica de seleção de slots.
- MyBuilds.tsxCarrega e exibe as builds salvas no localStorage.Responsável por 
- remover e linkar builds salvas.BuildDisplay.tsxComponente de interface que 
- renderiza os 7 slots de itens da build ativa.
- Recebe handlers para adição/remoção.ItemDisplay.tsxRenderiza 
- a lista de todos os itens disponíveis (filtrados/buscados).Recebe o handler 
- handleFrameClick.useFetchData.tsHook customizado para carregar o catálogo de
- itens (itens.json).Gerencia o estado de carregamento de dados.🛠️ Funcionalidades e
-Implementação1. Carregamento e Inicialização de DadosO catálogo completo de 
-itens é carregado de um arquivo JSON estático (/data/itens.json) usando o hook 
-useFetchData.O componente Itens.tsx utiliza useSearchParams para ler o estado 
-de builds compartilhadas (Ex: ?ids=1,2,3&bd=Nome).Os useEffects iniciais 
-garantem que o estado selectedItens seja preenchido a partir da URL se houver 
-IDs, e o estado ids e buildName é atualizado.2. Lógica de Seleção de Itens A 
-build ativa é armazenada em selectedItens (um array de 7 posições de ItemData 
-ou null).A lógica no handleFrameClick gerencia as regras de colocação de 
-itens:Itens normais são colocados no activeSlotIndex ou no primeiro slot vazio.
-Botas e Encantamentos são forçados para seus respectivos slots 
-(BOOTS_SLOT_INDEX = 5 e ENCHANT_SLOT_INDEX = 6).Itens de Suporte (tipo 'sup') 
-têm uma restrição de uma única compra.3. Gerenciamento de URL (Não-Persistente 
-no Navegador)Esta é uma característica chave da refatoração. A URL do navegador
- não é mais alterada em tempo real para refletir a build ativa.Estado Interno 
- (buildUrlToSave): Um useState armazena a string completa da URL 
- (/itens/campeao?ids=...&bd=...).Atualização Interna: Um useEffect observa as 
- mudanças em selectedItens e buildName, reconstrói a URL completa 
- (const finalUrl = \${currentPath}?${queryString}`), e atualiza buildUrlToSave`.
- Sem useNavigate: A remoção do useNavigate impede que o histórico ou a barra de 
- endereço seja modificada durante o uso.4. Salvamento e ExportaçãohandleSaveUrl:
-  Utiliza o valor de buildUrlToSave para criar o objeto SavedUrl e o armazena no
-  
+Perfeito! Aqui está um resumo detalhado e organizado do seu projeto, que você pode usar para apresentar ou até para me atualizar futuramente:
 
-Instale as dependências:Bashnpm install
-# ou
-yarn install
-Inicie o servidor de desenvolvimento:Bashnpm run dev
-# ou
-yarn dev
-Acesse http://localhost:[PORTA] no seu navegador.
+---
+
+## **Wild Rift Build Builder – Resumo do Projeto**
+
+**Objetivo:**
+O *Wild Rift Build Builder* é uma ferramenta para jogadores de *League of Legends: Wild Rift* que permite criar, visualizar, salvar e compartilhar builds de itens para campeões. Ele facilita a experimentação de diferentes combinações de itens, mantendo a interface simples e rápida, tanto no desktop quanto em dispositivos móveis.
+
+---
+
+### **Funcionalidades Principais**
+
+1. **Seleção de Itens:**
+
+   * O usuário pode adicionar itens a slots específicos de uma build (7 slots no total).
+   * Itens especiais (botas e encantamentos) são automaticamente alocados nos slots corretos.
+   * Itens de suporte possuem restrição de quantidade única.
+
+2. **Visualização da Build:**
+
+   * Cada slot da build exibe o item selecionado.
+   * O usuário pode remover itens ou trocar de slot.
+
+3. **Filtragem e Busca:**
+
+   * Filtragem por tipo de item (ataque, defesa, suporte, botas, encantamento, etc.).
+   * Busca por nome, com suporte a nomes em português ou inglês.
+
+4. **Persistência e Compartilhamento:**
+
+   * Builds podem ser salvas localmente usando `localStorage`.
+   * URLs podem ser geradas para compartilhar builds completas com outros jogadores.
+
+5. **Social Card Export:**
+
+   * Gera um *card visual* da build com:
+
+     * Campeão central com imagem e nome.
+     * Linha horizontal de todos os itens selecionados com seus nomes.
+     * Botão de download para exportar o card como imagem.
+   * Funciona bem em telas grandes e pequenas (scroll horizontal em dispositivos móveis).
+
+---
+
+### **Stack Tecnológico**
+
+* **Frontend:** React com Hooks (`useState`, `useEffect`, `useMemo`, `useCallback`)
+* **Linguagem:** TypeScript
+* **Roteamento:** React Router DOM
+* **Persistência:** `localStorage`
+* **Componentes Principais:**
+
+  * `Itens.tsx` → Seleção de itens e gerenciamento de build ativa
+  * `MyBuilds.tsx` → Visualização e remoção de builds salvas
+  * `BuildDisplay.tsx` → Renderização da build ativa
+  * `ItemDisplay.tsx` → Renderização da lista de itens filtrados
+  * `SocialCardModal.tsx` → Modal para exportar build como imagem
+  * Hooks customizados (`useItemCatalog`, `useBuildFromUrl`, `useBuildManager`)
+
+---
+
+### **Diferenciais**
+
+* Suporte total para mobile, com rolagem horizontal de itens quando necessário.
+* Geração de URLs compartilháveis sem alterar a URL do navegador em tempo real.
+* Interface visual clara, permitindo que qualquer jogador veja rapidamente a build de forma organizada.
+
+---
+
+Se quiser, posso criar **uma versão ainda mais resumida e “pitch pronta”** para apresentar rapidamente o projeto, ideal para slides ou conversa rápida com alguém.
+
+Quer que eu faça isso também?
