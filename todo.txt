@@ -1,2 +1,5 @@
-so componentes que vou usar sao build em vez do mybuilds, e allitens, fazer css
-do builds, adcionar campeao no my builds
+adicionar um botao n  o filtro de itens para ir para as runas
+adicionar imagens das runas na minhas builds
+remover caixa de pesquisa quando runas estiver na tela 
+arrumar botoes de exportar e salvar
+remover botao de baixar do print do modal

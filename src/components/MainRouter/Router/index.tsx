@@ -2,13 +2,12 @@ import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { AllChampions } from '../../AllChampions';
 import { Itens } from '../../Itens';
 import { useFetchData } from '../../hooks/useFetchData';
-import type { ItemData, ItensJson } from '../../../types/Itens';
 import { Builds } from '../../Builds';
 import { Allitens } from '../../AllItens';
-import { RunesBuild } from '../../RunesBuild';
+import type { ItemData } from '../../../types/Itens';
 
 export function Router() {
-  const { data: ItensJson } = useFetchData<ItensJson>('data/itens.json');
+  const { data: ItensJson } = useFetchData('itens');
   const itemCatalog: ItemData[] = ItensJson?.itens || [];
 
   return (
@@ -19,7 +18,7 @@ export function Router() {
         <Route path='/itens/:champion' element={<Itens />} />
         <Route path='/allitens/:champion' element={<Allitens />} />
         <Route path='/build' element={<Builds itemCatalog={itemCatalog} />} />
-        <Route path='rune' element={<RunesBuild />} />
+        <Route path='/runas' element={<Itens />}></Route>
       </Routes>
     </BrowserRouter>
   );

@@ -1,13 +1,15 @@
-// SocialCardModal.tsx
 import React, { useRef } from 'react';
 import { createPortal } from 'react-dom';
 import html2canvas from 'html2canvas';
 import type { ItemData } from '../../types/Itens';
+import type { SelectedRunes } from '../../types/Itens';
+import { RunesDisplay } from '../RunesDisplay';
 
 interface SocialCardModalProps {
   championSlug: string;
   buildName: string;
   selectedItens: ItemData[];
+  selectedRunes: SelectedRunes | null;
   show: boolean;
   onClose: () => void;
 }
@@ -16,6 +18,7 @@ export const SocialCardModal: React.FC<SocialCardModalProps> = ({
   championSlug,
   buildName,
   selectedItens,
+  selectedRunes,
   show,
   onClose,
 }) => {
@@ -101,6 +104,8 @@ export const SocialCardModal: React.FC<SocialCardModalProps> = ({
           />
         </div>
 
+        {/* Runas */}
+        {selectedRunes && <RunesDisplay selectedRunes={selectedRunes} />}
         {/* Itens */}
         <div
           className='item-row'
@@ -154,7 +159,6 @@ export const SocialCardModal: React.FC<SocialCardModalProps> = ({
               ),
           )}
         </div>
-
         {/* Botão de download */}
         <button
           onClick={handleDownload}

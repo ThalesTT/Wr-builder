@@ -3,20 +3,24 @@
 import React from 'react';
 import { Frame } from '../Frame';
 import type { ItemData } from '../../types/Itens';
+import { RunesDisplay } from '../RunesDisplay';
+import type { SelectedRunes } from '../Runes';
 
 interface BuildPreviewProps {
   itemIds: number[];
   itemCatalog: ItemData[];
   champion: string;
+  selectedRunes: SelectedRunes;
 }
 
 export const BuildPreview: React.FC<BuildPreviewProps> = ({
   itemIds,
   itemCatalog,
   champion,
+  selectedRunes,
 }) => {
   if (itemCatalog.length === 0) return <div>Carregando itens...</div>;
-
+  console.log('selected runes', selectedRunes);
   // Mapeia os IDs para os objetos de item
   const itemsInBuild = itemIds
     .map(id => itemCatalog.find(item => item.id === id))
@@ -33,7 +37,7 @@ export const BuildPreview: React.FC<BuildPreviewProps> = ({
             name={champion}
             picture={`/images/champs/${champion}.WEBP`}
           />
-
+          <RunesDisplay selectedRunes={selectedRunes} />
           {itemsInBuild.map((item, index) => (
             <Frame
               key={index}
