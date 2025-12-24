@@ -1,103 +1,83 @@
-import { useAppData } from '../hooks/useAppData';
-import type { Rune, SelectedRunes } from '../MainRouter/Router';
+import type { SelectedRunes } from '../../types/Itens';
 
+// Definindo as propriedades esperadas pelo componente
 interface RunesDisplayProps {
   selectedRunes: SelectedRunes | null;
 }
 
 export function RunesDisplay({ selectedRunes }: RunesDisplayProps) {
-  const { allRunesFlat } = useAppData();
-
-  if (!selectedRunes) return null;
-
-  // Função agora tipada: aceita a runa (objeto) ou o name técnico (string)
-  const getRuneInfo = (input: Rune | string | null): Rune | undefined => {
-    if (!input) return undefined;
-    const techName = typeof input === 'string' ? input : input.name;
-    return allRunesFlat.find(r => r.name === techName);
-  };
-
-  const RuneSlot = ({
-    runeRaw,
-    isKeystone = false,
-  }: {
-    runeRaw: Rune | string | null;
-    isKeystone?: boolean;
-  }) => {
-    const info = getRuneInfo(runeRaw);
-    if (!info) return null;
-
-    return (
-      <div
-        style={{
-          textAlign: 'center',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-        }}
-      >
-        <div
-          style={{
-            padding: '2px',
-            borderRadius: '50%',
-            background: isKeystone
-              ? 'linear-gradient(45deg, #c4973e, #f9e392)'
-              : 'rgba(255,255,255,0.1)',
-            border: '1px solid rgba(255,255,255,0.2)',
-          }}
-        >
-          <img
-            src={`/images/runes/${info.name}.WEBP`}
-            alt={info.nome}
-            style={{
-              width: isKeystone ? '44px' : '32px',
-              height: isKeystone ? '44px' : '32px',
-              display: 'block',
-              borderRadius: '50%',
-            }}
-          />
-        </div>
-        <span
-          style={{
-            fontSize: '10px',
-            color: isKeystone ? '#f9e392' : '#ccc',
-            marginTop: '4px',
-          }}
-        >
-          {info.nome}
-        </span>
-      </div>
-    );
-  };
+  if (!selectedRunes) return null; // Caso não haja runas, não renderiza nada.
 
   return (
     <div
       style={{
-        marginTop: '1.5rem',
-        padding: '12px',
-        backgroundColor: 'rgba(0, 0, 0, 0.4)',
-        borderRadius: '8px',
-        display: 'inline-flex',
-        alignItems: 'center',
-        gap: '12px',
+        marginTop: '1rem',
+        display: 'flex',
+        gap: '8px',
+        flexWrap: 'wrap',
       }}
     >
-      <RuneSlot runeRaw={selectedRunes.keystone} isKeystone />
+      {/* Exibindo a Keystone */}
+      {selectedRunes.keystone && (
+        <div style={{ textAlign: 'center' }}>
+          <img
+            src={`/images/runes/${selectedRunes.keystone}.WEBP`}
+            alt={selectedRunes.keystone}
+            style={{
+              width: '40px',
+              height: '40px',
+              borderRadius: '5px',
+              border: '2px solid #fff', // Ajuste de borda para destacar a runa
+            }}
+          />
+          <p style={{ color: 'white', fontSize: '0.75rem' }}>
+            {selectedRunes.keystone}
+          </p>
+        </div>
+      )}
 
-      <div
-        style={{
-          width: '1px',
-          height: '30px',
-          backgroundColor: 'rgba(255,255,255,0.1)',
-        }}
-      />
+      {/* Exibindo as runas secundárias */}
+      {selectedRunes.secondary &&
+        Object.values(selectedRunes.secondary).length > 0 && (
+          <div style={{ display: 'flex', gap: '8px' }}>
+            {Object.values(selectedRunes.secondary).map(
+              (rune: string, index: number) => (
+                <div key={index} style={{ textAlign: 'center' }}>
+                  <img
+                    src={`/images/runes/${rune}.WEBP`}
+                    alt={rune}
+                    style={{
+                      width: '40px',
+                      height: '40px',
+                      borderRadius: '5px',
+                      border: '2px solid #fff',
+                    }}
+                  />
+                  <p style={{ color: 'white', fontSize: '0.75rem' }}>{rune}</p>
+                </div>
+              ),
+            )}
+          </div>
+        )}
 
-      <div style={{ display: 'flex', gap: '8px' }}>
-        {Object.values(selectedRunes.secondary).map((rune, i) => (
-          <RuneSlot key={i} runeRaw={rune} />
-        ))}
-        {selectedRunes.extra && <RuneSlot runeRaw={selectedRunes.extra} />}
-      </div>
+      {/* Exibindo a runa extra */}
+      {selectedRunes.extra && (
+        <div style={{ textAlign: 'center' }}>
+          <img
+            src={`/images/runes/${selectedRunes.extra}.WEBP`}
+            alt={selectedRunes.extra}
+            style={{
+              width: '40px',
+              height: '40px',
+              borderRadius: '5px',
+              border: '2px solid #fff',
+            }}
+          />
+          <p style={{ color: 'white', fontSize: '0.75rem' }}>
+            {selectedRunes.extra}
+          </p>
+        </div>
+      )}
     </div>
   );
 }
