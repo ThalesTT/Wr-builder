@@ -1,52 +1,57 @@
-// useFetchData.ts
-import { useEffect, useState } from 'react';
+import { useMemo } from 'react';
 
-// Tipagem genérica T (Tipo de dado esperado, ex: ItemData[] ou BootsJson)
-interface FetchState<T> {
-  data: T | null;
-  loading: boolean;
-  error: string | null;
+// Imports dos JSONs diretos do SRC
+import itensData from '../../../data/itens.json';
+import runesData from '../../../data/runas.json';
+import champsData from '../../../data/champions.json';
+
+// --- Interfaces para Tipagem ---
+export interface Item {
+  id: number;
+  name: string;
+  nome: string;
+  type: 'attack' | 'magic' | 'defense' | 'boots' | 'enchant' | 'sup';
+  price: number;
 }
 
-export function useFetchData<T>(url: string): FetchState<T> {
-  const [state, setState] = useState<FetchState<T>>({
-    data: null,
-    loading: true,
-    error: null,
-  });
+export interface Rune {
+  name: string;
+  nome: string;
+  tier?: number;
+}
 
-  useEffect(() => {
-    let isMounted = true; // Flag para prevenir atualização de estado em componente desmontado
+export interface RunesJson {
+  keystones: Rune[];
+  Domination: Rune[];
+  Inspiration: Rune[];
+  Precision: Rune[];
+  Resolve: Rune[];
+}
 
-    const fetchData = async () => {
-      setState(prev => ({ ...prev, loading: true, error: null }));
-      try {
-        const response = await fetch(url);
+export interface Champ {
+  name: string;
+  lanes: string[];
+}
 
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
+// Mapeamento de Tipos para o Hook
+interface DataMap {
+  itens: { itens: Item[] };
+  runes: RunesJson;
+  champs: { champ: Champ[] };
+}
 
-        const json = await response.json();
+export function useFetchData<K extends keyof DataMap>(key: K) {
+  return useMemo(() => {
+    let selectedData: any = null;
 
-        if (isMounted) {
-          setState({ data: json as T, loading: false, error: null });
-        }
-      } catch (e) {
-        const errorMessage =
-          e instanceof Error ? e.message : 'Erro desconhecido ao buscar dados.';
-        if (isMounted) {
-          setState({ data: null, loading: false, error: errorMessage });
-        }
-      }
+    if (key === 'itens') selectedData = itensData;
+    if (key === 'runes') selectedData = runesData;
+    if (key === 'champs') selectedData = champsData;
+
+    return {
+      data: selectedData as DataMap[K],
+      loading: false,
+      error: selectedData ? null : 'Data key not found',
     };
-
-    fetchData();
-
-    return () => {
-      isMounted = false; // Cleanup: desativa a flag na desmontagem
-    };
-  }, [url]);
-
-  return state;
+  }, [key]);
 }

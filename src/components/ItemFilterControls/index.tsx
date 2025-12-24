@@ -16,7 +16,6 @@ interface ItemFilterControlsProps {
 export function ItemFilterControls({
   setItemFilter,
   usePortugueseName,
-  setUsePortugueseName,
   searchName,
   handleSearchChange,
 }: ItemFilterControlsProps) {
@@ -24,13 +23,42 @@ export function ItemFilterControls({
     <>
       <Header />
       <NavButtons>
-        <MyButton variety='mage' onClick={() => setItemFilter('magic')} />
-        <MyButton variety='adc' onClick={() => setItemFilter('attack')} />
-        <MyButton variety='tank' onClick={() => setItemFilter('defense')} />
-        <MyButton variety='sup' onClick={() => setItemFilter('sup')} />
-        <MyButton variety='all' onClick={() => setItemFilter('all')} />
-        <MyButton variety='all' onClick={() => setItemFilter('boots')} />
-        <MyButton variety='all' onClick={() => setItemFilter('enchant')} />
+        <MyButton
+          variety='mage'
+          onClick={() => setItemFilter('magic')}
+          isActive={false}
+        />
+        <MyButton
+          variety='adc'
+          onClick={() => setItemFilter('attack')}
+          isActive={false}
+        />
+        <MyButton
+          variety='tank'
+          onClick={() => setItemFilter('defense')}
+          isActive={false}
+        />
+        <MyButton
+          variety='sup'
+          onClick={() => setItemFilter('sup')}
+          isActive={false}
+        />
+        <MyButton
+          variety='all'
+          onClick={() => setItemFilter('all')}
+          isActive={false}
+        />
+        <MyButton
+          variety='all'
+          onClick={() => setItemFilter('boots')}
+          isActive={false}
+        />
+        <MyButton
+          variety='all'
+          onClick={() => setItemFilter('enchant')}
+          isActive={false}
+        />
+        <MyButton variety={'tank'} isActive={false} />
       </NavButtons>
       {/* <button
         onClick={() => setUsePortugueseName(prev => !prev)}

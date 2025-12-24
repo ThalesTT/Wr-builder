@@ -1,0 +1,156 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  height: 100%;
+  padding: 10px;
+  background-color: #010a13;
+  color: #f0e6d2;
+  width: 80%;
+  border: 3px solid green;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+}
+
+.section {
+  padding: 10px 0;
+  border-bottom: 1px solid #32281e;
+  text-align: center;
+}
+
+.sectionTitle {
+  font-size: 11px;
+  color: #a09478;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.keystoneRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+.runeBtn {
+  position: relative;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.runeBtn:hover {
+  transform: scale(1.1);
+}
+
+.keystoneImg {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 2px solid #32281e;
+  transition: all 0.2s;
+  filter: brightness(0.5);
+}
+
+.selectedKeystone {
+  border-color: #c89b3c !important;
+  filter: brightness(1.2) !important;
+  transform: scale(1.1);
+}
+
+.mainContent {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 20px;
+}
+
+.treeTabs {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #32281e;
+  margin-bottom: 10px;
+}
+
+.treeTabBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 8px 4px;
+  text-transform: uppercase;
+  color: #555;
+  transition: 0.3s;
+  border-bottom: 2px solid transparent;
+}
+
+.activeTab {
+  color: #c89b3c !important;
+  border-bottom-color: #c89b3c !important;
+}
+
+.tierGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px;
+  background-color: rgba(255, 255, 255, 0.03);
+  border-radius: 4px;
+  margin-bottom: 5px;
+}
+
+.runeGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.secondaryImg {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  filter: grayscale(1);
+  transition: all 0.2s;
+}
+
+.selectedSecondary {
+  border-color: #c89b3c !important;
+  filter: grayscale(0) !important;
+  background-color: rgba(200, 155, 60, 0.1);
+}
+
+.extraScrollArea {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.extraGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 5px;
+  border-left: 1px solid #32281e;
+}
+
+.extraImg {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0.4);
+}
+
+.selectedExtra {
+  border-color: #00ccff !important;
+  filter: brightness(1.2) !important;
+}

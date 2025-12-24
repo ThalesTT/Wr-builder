@@ -1,9 +1,9 @@
 import { useEffect, useMemo, useState } from 'react';
-import type { ItemData, ItensJson } from '../../../types/Itens';
 import { useFetchData } from '../useFetchData';
+import type { ItemData } from '../../../types/Itens';
 
 export function useItemCatalog() {
-  const { data } = useFetchData<ItensJson>('/data/itens.json');
+  const { data } = useFetchData('itens');
   const [items, setItems] = useState<ItemData[]>([]);
 
   useEffect(() => {

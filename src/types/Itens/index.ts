@@ -28,11 +28,11 @@ export interface BuildDisplayProps {
   getDisplayName: (item: ItemData) => string;
   handleSlotClick: (index: number) => void;
   handleRemoveItem: (index: number) => void;
+  selectedRunes: SelectedRunes | null;
 }
 
 // Interface que define a estrutura de um item carregado do JSON.
 export interface ItemData {
-  image: string;
   name: string; // Nome original (geralmente em inglês)
   nome: string; // Nome em português (para localização)
   price: number;
@@ -44,6 +44,7 @@ export interface SavedUrl {
   name: string;
   url: string; // A URL completa com os parâmetros ?ids=...&bd=...
   savedAt: number;
+  selectedRunes: SelectedRunes;
 }
 export interface ItensJson {
   itens: ItemData[];
@@ -54,6 +55,11 @@ export interface ChampionParam extends Record<string, string | undefined> {
   champion: string;
 }
 
+export interface SelectedRunes {
+  keystone: string | null;
+  secondary?: Record<number, string>;
+  extra?: string | null;
+}
 // Constantes
 export const MAX_BUILD_SIZE = 7;
 export const BOOTS_SLOT_INDEX = 5;
