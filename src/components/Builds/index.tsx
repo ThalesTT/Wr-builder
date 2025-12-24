@@ -2,23 +2,24 @@ import { useEffect, useState } from 'react';
 import type { ItemData, SavedUrl } from '../../types/Itens';
 import { Link } from 'react-router-dom';
 import { BuildPreview } from '../BuildPreview';
+// Importe a interface Rune do local correto
+import type { Rune } from '../hooks/useFetchData';
+import { RunesDisplay } from '../RunesDisplay';
+import type { SelectedRunes } from '../Runes';
 
-const ALL_BUILDS_KEY = 'wrBuilderAllSavedUrls';
+interface BuildsProps {
+  itemCatalog: ItemData[];
+  runesCatalog: Rune[];
+}
 
-// interface buildProps {
-//   itemCatalog: ItemData[]
-//   runesCatalog: ''
-// }
-
-export function Builds({ itemCatalog }: { itemCatalog: ItemData[] }) {
+export function Builds({ itemCatalog, runesCatalog }: BuildsProps) {
   const [savedBuilds, setSavedBuilds] = useState<SavedUrl[]>([]);
 
-  // Função para extrair os itens da URL
+  // 1. Função para extrair os itens
   const extractItemIdsFromUrl = (url: string): number[] => {
     try {
       const queryString = url.split('?')[1];
       if (!queryString) return [];
-
       const params = new URLSearchParams(queryString);
       const idsString = params.get('ids');
       if (idsString) {
@@ -28,12 +29,12 @@ export function Builds({ itemCatalog }: { itemCatalog: ItemData[] }) {
           .filter(id => !isNaN(id));
       }
     } catch (e) {
-      console.error('Erro ao analisar URL:', e);
+      console.error(e);
     }
     return [];
   };
 
-  // Função para extrair o nome do campeão da URL
+  // 2. Função para extrair o nome do campeão
   const extractChampionName = (url: string): string => {
     const path = url.split('?')[0];
     const pathParts = path.split('/');
@@ -41,64 +42,65 @@ export function Builds({ itemCatalog }: { itemCatalog: ItemData[] }) {
     return champion || 'Ahri';
   };
 
-  // Função para extrair as runas da URL
-  const extractRunesFromUrl = (url: string) => {
-    const params = new URLSearchParams(url.split('?')[1]);
-    const runesString = params.get('runes');
+  // 3. Função para extrair as runas (AGORA DENTRO DO COMPONENTE para usar runesCatalog)
+  const extractRunesFromUrl = (url: string): SelectedRunes => {
+    const defaultRunes: SelectedRunes = {
+      keystone: null,
+      secondaryTreeId: 'secondary',
+      secondary: {},
+      extra: null,
+    };
+    try {
+      const queryString = url.split('?')[1];
+      if (!queryString) return defaultRunes;
 
-    if (runesString) {
-      const runesArray = runesString.split(',');
-      const keystone = runesArray[0];
-      const secondary = runesArray.slice(1, 4);
-      const extra = runesArray[4];
+      const params = new URLSearchParams(queryString);
+      const kId = params.get('k');
+      const sIds = params.get('s')?.split(',') || [];
+
+      // Buscamos o objeto no catálogo, mas retornamos apenas a propriedade .name (string)
+      const kRune = runesCatalog.find(r => r.id === Number(kId));
+      const s1 = runesCatalog.find(r => r.id === Number(sIds[0]));
+      const s2 = runesCatalog.find(r => r.id === Number(sIds[1]));
+      const s3 = runesCatalog.find(r => r.id === Number(sIds[2]));
 
       return {
-        keystone,
+        // Retornamos kRune.name (que é uma string) em vez de kRune (que é um objeto)
+        keystone: kRune ? kRune.name : null,
         secondary: {
-          1: secondary[0] || '',
-          2: secondary[1] || '',
-          3: secondary[2] || '',
+          1: s1 ? s1.name : '',
+          2: s2 ? s2.name : '',
+          3: s3 ? s3.name : '',
         },
-        extra: extra || '',
-        secondaryTreeId: 'secondary', // Você pode ajustar conforme sua necessidade
+        extra: null,
+        secondaryTreeId: 'secondary',
       };
+    } catch (e) {
+      console.error('Erro ao processar runas:', e);
+      return defaultRunes;
     }
-
-    return {
-      keystone: '',
-      secondary: { 1: '', 2: '', 3: '' },
-      extra: '',
-      secondaryTreeId: 'secondary',
-    };
   };
 
-  // Carregar builds salvas do localStorage
+  // 4. Carregar do LocalStorage
   useEffect(() => {
-    const loadBuilds = () => {
+    const savedUrlsJson = localStorage.getItem('wrBuilderAllSavedUrls');
+    if (savedUrlsJson) {
       try {
-        const savedUrlsJson = localStorage.getItem(ALL_BUILDS_KEY);
-        if (savedUrlsJson) {
-          const loadedBuilds: SavedUrl[] = JSON.parse(savedUrlsJson);
-          loadedBuilds.sort((a, b) => b.savedAt - a.savedAt);
-          setSavedBuilds(loadedBuilds);
-        }
-      } catch (error) {
-        console.error('Erro ao carregar builds salvas do LocalStorage:', error);
-        setSavedBuilds([]);
+        const loadedBuilds: SavedUrl[] = JSON.parse(savedUrlsJson);
+        setSavedBuilds(loadedBuilds.sort((a, b) => b.savedAt - a.savedAt));
+      } catch (e) {
+        console.error(e);
       }
-    };
-    loadBuilds();
+    }
   }, []);
 
   const handleRemoverBuild = (idToRemove: string) => {
     const updatedBuilds = savedBuilds.filter(build => build.id !== idToRemove);
-
-    try {
-      localStorage.setItem(ALL_BUILDS_KEY, JSON.stringify(updatedBuilds));
-      setSavedBuilds(updatedBuilds);
-    } catch (error) {
-      console.error('Falha ao remover build:', error);
-    }
+    localStorage.setItem(
+      'wrBuilderAllSavedUrls',
+      JSON.stringify(updatedBuilds),
+    );
+    setSavedBuilds(updatedBuilds);
   };
 
   const formatarData = (timestamp: number) => {
@@ -109,38 +111,43 @@ export function Builds({ itemCatalog }: { itemCatalog: ItemData[] }) {
     );
   };
 
+  // O RETURN deve estar aqui dentro!
   return (
     <div>
       <h1>💾 Minhas Builds Salvas</h1>
-      {itemCatalog.length === 0 && <p>Carregando itens...</p>}
-
-      {savedBuilds.length === 0 && (
-        <p>Você não tem nenhuma build salva localmente.</p>
+      {(itemCatalog.length === 0 || runesCatalog.length === 0) && (
+        <p>Carregando dados...</p>
       )}
 
-      {itemCatalog.length > 0 && savedBuilds.length > 0 && (
+      {savedBuilds.length === 0 ? (
+        <p>Você não tem nenhuma build salva localmente.</p>
+      ) : (
         <ul>
           {savedBuilds.map(build => {
             const itemIds = extractItemIdsFromUrl(build.url);
             const championSlug = extractChampionName(build.url);
-            const selectedRunes = extractRunesFromUrl(build.url); // Extraindo as runas da URL
+            const selectedRunes = extractRunesFromUrl(build.url);
+            console.log(championSlug);
 
             return (
-              <li key={build.id}>
+              <li
+                key={build.id}
+                style={{ marginBottom: '20px', borderBottom: '1px solid #ccc' }}
+              >
                 <Link to={build.url}>
                   <h2>{build.name}</h2>
                 </Link>
 
-                {/* Exibindo os Itens e as Runas */}
                 <BuildPreview
-                  selectedRunes={selectedRunes} // Passando as runas para o BuildPreview
+                  selectedRunes={selectedRunes}
                   itemIds={itemIds}
                   itemCatalog={itemCatalog}
                   champion={championSlug}
                 />
 
-                <p>Salvo em: {formatarData(build.savedAt)}</p>
+                <RunesDisplay selectedRunes={selectedRunes} />
 
+                <p>Salvo em: {formatarData(build.savedAt)}</p>
                 <button onClick={() => handleRemoverBuild(build.id)}>
                   Remover
                 </button>
@@ -151,4 +158,4 @@ export function Builds({ itemCatalog }: { itemCatalog: ItemData[] }) {
       )}
     </div>
   );
-}
+} // FIM DO COMPONENTE BUILDS

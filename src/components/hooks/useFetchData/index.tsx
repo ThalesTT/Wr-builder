@@ -15,6 +15,7 @@ export interface Item {
 }
 
 export interface Rune {
+  id: number;
   name: string;
   nome: string;
   tier?: number;

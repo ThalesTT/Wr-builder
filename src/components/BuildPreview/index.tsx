@@ -3,7 +3,6 @@
 import React from 'react';
 import { Frame } from '../Frame';
 import type { ItemData } from '../../types/Itens';
-import { RunesDisplay } from '../RunesDisplay';
 import type { SelectedRunes } from '../Runes';
 
 interface BuildPreviewProps {
@@ -37,12 +36,11 @@ export const BuildPreview: React.FC<BuildPreviewProps> = ({
             name={champion}
             picture={`/images/champs/${champion}.WEBP`}
           />
-          <RunesDisplay selectedRunes={selectedRunes} />
           {itemsInBuild.map((item, index) => (
             <Frame
               key={index}
               picture={`/images/itens/${item.name}.WEBP`}
-              name={item.name}
+              name={item.nome}
               classStyles='build'
             />
           ))}

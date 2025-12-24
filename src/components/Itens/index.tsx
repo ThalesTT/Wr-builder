@@ -229,11 +229,13 @@ export function Itens() {
         setUsePortugueseName={setUsePortugueseName}
         searchName={searchName}
         handleSearchChange={setSearchName}
+        showRunes={showRunes}
+        handleChangeRune={() => setShowRunes(prev => !prev)}
       />
 
-      <button onClick={() => setShowRunes(!showRunes)}>
+      {/* <button onClick={() => setShowRunes(!showRunes)}>
         {showRunes ? 'Ver Itens' : 'Ver Runas'}
-      </button>
+      </button> */}
 
       {showRunes ? (
         <Runes onUpdate={handleRunesUpdate} initialRunes={selectedRunes} />
@@ -246,36 +248,6 @@ export function Itens() {
       )}
 
       <Container>
-        <button
-          onClick={() => {
-            setShowCardModal(true);
-            navigator.clipboard.writeText(
-              window.location.origin + buildUrlToSave,
-            );
-            alert('URL Copiada!');
-          }}
-        >
-          Exportar
-        </button>
-
-        <button
-          onClick={() => {
-            const saved = JSON.parse(
-              localStorage.getItem(ALL_BUILDS_KEY) || '[]',
-            );
-            saved.push({
-              id: Date.now().toString(),
-              name: buildName || `Build ${championSlug}`,
-              url: buildUrlToSave,
-              selectedRunes,
-            });
-            localStorage.setItem(ALL_BUILDS_KEY, JSON.stringify(saved));
-            alert('Salvo!');
-          }}
-        >
-          Salvar
-        </button>
-
         <BuildDisplay
           championName={championName}
           champion={championSlug}
@@ -297,6 +269,38 @@ export function Itens() {
           onClose={() => setShowCardModal(false)}
           selectedRunes={selectedRunes}
         />
+        <Container>
+          <button
+            onClick={() => {
+              setShowCardModal(true);
+              navigator.clipboard.writeText(
+                window.location.origin + buildUrlToSave,
+              );
+              alert('URL Copiada!');
+            }}
+          >
+            Exportar
+          </button>
+
+          <button
+            onClick={() => {
+              const saved = JSON.parse(
+                localStorage.getItem(ALL_BUILDS_KEY) || '[]',
+              );
+              saved.push({
+                savedAt: Date.now(),
+                id: Date.now().toString(),
+                name: buildName || `Build ${championSlug}`,
+                url: buildUrlToSave,
+                selectedRunes,
+              });
+              localStorage.setItem(ALL_BUILDS_KEY, JSON.stringify(saved));
+              alert('Salvo!');
+            }}
+          >
+            Salvar
+          </button>
+        </Container>
       </Container>
     </>
   );

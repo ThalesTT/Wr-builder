@@ -27,7 +27,7 @@ export function RunesDisplay({ selectedRunes }: RunesDisplayProps) {
               width: '40px',
               height: '40px',
               borderRadius: '5px',
-              border: '2px solid #fff', // Ajuste de borda para destacar a runa
+              border: '2px solid red',
             }}
           />
           <p style={{ color: 'white', fontSize: '0.75rem' }}>
@@ -50,7 +50,6 @@ export function RunesDisplay({ selectedRunes }: RunesDisplayProps) {
                       width: '40px',
                       height: '40px',
                       borderRadius: '5px',
-                      border: '2px solid #fff',
                     }}
                   />
                   <p style={{ color: 'white', fontSize: '0.75rem' }}>{rune}</p>

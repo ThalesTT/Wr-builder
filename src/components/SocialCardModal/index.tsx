@@ -161,6 +161,7 @@ export const SocialCardModal: React.FC<SocialCardModalProps> = ({
         </div>
         {/* Botão de download */}
         <button
+          data-html2canvas-ignore
           onClick={handleDownload}
           style={{
             marginTop: '1rem',

@@ -73,7 +73,7 @@ export function AllChampions() {
       <div className={styles['champios-container']}>
         <ul className={styles.champions}>
           {finalChampions.map(champion => (
-            <Link to={`/allitens/${champion.name}`} key={champion.name}>
+            <Link to={`/itens/${champion.name}`} key={champion.name}>
               <li>
                 <Frame
                   picture={`/images/champs/${champion.name}.WEBP`}

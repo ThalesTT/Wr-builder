@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import runesDataImport from '../../data/runas.json';
 import styles from './styles.module.css';
+import type { Rune } from '../hooks/useFetchData';
 
 // --- Interfaces ---
 export interface SelectedRunes {
@@ -10,13 +11,7 @@ export interface SelectedRunes {
   extra: string | null;
 }
 
-interface Rune {
-  name: string;
-  nome: string;
-  tier?: number;
-}
-
-interface RunesJson {
+export interface RunesJson {
   keystones: Rune[];
   Domination: Rune[];
   Inspiration: Rune[];

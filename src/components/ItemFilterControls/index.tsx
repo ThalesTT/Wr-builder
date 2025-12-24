@@ -10,14 +10,18 @@ interface ItemFilterControlsProps {
   usePortugueseName: boolean;
   setUsePortugueseName: React.Dispatch<React.SetStateAction<boolean>>;
   searchName: string;
+  showRunes: boolean;
   handleSearchChange: (newTerm: string) => void;
+  handleChangeRune: () => void;
 }
 
 export function ItemFilterControls({
   setItemFilter,
   usePortugueseName,
   searchName,
+  showRunes,
   handleSearchChange,
+  handleChangeRune,
 }: ItemFilterControlsProps) {
   return (
     <>
@@ -58,21 +62,24 @@ export function ItemFilterControls({
           onClick={() => setItemFilter('enchant')}
           isActive={false}
         />
-        <MyButton variety={'tank'} isActive={false} />
+        <MyButton
+          variety={showRunes ? 'mage' : 'tank'}
+          isActive={false}
+          onClick={() => handleChangeRune()}
+        />
       </NavButtons>
-      {/* <button
-        onClick={() => setUsePortugueseName(prev => !prev)}
-        style={{ margin: '10px' }}
-      >
-        Mudar Idioma: {usePortugueseName ? 'Português (ON)' : 'Inglês (OFF)'}
-      </button> */}
-      <BuildName
-        name={searchName}
-        onNameChange={handleSearchChange}
-        placeholder={
-          usePortugueseName ? 'Pesquise seu item (PT)' : 'Search your item (EN)'
-        }
-      />
+
+      {!showRunes && (
+        <BuildName
+          name={searchName}
+          onNameChange={handleSearchChange}
+          placeholder={
+            usePortugueseName
+              ? 'Pesquise seu item (PT)'
+              : 'Search your item (EN)'
+          }
+        />
+      )}
     </>
   );
 }
