@@ -52,7 +52,7 @@
   height: auto;
   border: 2px solid black;
   border-top: 0;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   text-align: center;
 }
 .champion img {
@@ -72,7 +72,7 @@
   padding-top: 0px;
   background-color: var(--primary-color); /* Para visualização */
   width: 6.8rem;
-  height: 38px;
+  height: 3.8rem;
   white-space: wrap;
   position: relative;
   font-size: 1rem;
@@ -89,37 +89,46 @@
   width: 6.8rem;
 }
 .item-in-build {
-  height: 80px;
-  width: 60px;
-  border: 1px solid blue;
-  background-color: black;
-  margin: 0px;
+  height: 8.4rem;
+  width: 6rem;
+  background-color: #313131;
+  margin-top: 0px;
+  flex-direction: column;
+  /* IMPORTANTE: Alinha os itens no topo para não sobrar espaço */
+  justify-content: flex-start;
+  align-items: stretch;
 }
 .item-in-build p {
   background-color: var(--primary-color);
+  margin-top: 0px;
+  line-height: 24px;
   height: 24px;
-  border: 1px solid black;
+  border: 2px solid var(--primary-color);
+
+  /* border: 1px solid black; */
   border-top: 0;
   white-space: wrap;
   position: relative;
   font-size: 0.8rem;
   text-align: center;
   justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
 }
 
 .item-in-build img {
-  padding: 0;
-  margin: 0;
-  height: 60px;
-  width: 60px;
+  display: block;
+  margin: 0px;
+  width: 100%;
+  object-fit: cover; /* Garante que a imagem preencha o espaço sem distorcer */
 }
 /* Novo Estilo para o Botão */
 .frame button {
   position: absolute;
   top: 5px;
   right: 5px;
-  width: 10px;
-  height: 10px;
+  width: 1rem;
+  height: 1rem;
   text-align: center;
   color: #5b4c30;
 

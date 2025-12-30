@@ -1,3 +1,5 @@
+import type { SelectedRunes } from '../runes';
+
 // Define os tipos válidos para a propriedade 'type' dos itens.
 export type ITEM_TYPE =
   | 'attack'
@@ -8,6 +10,14 @@ export type ITEM_TYPE =
   | 'enchant';
 // Define os tipos válidos para o filtro, incluindo 'all' para mostrar todos.
 export type FilterType = ITEM_TYPE | 'all';
+
+export interface Item {
+  id: number;
+  name: string;
+  nome: string;
+  type: 'attack' | 'magic' | 'defense' | 'boots' | 'enchant' | 'sup';
+  price: number;
+}
 
 export interface ItemSlotProps {
   item: ItemData | null;
@@ -28,6 +38,8 @@ export interface BuildDisplayProps {
   getDisplayName: (item: ItemData) => string;
   handleSlotClick: (index: number) => void;
   handleRemoveItem: (index: number) => void;
+  save: () => void;
+  share: () => void;
   selectedRunes: SelectedRunes | null;
 }
 
@@ -55,11 +67,6 @@ export interface ChampionParam extends Record<string, string | undefined> {
   champion: string;
 }
 
-export interface SelectedRunes {
-  keystone: string | null;
-  secondary?: Record<number, string>;
-  extra?: string | null;
-}
 // Constantes
 export const MAX_BUILD_SIZE = 7;
 export const BOOTS_SLOT_INDEX = 5;

@@ -1,76 +1,133 @@
-/*
- * =========================================================
- * 🎨 CSS para o componente BuildDisplay (styles.module.css)
- * =========================================================
- */
-
-/* 📦 1. Contêiner/Painel da Build (div) */
 .item-build {
   width: 100%;
-  max-width: 650px; /* Largura típica para conteúdo principal */
-  background-color: #2c3e50; /* Painel do fundo (cinza escuro) */
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-  margin: 15px auto; /* Centraliza o painel na tela */
-  color: white; /* Cor do texto (ex: o <h3>Build</h3>) */
-  border: 2px solid green;
-}
-
-/* 📋 2. Lista de Slots/Itens (ul) */
-.item-list {
-  border: 2px solid fuchsia;
-  list-style: none;
-  padding: 0;
-  margin: 10px 0 0; /* Espaço após o cabeçalho/nome da build */
+  max-width: 65rem;
+  background-color: rgba(1, 10, 19, 0.9);
+  padding: 10px; /* Padding igual para todos os lados */
+  border: 1px solid #1e2328;
+  border-radius: 4px;
   display: flex;
-  flex-wrap: wrap; /* Para itens quebrarem a linha em telas menores */
-  gap: 8px; /* Espaço entre os ícones */
-  justify-content: center; /* Alinhar à esquerda */
-  height: auto;
+  flex-direction: column; /* Empilha: Título -> Runas -> Itens */
+  align-items: flex-start; /* Força tudo para a esquerda */
+  gap: 2px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2px;
 }
 
-/* 📦 3 & 4. Estilos Comuns e Base dos Slots (li) */
-/* Os estilos de tamanho, borda e fundo se aplicam a todos os <li> dentro de .item-list */
-.item-list li {
-  background-color: rgb(210, 30, 141);
-  /* border: 2px solid violet; */
-  width: auto; /* Tamanho do ícone do item */
-  height: auto;
+.headerRow {
   display: flex;
   align-items: center;
+}
+
+.headerRow h3 {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  color: #c8aa6e;
+  letter-spacing: 1px;
+}
+
+.item-list {
+  list-style: none;
+  padding: 5px 0; /* Compactado */
+  margin: 5px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
   justify-content: center;
-  font-size: 0.8em;
+}
+
+/* Container dos Botões */
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  width: 100%;
+  margin-top: auto;
+  flex-shrink: 0;
+  padding-top: 10px;
+  border-top: 1px solid rgba(200, 170, 110, 0.2); /* Linha divisória fina */
+}
+
+/* Botões Estilo LoL */
+.btnPrimary,
+.btnSecondary {
+  padding: 6px 16px;
+  font-size: 0.75rem;
   font-weight: bold;
-  text-align: center;
+  text-transform: uppercase;
   cursor: pointer;
-  box-sizing: border-box; /* Inclui padding/borda no tamanho */
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  position: relative;
-  /* background-color: #f1c40f; Fundo do slot (amarelo) */
-  /* border: 3px solid #f39c12; Borda (dourado) */
-  color: #1e2328; /* Texto escuro para contraste */
+  transition: 0.2s;
+  letter-spacing: 1px;
 }
 
-/* 🌟 6. Estilo para destacar o Slot Ativo */
-.active-slot {
-  /* Efeito de destaque visual: Anel azul e zoom */
-  box-shadow: 0 0 0 3px #3498db, 0 5px 15px rgba(52, 152, 219, 0.5);
-  border-color: #3498db; /* Altera a borda principal para azul */
-  transform: scale(1.05); /* Pequeno zoom para destaque */
+.btnPrimary {
+  background: #006680;
+  border: 1px solid #c8aa6e;
+  color: #f0e6d2;
 }
 
-/* Efeitos de Hover Otimizados */
-
-/* Hover padrão para slots não ativos */
-.item-list li:hover:not(.active-slot) {
-  transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+.btnPrimary:hover {
+  background: #008ca3;
+  filter: brightness(1.2);
 }
 
-/* Hover em slots ativos (mantém o destaque ativo) */
-.active-slot:hover {
-  transform: scale(1.05); /* Mantém o zoom do ativo */
-  /* Aumenta a intensidade da sombra para feedback de hover */
-  box-shadow: 0 0 0 3px #3498db, 0 5px 15px rgba(52, 152, 219, 0.7);
+.btnSecondary {
+  background: transparent;
+  border: 1px solid #5b5a56;
+  color: #a09b8c;
+}
+
+.btnSecondary:hover {
+  border-color: #f0e6d2;
+  color: #f0e6d2;
+}
+
+/* Manter seus estilos de .item-list li e .active-slot abaixo... */
+/* ... manter seus estilos anteriores ... */
+
+.emptyRune {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: 1px dashed rgba(160, 148, 120, 0.2); /* Borda tracejada sutil */
+  background: rgba(0, 0, 0, 0.2);
+  margin-bottom: 12px; /* Compensa o espaço que o label ocuparia */
+}
+
+.emptyKeystone {
+  width: 4.2rem;
+  height: 4.2rem;
+  border: 2px solid rgba(200, 155, 60, 0.1);
+}
+
+.emptyExtra {
+  border: 1px solid rgba(0, 204, 255, 0.1);
+}
+
+/* Garante que o item de runa sempre ocupe a mesma altura, com ou sem texto */
+.rune-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 5rem;
+  height: 5.5rem; /* Altura fixa para o item completo */
+  flex-shrink: 0;
+  text-align: center;
+}
+
+.keystone-item {
+  width: 6rem;
+  height: 6.5rem; /* Keystone é um pouco maior */
+}
+@media (max-width: 480px) {
+  .actions {
+    flex-direction: column; /* Empilha um botão sobre o outro */
+    align-items: stretch;
+  }
+
+  .btnPrimary,
+  .btnSecondary {
+    width: 100%;
+    text-align: center;
+  }
 }

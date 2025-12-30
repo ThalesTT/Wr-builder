@@ -1,0 +1,83 @@
+.runes-display-container {
+  display: inline-flex; /* Faz o container ter apenas o tamanho das runas */
+  gap: 10px; /* Espaço entre cada runa */
+  align-items: center;
+  justify-content: flex-start;
+  padding: 2px 20px;
+  background: rgba(1, 10, 19, 0.8); /* Fundo mais escuro para destaque */
+  border: 1px solid #32281e;
+  border-radius: 4px;
+  margin: 0px 0; /* Espaçamento vertical no card */
+
+  /* Impede que saia do pai mas não força ocupar tudo */
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.rune-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 8.1rem; /* Largura fixa menor para aproximar as runas */
+  flex-shrink: 1; /* Não deixa esmagar o ícone */
+}
+
+.keystone-item {
+  width: 7rem; /* Keystone levemente maior */
+  border-right: 1px solid rgba(200, 170, 110, 0.2);
+  padding-right: 18px;
+  margin-right: 6px;
+}
+
+.rune-image {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.5));
+}
+
+.keystone-image {
+  width: 4.2rem;
+  height: 4.2rem;
+}
+
+.rune-label {
+  font-size: 0.8rem; /* Fonte pequena para não ocupar espaço */
+  color: #f5e3b6;
+  margin-top: 4px;
+  width: 100%;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+}
+
+/* Estado vazio */
+.emptyRune {
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  border: 1px dashed rgba(160, 148, 120, 0.3);
+}
+
+.emptyKeystone {
+  width: 3.8rem;
+  height: 3.8rem;
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+  .runes-display-container {
+    gap: 6px;
+    padding: 6px 10px;
+  }
+
+  .rune-item {
+    width: 3.5rem;
+  }
+
+  .rune-label {
+    display: none; /* Em telas muito pequenas, o texto some e os ícones colam mais */
+  }
+}

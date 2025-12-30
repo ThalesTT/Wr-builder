@@ -213,6 +213,10 @@
       "lanes": ["Jungle"]
     },
     {
+      "name": "Kogmaw",
+      "lanes": ["ADC"]
+    },
+    {
       "name": "LeeSin",
       "lanes": ["Jungle"]
     },

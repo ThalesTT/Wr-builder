@@ -1,57 +1,59 @@
-/* Container Opcional para espaçamento */
+/* Container que centraliza e remove a borda de teste */
 .build-name-container {
-  width: 250px; /* Largura padrão */
-  margin: 20px;
-  /* Para a "sombra" exterior (efeito de brilho) */
-  box-shadow: 0 0 10px rgba(10, 20, 30, 0.8);
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 0;
-  margin-bottom: 0;
+  width: fit-content; /* Ajusta-se ao texto, não ocupa a tela toda */
+  min-width: 20rem;
+  margin: 10px auto;
   display: flex;
-  height: auto;
+  position: relative;
+  background: rgba(1, 10, 19, 0.9);
+  border-radius: 4px; /* Pequeno arredondamento para elegância */
 }
 
-/* O Campo de Input Principal */
 .build-name {
   width: 100%;
-  padding: 10px 15px;
-  font-family: 'Beaufort', sans-serif; /* Fonte comum do LoL - use uma alternativa se não tiver */
-  font-size: 1.4rem;
-  color: #f0e6d2; /* Cor de texto claro (dourado/creme) */
+  padding: 8px 12px; /* Reduzi o padding para ficar mais "fino" */
+  font-family: 'Beaufort', sans-serif;
+  font-size: 1.2rem; /* Tamanho ligeiramente menor */
+  color: #f0e6d2;
+  background: transparent; /* Deixa o container pai ditar o fundo */
 
-  /* Cores de fundo e borda */
-  background-color: rgba(10, 20, 30, 0.85); /* Fundo escuro semitransparente */
-  border: 1px solid #c8aa6e; /* Borda dourada (cor de detalhe do LoL) */
+  /* Borda dourada metálica e fina */
+  border: 1px solid #c8aa6e;
+  border-image: linear-gradient(to right, #785a28, #c8aa6e, #785a28) 1;
 
-  /* Efeito visual da borda */
-  border-image: linear-gradient(45deg, #c8aa6e 0%, #a78345 50%, #c8aa6e 100%) 1;
-
-  /* Removendo a borda padrão do input e adicionando um toque angular */
-  border-radius: 0px;
-
-  /* Adicionando um box-shadow interno para profundidade */
-  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
-
-  /* Garante que o texto de placeholder também seja da cor correta */
-  transition: all 0.2s ease-in-out;
+  text-align: center;
+  transition: all 0.3s ease;
+  letter-spacing: 1px;
 }
 
-/* Revertendo a inclinação para o texto dentro do input */
-.build-name::placeholder {
-  color: rgba(240, 230, 210, 0.6);
-  transform: skewX(5deg); /* Reverte a inclinação no texto do placeholder */
+.build-name:focus {
+  outline: none;
+  border-image: linear-gradient(to right, #00b0b0, #005a82, #00b0b0) 1;
+  box-shadow: 0 0 10px rgba(0, 176, 176, 0.4);
+  color: #fff;
+}
+
+/* Botão de Remover no estilo "Pílula Hextech" */
+.deleteButton {
   display: block;
+  margin: 12px auto 0;
+  background: rgba(40, 10, 10, 0.6);
+  color: #ff4d4d;
+  border: 1px solid #5c1a1a;
+  padding: 4px 12px;
+  font-size: 0.7rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-radius: 20px; /* Estilo pílula igual ao das runas */
+  cursor: pointer;
+  transition: all 0.2s;
 }
 
-/* Efeito de Foco (quando o usuário clica) */
-.build-name:focus {
-  outline: none; /* Remove o outline padrão do navegador */
-  border-color: #00b0b0; /* Borda azul/cian para efeito de foco (energia) */
-  box-shadow: 0 0 15px rgba(0, 176, 176, 0.7), inset 0 0 5px rgba(0, 0, 0, 0.8);
-}
-
-/* Para o cursor (opcional) */
-.build-name:focus {
-  caret-color: #00b0b0;
+.deleteButton:hover {
+  background: #ff4d4d;
+  color: #fff;
+  border-color: #ff8080;
+  box-shadow: 0 0 8px rgba(255, 77, 77, 0.5);
+  transform: translateY(-1px);
 }

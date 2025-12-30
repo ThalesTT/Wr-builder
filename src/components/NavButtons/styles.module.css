@@ -1,19 +1,10 @@
-.nav {
+.nav-list {
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
-  align-items: center;
-  margin-top: 80px;
-  margin-left: 0;
-  margin-right: 0;
-  justify-content: center;
-  border: 1px solid black;
-}
-.nav {
-  display: flex;
-  flex-direction: row;
+  margin: 0px;
   align-items: center;
   text-decoration: none;
+  justify-content: center;
   color: #888;
   width: 100%;
   padding: 0;
@@ -40,7 +31,7 @@ body {
   flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha */
   justify-content: space-around; /* Distribui os itens uniformemente no eixo principal */
   gap: 15px; /* Espaçamento entre os itens */
-  max-width: 1200px;
+  max-width: 120rem;
   margin: 0 auto; /* Centraliza a galeria */
 }
 
@@ -48,7 +39,7 @@ body {
 .foto-item {
   /* Define uma largura base para os itens. 
        O 'flex-grow: 1' garante que eles se expandam no espaço disponível. */
-  flex: 1 1 250px;
+  flex: 1 1 25rem;
   /* flex: <flex-grow> <flex-shrink> <flex-basis>
        - flex-grow: 1 (O item pode crescer)
        - flex-shrink: 1 (O item pode encolher)

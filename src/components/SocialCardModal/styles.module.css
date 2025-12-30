@@ -1,0 +1,106 @@
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.modalContent {
+  /* Fundo azul escuro gradiente do cliente */
+  background: radial-gradient(circle at top, #061c23 0%, #010a13 100%);
+  padding: 2rem;
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Bordas Douradas Hextech */
+  border: 2px solid #785a28;
+  position: relative;
+}
+
+/* Detalhe de borda interna (Double Border estilo LoL) */
+.modalContent::after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  right: 4px;
+  bottom: 4px;
+  border: 1px solid #c89b3c;
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+.title {
+  color: #f0e6d2; /* Cor "Beige" do texto do LoL */
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.championImage {
+  margin-bottom: 10px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid #c8aa6e;
+}
+
+.itemRow {
+  display: flex;
+  flex-wrap: wrap; /* Importante para não vazar no celular */
+  gap: 4px;
+  justify-content: center;
+  width: 100%;
+  margin-top: 15px;
+  padding: 15px 0;
+  border-top: 1px solid rgba(200, 170, 110, 0.2);
+}
+
+.itemCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60px;
+}
+
+.itemImage {
+  width: 48px;
+  height: 48px;
+  border: 1px solid #3c3c41;
+  background: #000;
+}
+
+.itemName {
+  color: #a09b8c;
+  font-size: 0.5rem;
+  margin-top: 4px;
+  text-align: center;
+  /* Evita que nomes gigantes quebrem o layout */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+.downloadButton {
+  margin-top: 1.5rem;
+  padding: 10px 25px;
+  /* Botão gradiente dourado do LoL */
+  background: linear-gradient(to bottom, #c8aa6e 0%, #785a28 100%);
+  border: 1px solid #f0e6d2;
+  color: #1e2328;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+}

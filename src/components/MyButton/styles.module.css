@@ -1,6 +1,6 @@
 button {
-  width: 75px;
-  height: 40px;
+  width: 7.5rem;
+  height: 4rem;
   background-color: #152036;
   border: 1px solid #152036;
   display: flex;
@@ -11,12 +11,12 @@ button {
   padding: 5px;
   /* font-size: 0.9rem; */
   cursor: pointer;
-  border: 1px solid red;
 }
 button:hover {
   color: #faf0cd;
   border-bottom: 2px solid #e0bf7a;
-  /* background-color: #213354; */
+  background-color: #213354;
+  box-shadow: 0 0 10px rgba(200, 170, 110, 0.5);
 }
 /* p{
       font-size: 1.0rem;

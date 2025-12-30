@@ -1,23 +1,8 @@
 import { useEffect, useMemo, useState } from 'react';
-import runesDataImport from '../../data/runas.json';
+import runesDataImport from '../../data/runes.json';
 import styles from './styles.module.css';
-import type { Rune } from '../hooks/useFetchData';
-
-// --- Interfaces ---
-export interface SelectedRunes {
-  keystone: string | null;
-  secondaryTreeId: string;
-  secondary: Record<number, string>;
-  extra: string | null;
-}
-
-export interface RunesJson {
-  keystones: Rune[];
-  Domination: Rune[];
-  Inspiration: Rune[];
-  Precision: Rune[];
-  Resolve: Rune[];
-}
+import type { RunesJson, SelectedRunes } from '../../types/runes';
+import { useSound } from '../hooks/useSound';
 
 interface RunesProps {
   onUpdate: (runes: SelectedRunes) => void;
@@ -49,6 +34,7 @@ export function Runes({ onUpdate, initialRunes }: RunesProps) {
 
   const secondaryRunes = data[activeSecondaryTreeId];
   const extraTrees = treeIds.filter(id => id !== activeSecondaryTreeId);
+  const { playSound } = useSound();
 
   useEffect(() => {
     onUpdate({
@@ -68,24 +54,29 @@ export function Runes({ onUpdate, initialRunes }: RunesProps) {
   const getRuneImg = (name: string) => `/images/runes/${name}.WEBP`;
 
   return (
-    <div className={styles.container}>
+    <div className={styles['container-runes']}>
       {/* 1. KEYSTONES */}
       <div className={styles.section}>
         <span className={styles.sectionTitle}>Runa Essencial</span>
         <div className={styles.keystoneRow}>
           {data.keystones.map(k => (
             <button
-              key={k.name}
-              onClick={() => setSelectedKeystone(k.name)}
+              key={k.name.replaceAll('-', ' ')}
+              data-tooltip={k.name.replaceAll('-', ' ')}
+              onClick={() => {
+                setSelectedKeystone(k.name);
+                playSound('keystone');
+              }}
               className={styles.runeBtn}
             >
               <img
+                loading='lazy'
                 src={getRuneImg(k.name)}
-                alt={k.nome}
+                alt={k.name.replaceAll('-', ' ')}
                 className={`${styles.keystoneImg} ${
                   selectedKeystone === k.name ? styles.selectedKeystone : ''
                 }`}
-                title={k.nome}
+                title={k.name.replaceAll('-', ' ')}
               />
             </button>
           ))}
@@ -98,16 +89,24 @@ export function Runes({ onUpdate, initialRunes }: RunesProps) {
           <div className={styles.treeTabs}>
             {treeIds.map(id => (
               <button
+                data-tooltip={id}
                 key={id}
                 onClick={() => {
                   setActiveSecondaryTreeId(id);
                   setSelectedSecondary({});
+                  playSound('rune');
                 }}
                 className={`${styles.treeTabBtn} ${
                   activeSecondaryTreeId === id ? styles.activeTab : ''
                 }`}
               >
-                {id}
+                <img
+                  loading='lazy'
+                  className={styles['rune-tree']}
+                  src={`/images/runes-trees/${id}.WEBP`}
+                  alt={id.replaceAll('-', ' ')}
+                  title={id.replaceAll('-', ' ')}
+                />
               </button>
             ))}
           </div>
@@ -119,24 +118,27 @@ export function Runes({ onUpdate, initialRunes }: RunesProps) {
                   .filter(r => r.tier === tier)
                   .map(r => (
                     <button
+                      data-tooltip={r.name.replaceAll('-', ' ')}
                       key={r.name}
-                      onClick={() =>
+                      onClick={() => {
                         setSelectedSecondary(prev => ({
                           ...prev,
                           [tier]: r.name,
-                        }))
-                      }
+                        }));
+                        playSound('rune');
+                      }}
                       className={styles.runeBtn}
                     >
                       <img
+                        loading='lazy'
                         src={getRuneImg(r.name)}
-                        alt={r.nome}
+                        alt={r.name.replaceAll('-', ' ')}
                         className={`${styles.secondaryImg} ${
                           selectedSecondary[tier] === r.name
                             ? styles.selectedSecondary
                             : ''
                         }`}
-                        title={r.nome}
+                        title={r.name.replaceAll('-', ' ')}
                       />
                     </button>
                   ))}
@@ -150,20 +152,28 @@ export function Runes({ onUpdate, initialRunes }: RunesProps) {
           <span className={styles.sectionTitle}>Runa Extra</span>
           <div className={styles.extraScrollArea}>
             {extraTrees.map(treeId => (
-              <div key={treeId} className={styles.extraGrid}>
+              <div
+                key={treeId}
+                className={`${styles.extraGrid} ${styles.topSection}`}
+              >
                 {data[treeId].map(s => (
                   <button
                     key={s.name}
-                    onClick={() => setSelectedExtra(s.name)}
+                    onClick={() => {
+                      setSelectedExtra(s.name);
+                      playSound('rune');
+                    }}
                     className={styles.runeBtn}
+                    data-tooltip={s.name.replaceAll('-', ' ')}
                   >
                     <img
+                      loading='lazy'
                       src={getRuneImg(s.name)}
-                      alt={s.nome}
+                      alt={s.name.replaceAll('-', ' ')}
                       className={`${styles.secondaryImg} ${styles.extraImg} ${
                         selectedExtra === s.name ? styles.selectedExtra : ''
                       }`}
-                      title={s.nome}
+                      title={s.name.replaceAll('-', ' ')}
                     />
                   </button>
                 ))}

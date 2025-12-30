@@ -1,11 +1,23 @@
-.nav a {
+.navList-header {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+.navList-header a {
   color: var(--text-color);
   text-decoration: none;
   margin-left: 20px;
   font-size: 18px;
   transition: color 0.3s;
 }
-
-.nav a:hover {
+.navList-header a:hover {
   color: #00a9e0;
+}
+
+@media (max-width: 768px) {
+  .navList-header {
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.5rem;
+  }
 }

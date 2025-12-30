@@ -1,0 +1,58 @@
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Valor bem alto */
+  padding: 1rem;
+}
+
+.modalContent {
+  background: radial-gradient(circle at top, #061c23 0%, #010a13 100%);
+  padding: 2.5rem;
+  width: 90%;
+  max-width: 40rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid #785a28;
+  position: relative;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+.modalContent::after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  right: 4px;
+  bottom: 4px;
+  border: 1px solid #c89b3c;
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+.logo-image {
+  margin-bottom: 20px;
+  width: 9rem;
+}
+
+.downloadButton {
+  padding: 12px 40px;
+  background: linear-gradient(to bottom, #c8aa6e 0%, #785a28 100%);
+  border: 1px solid #f0e6d2;
+  color: #1e2328;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: filter 0.2s;
+}
+
+.downloadButton:hover {
+  filter: brightness(1.2);
+}

@@ -30,8 +30,8 @@
     },
     {
       "id": 5,
-      "name": "deaths-dance",
-      "nome": "Dançarina Fantasma",
+      "name": "Yordle-deaths-dance",
+      "nome": "Dança da morte de Yordle",
       "type": "attack",
       "price": 3000
     },
@@ -44,8 +44,8 @@
     },
     {
       "id": 7,
-      "name": "duskblade-of-draktharr",
-      "nome": "Crepúsculo de Draktharr",
+      "name": "Yordle-duskblade-of-draktharr",
+      "nome": "Crepúsculo de Draktharr de Yordle",
       "type": "attack",
       "price": 3000
     },
@@ -128,8 +128,8 @@
     },
     {
       "id": 19,
-      "name": "runaans-hurricane",
-      "nome": "Furacão de Runaan",
+      "name": "Yordle-runaans-hurricane",
+      "nome": "Furacão de Runaan de yordle",
       "type": "attack",
       "price": 3000
     },
@@ -260,8 +260,8 @@
     },
     {
       "id": 38,
-      "name": "infinity-orb",
-      "nome": "Orbe do Infinito",
+      "name": "Yordle-infinity-orb",
+      "nome": "Orbe do Infinito de yordle",
       "type": "magic",
       "price": 3400
     },
@@ -274,8 +274,8 @@
     },
     {
       "id": 40,
-      "name": "liandrys-torment",
-      "nome": "Tormento de Liandry",
+      "name": "Yordle-liandrys-torment",
+      "nome": "Tormento de Liandry de Yordle",
       "type": "magic",
       "price": 3000
     },
@@ -288,8 +288,8 @@
     },
     {
       "id": 42,
-      "name": "harmonic-echo",
-      "nome": "Eco Harmônico",
+      "name": "Yordle-harmonic-echo",
+      "nome": "Eco Harmônico de Yordle",
       "type": "magic",
       "price": 3000
     },
@@ -414,8 +414,8 @@
     },
     {
       "id": 60,
-      "name": "sunfire-aegis",
-      "nome": "Capa de fogo solar",
+      "name": "Yordle-sunfire-aegis",
+      "nome": "Capa de fogo solar de Yordle",
       "type": "defense",
       "price": 2900
     },
@@ -446,13 +446,6 @@
       "nome": "Força da Natureza",
       "type": "defense",
       "price": 2750
-    },
-    {
-      "id": 65,
-      "name": "ixtali-seedjar",
-      "nome": "Fertilizante Ixtalense",
-      "type": "defense",
-      "price": 2400
     },
     {
       "id": 66,
@@ -606,14 +599,14 @@
       "type": "enchant",
       "price": 500,
       "name": "galeforce",
-      "nome": "GaleForce"
+      "nome": "Força do Ventaval"
     },
     {
       "id": 88,
       "type": "enchant",
       "price": 500,
       "name": "stridebreaker",
-      "nome": "Stridebreaker"
+      "nome": "Quebrapassos"
     },
     {
       "id": 89,
@@ -627,14 +620,14 @@
       "type": "enchant",
       "price": 500,
       "name": "goredrinker",
-      "nome": "Goredrinker"
+      "nome": "Hemodrenário"
     },
     {
       "id": 91,
       "type": "enchant",
       "price": 500,
       "name": "dream-maker",
-      "nome": "Dream maker"
+      "nome": "Criassonho"
     },
     {
       "id": 93,
@@ -655,7 +648,7 @@
       "type": "magic",
       "price": 0,
       "name": "bandle-fantasy",
-      "nome": "Bandle Fantasy"
+      "nome": "Fantasia de Bandópolis"
     },
     {
       "id": 98,
@@ -690,7 +683,7 @@
       "type": "defense",
       "price": 0,
       "name": "yordle-trap",
-      "nome": "Yordle-Trap"
+      "nome": "Armadilha de Yordle"
     },
     {
       "id": 104,
@@ -711,14 +704,14 @@
       "type": "defense",
       "price": 0,
       "name": "yordle-redemption",
-      "nome": "Redenção"
+      "nome": "Redenção Yordle"
     },
     {
       "id": 107,
       "type": "attack",
       "price": 0,
       "name": "soul-transfer",
-      "nome": "Soul-Transfer"
+      "nome": "Transfêrencia de Alma"
     },
     {
       "id": 108,

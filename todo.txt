@@ -1,5 +1,9 @@
-adicionar um botao n  o filtro de itens para ir para as runas
-adicionar imagens das runas na minhas builds
-remover caixa de pesquisa quando runas estiver na tela 
+criar imagem placeholder botas 
+criar imagem placeholder enchants
+mudar os nomes das runas para ptbr
+arrumar logica delas no componente itemSlot
+adicionar no-champion na imagem placeholder, fazer isso para itens, botas e ench 
 arrumar botoes de exportar e salvar
-remover botao de baixar do print do modal
+adicionar os icones magico, ataque e defesa e runas 
+arrumar itemdisplay para aceitar frame sem funçao
+criar itens sem nada

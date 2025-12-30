@@ -3,10 +3,114 @@
   top: 0;
   left: 0;
   width: 100%;
-  background-color: var(--background-color);
-  padding: 15px 30px;
+  height: 4rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 10;
+  padding: 0 40px;
+  z-index: 1000;
+  /* Fundo escuro semi-transparente */
+  background: rgba(1, 10, 19, 0.85);
+  backdrop-filter: blur(8px);
+
+  /* Borda inferior dourada estilo Riot */
+  border-bottom: 2px solid;
+  border-image: linear-gradient(
+      to right,
+      transparent,
+      #c8aa6e,
+      #785a28,
+      #c8aa6e,
+      transparent
+    )
+    1;
+
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+}
+
+/* Ajuste para Mobile */
+@media (max-width: 768px) {
+  .header {
+    padding: 0 20px;
+  }
+
+  /* Esconde o Nav ou o Button se necessário no mobile */
+  .navContainer {
+    display: none; /* Geralmente aqui você usaria um menu hamburguer */
+  }
+}
+.navWrapper {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.desktopButton {
+  display: block;
+}
+
+.mobileToggle {
+  display: none; /* Escondido no desktop */
+  background: none;
+  border: 1px solid #c8aa6e;
+  padding: 8px;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.line {
+  display: block;
+  width: 25px;
+  height: 2px;
+  background: #c8aa6e;
+  margin: 5px 0;
+  transition: 0.4s;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .mobileToggle {
+    display: block;
+  }
+
+  .desktopButton {
+    display: none;
+  }
+
+  .navWrapper {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Começa fora da tela */
+    width: 70%;
+    height: 100vh;
+    background: rgba(1, 10, 19, 0.98);
+    border-left: 2px solid #785a28;
+    flex-direction: column;
+    justify-content: center;
+    transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 20px;
+  }
+
+  .navWrapper.menuOpen {
+    right: 0; /* Desliza para dentro */
+  }
+
+  .mobileButton {
+    margin-top: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Animação do X no hamburguer */
+  .active .line:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+  }
+  .active .line:nth-child(2) {
+    opacity: 0;
+  }
+  .active .line:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+  }
 }

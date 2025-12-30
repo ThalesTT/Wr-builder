@@ -1,12 +1,13 @@
 import styles from './styles.module.css';
-import myImage from '../../assets/images/logo.png';
+import myImage from '../../assets/images/logo.webp';
+import { Link } from 'react-router-dom';
 
 export function Logo() {
   return (
     <div className={styles.logo}>
-      <a href='/'>
+      <Link to={'/'}>
         <img src={myImage} alt='' />
-      </a>
+      </Link>
     </div>
   );
 }

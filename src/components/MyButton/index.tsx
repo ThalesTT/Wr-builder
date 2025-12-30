@@ -1,21 +1,24 @@
 import styles from './styles.module.css';
 
-const Variety = {
-  adc: 'ADC',
+const Category = {
+  adc: 'adc',
+  attack: 'ataque',
   jungle: 'Jungle',
-  mid: 'MID',
-  top: 'TOP',
-  sup: 'SUP',
-  assa: 'assassin',
-  tank: 'tank',
-  mage: 'mage',
-  shoo: 'shooter',
-  heal: 'support',
+  mid: 'mid',
+  top: 'top',
+  sup: 'sup',
+  defense: 'defesa',
+  magic: 'magico',
+  boots: 'botas',
   all: 'all',
+  rune: 'rune',
+  enchant: 'encantamentos',
+  suporte: 'suporte',
 };
 
+export type variety = keyof typeof Category;
 type MyButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
-  variety: keyof typeof Variety;
+  variety: variety;
   isActive: boolean;
 };
 
@@ -31,8 +34,9 @@ export function MyButton({ onClick, isActive, variety }: MyButtonProps) {
   return (
     <button className={finalClasses} onClick={onClick}>
       <img
-        alt={`${Variety[variety]} lane`}
-        src={`/images/lanes/${Variety[variety]}.png`}
+        alt={Category[variety]}
+        src={`/images/btn-icons/${variety}.WEBP`}
+        title={Category[variety]}
         width={30}
         height={30}
       />

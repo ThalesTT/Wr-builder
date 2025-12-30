@@ -1,41 +1,111 @@
-.container {
+/* styles.module.css */
+
+.container-runes {
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  height: 100%;
+  gap: 20px;
   padding: 10px;
   background-color: #010a13;
   color: #f0e6d2;
-  width: 80%;
-  border: 3px solid green;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 0;
-  max-height: 376px;
+  width: 90%;
+  max-width: 100rem;
+  margin: 0 auto;
+  border: 1px solid #1e2328;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  overflow-y: hidden;
+  overflow-x: hidden;
+  height: 425px;
 }
 
+/* 1. SEÇÕES */
 .section {
-  padding: 10px 0;
+  padding-bottom: 20px;
   border-bottom: 1px solid #32281e;
   text-align: center;
 }
 
+/* Classe para a seção superior (Keystones) */
+.topSection {
+  border-bottom: 1px solid #32281e;
+}
+
 .sectionTitle {
-  font-size: 11px;
+  font-size: 12px;
   color: #a09478;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 10px;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
   display: block;
+  font-weight: 700;
 }
 
 .keystoneRow {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
   justify-content: center;
 }
 
+/* 2. CONTEÚDO PRINCIPAL */
+.mainContent {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 30px;
+  min-height: 40rem;
+}
+
+/* ABAS DE ÁRVORES */
+.treeTabs {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #32281e;
+  margin-bottom: 15px;
+  padding-bottom: 5px;
+}
+
+.treeTabBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  transition: all 0.3s ease;
+  border-bottom: 2px solid transparent;
+  opacity: 0.5;
+  position: relative; /* Necessário para o tooltip */
+}
+
+.treeTabBtn:hover {
+  opacity: 1;
+}
+
+.activeTab {
+  opacity: 1 !important;
+  border-bottom-color: #c89b3c !important;
+}
+
+.rune-tree {
+  width: 2.8rem;
+  height: 2.8rem;
+}
+
+/* GRUPOS E GRIDS */
+.tierGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px;
+  background-color: rgba(255, 255, 255, 0.02);
+  border-radius: 4px;
+  margin-bottom: 10px;
+  border: 1px solid rgba(160, 148, 120, 0.1);
+}
+
+.runeGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* BOTÕES E IMAGENS */
 .runeBtn {
   position: relative;
   cursor: pointer;
@@ -45,114 +115,186 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .runeBtn:hover {
-  transform: scale(1.1);
+  transform: scale(1.15);
+  z-index: 10;
 }
 
 .keystoneImg {
-  width: 45px;
-  height: 45px;
+  width: 5rem;
+  height: 5rem;
   border-radius: 50%;
   border: 2px solid #32281e;
-  transition: all 0.2s;
-  filter: brightness(0.5);
+  filter: grayscale(0.8) brightness(0.6);
+  transition: all 0.3s;
 }
 
 .selectedKeystone {
   border-color: #c89b3c !important;
-  filter: brightness(1.2) !important;
-  transform: scale(1.1);
-}
-
-.mainContent {
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 20px;
-  overflow-y: hidden;
-}
-
-.treeTabs {
-  display: flex;
-  justify-content: space-between;
-  border-bottom: 1px solid #32281e;
-  margin-bottom: 10px;
-}
-
-.treeTabBtn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 11px;
-  font-weight: bold;
-  padding: 8px 4px;
-  text-transform: uppercase;
-  color: #555;
-  transition: 0.3s;
-  border-bottom: 2px solid transparent;
-}
-
-.activeTab {
-  color: #c89b3c !important;
-  border-bottom-color: #c89b3c !important;
-}
-
-.tierGroup {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 8px;
-  background-color: rgba(255, 255, 255, 0.03);
-  border-radius: 4px;
-  margin-bottom: 5px;
-}
-
-.runeGrid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+  filter: grayscale(0) brightness(1.2) !important;
+  box-shadow: 0 0 15px rgba(200, 155, 60, 0.4);
 }
 
 .secondaryImg {
-  width: 32px;
-  height: 32px;
+  width: 3.6rem;
+  height: 3.6rem;
   border-radius: 50%;
   border: 1px solid transparent;
-  filter: grayscale(1);
-  transition: all 0.2s;
+  filter: grayscale(1) opacity(0.6);
+  transition: all 0.3s;
 }
 
 .selectedSecondary {
   border-color: #c89b3c !important;
-  filter: grayscale(0) !important;
-  background-color: rgba(200, 155, 60, 0.1);
+  filter: grayscale(0) opacity(1) !important;
+  background-color: rgba(200, 155, 60, 0.15);
 }
 
+/* 3. COLUNA EXTRA */
 .extraScrollArea {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  max-height: 400px;
-  overflow-y: auto;
+  gap: 15px;
+  height: 25rem;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding-right: 10px;
 }
 
 .extraGrid {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
-  padding: 5px;
-  border-left: 1px solid #32281e;
+  gap: 4px;
+  padding: 8px;
+  border-left: 2px solid #32281e;
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .extraImg {
-  width: 24px;
-  height: 24px;
-  filter: brightness(0.4);
+  width: 2.8rem;
+  height: 2.8rem;
+  filter: grayscale(1) brightness(0.4);
 }
 
 .selectedExtra {
   border-color: #00ccff !important;
-  filter: brightness(1.2) !important;
+  filter: grayscale(0) brightness(1.2) !important;
+}
+
+/* --- TOOLTIPS (ESTILO BASE) --- */
+.runeBtn::after,
+.treeTabBtn::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%; /* Aparece em cima por padrão */
+  left: 80%;
+  transform: translateX(-50%) translateY(10px);
+  background-color: #010a13;
+  color: #f0e6d2;
+  padding: 6px 12px;
+  border: 1px solid #c89b3c;
+  border-radius: 2px;
+  font-size: 11px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+  z-index: 9999;
+  pointer-events: none;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+}
+
+/* Seta do Tooltip */
+.runeBtn::before,
+.treeTabBtn::before {
+  content: '';
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: #c89b3c;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.runeBtn:hover::after,
+.runeBtn:hover::before,
+.treeTabBtn:hover::after,
+.treeTabBtn:hover::before {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* --- INVERSÃO DE TOOLTIP (PARA CIMA -> PARA BAIXO) --- */
+/* Aplicado nas Keystones (primeira fileira) e Abas das Árvores */
+.topSection .runeBtn::after,
+.treeTabBtn::after {
+  bottom: auto;
+  top: 130%;
+}
+
+.topSection .runeBtn::before,
+.treeTabBtn::before {
+  bottom: auto;
+  top: 115%;
+  border-top-color: transparent;
+  border-bottom-color: #c89b3c;
+}
+
+/* SCROLLBAR CUSTOMIZADO */
+.extraScrollArea::-webkit-scrollbar {
+  width: 4px;
+}
+.extraScrollArea::-webkit-scrollbar-track {
+  background: #010a13;
+}
+.extraScrollArea::-webkit-scrollbar-thumb {
+  background: #c89b3c;
+  border-radius: 10px;
+}
+
+/* --- MEDIA QUERIES (RESPONSIVIDADE) --- */
+@media (max-width: 768px) {
+  .container-runes {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    overflow-y: auto;
+  }
+  .mainContent {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .keystoneImg {
+    width: 4.2rem;
+    height: 4.2rem;
+  }
+  .extraScrollArea {
+    max-height: none;
+    overflow-y: visible;
+  }
+  .extraGrid {
+    border-left: none;
+    border-top: 1px solid #32281e;
+    justify-content: center;
+  }
+  .runeGrid {
+    justify-content: center;
+  }
+
+  /* Desativa tooltips no mobile para evitar bugs de toque */
+  .runeBtn::after,
+  .runeBtn::before,
+  .treeTabBtn::after,
+  .treeTabBtn::before {
+    display: none !important;
+  }
 }

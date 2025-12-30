@@ -5,5 +5,5 @@ type ContainerProps = {
 };
 
 export function NavButtons({ children }: ContainerProps) {
-  return <nav className={styles.nav}>{children}</nav>;
+  return <nav className={styles['nav-list']}>{children}</nav>;
 }

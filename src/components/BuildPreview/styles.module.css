@@ -1,0 +1,23 @@
+.previewContainer {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+  flex-wrap: wrap; /* Permite que os itens quebrem a linha no mobile */
+  align-items: center;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 8px;
+  border-radius: 8px;
+}
+
+/* Garante que o Frame do campeão tenha um destaque ou tamanho fixo */
+.previewContainer > :first-child {
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  padding-right: 8px;
+}
+
+@media (max-width: 480px) {
+  .previewContainer {
+    gap: 4px; /* Espaço menor em celulares */
+    justify-content: center; /* Centraliza os itens no mobile */
+  }
+}

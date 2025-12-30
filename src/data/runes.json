@@ -1,256 +1,66 @@
 {
-  "runas": [
-    {
-      "Keystone": [
-        {
-          "name": "First_Strike",
-          "image": "First_Strike.WEBP"
-        },
-        {
-          "name": "Conqueror",
-          "image": "Conqueror.WEBP"
-        },
-        {
-          "name": "Arcane_Comet",
-          "image": "Arcane_Comet.WEBP"
-        },
-        {
-          "name": "Electrocute",
-          "image": "Electrocute.WEBP"
-        },
-        {
-          "name": "AfterShock",
-          "image": "AfterShock.WEBP"
-        },
-        {
-          "name": "Phase_Rush",
-          "image": "Phase_Rush.WEBP"
-        },
-        {
-          "name": "Fleet_Footwork",
-          "image": "Fleet_Footwork.WEBP"
-        },
-        {
-          "name": "Aery",
-          "image": "Aery.WEBP"
-        },
-        {
-          "name": "Empowerment",
-          "image": "Empowerment.WEBP"
-        }
-      ]
-    },
-    {
-      "Domination": [
-        {
-          "name": "Sudden_Impact",
-          "image": "Sudden_Impact.WEBP",
-          "type": 1
-        },
-        {
-          "name": "Scorch",
-          "image": "Scorch.WEBP",
-          "type": 1
-        },
-        {
-          "name": "Shield_Bash",
-          "image": "Shield_Bash.WEBP",
-          "type": 1
-        },
-        {
-          "name": "Psychic_Wave",
-          "image": "Psychic_Wave.WEBP",
-          "type": 1
-        },
-        {
-          "name": "Empowered_Attack",
-          "image": "Empowered_Attack.WEBP",
-          "type": 2
-        },
-        {
-          "name": "Cheap_Shot",
-          "image": "Cheap_Shot.WEBP",
-          "type": 2
-        },
-        {
-          "name": "Mark_of_the_Weak",
-          "image": "Mark_of_the_Weak.WEBP",
-          "type": 2
-        },
-        {
-          "name": "Eyeball_Collector",
-          "image": "Eyeball_Collector.WEBP",
-          "type": 3
-        },
-        {
-          "name": "Zombie_Ward",
-          "image": "Zombie_Ward.WEBP",
-          "type": 3
-        },
-        {
-          "name": "Ingenious_Hunter",
-          "image": "Ingenious_Hunter.WEBP",
-          "type": 3
-        }
-      ]
-    },
-    {
-      "Inspiration": [
-        {
-          "name": "Sweet_Tooth",
-          "image": "Sweet_Tooth.WEBP",
-          "type": 1
-        },
-        {
-          "name": "Hextech_Flashtraption",
-          "image": "Hextech_Flashtraption.WEBP",
-          "type": 1
-        },
-        {
-          "name": "Item_Crafting",
-          "image": "Item_Crafting.WEBP",
-          "type": 1
-        },
-        {
-          "name": "Transcendence",
-          "image": "Transcendence.WEBP",
-          "type": 2
-        },
-        {
-          "name": "Ixtali_Seedjar",
-          "image": "Ixtali_Seedjar.WEBP",
-          "type": 2
-        },
-        {
-          "name": "Pathfinder",
-          "image": "Pathfinder.WEBP",
-          "type": 2
-        },
-
-        {
-          "name": "Futures_Market",
-          "image": "Futures_Market.WEBP",
-          "type": 2
-        },
-        {
-          "name": "Manaflow_Band",
-          "image": "Manaflow_Band.WEBP",
-          "type": 3
-        },
-        {
-          "name": "Demolish",
-          "image": "Demolish.WEBP",
-          "type": 3
-        },
-        {
-          "name": "Nimbus_Cloak",
-          "image": "Nimbus_Cloak.WEBP",
-          "type": 3
-        }
-      ]
-    },
-    {
-      "Precision": [
-        {
-          "name": "Triumph",
-          "image": "Triumph.WEBP",
-          "type": 1
-        },
-        {
-          "name": "Brutal",
-          "image": "Brutal.WEBP",
-          "type": 1
-        },
-        {
-          "name": "Gathering_Storm",
-          "image": "Gathering_Storm.WEBP",
-          "type": 1
-        },
-        {
-          "name": "Coup_de_Grace",
-          "image": "Coup_de_Grace.WEBP",
-          "type": 2
-        },
-        {
-          "name": "Giant_Slayer",
-          "image": "Giant_Slayer.WEBP",
-          "type": 2
-        },
-        {
-          "name": "Last_Stand",
-          "image": "Last_Stand.WEBP",
-          "type": 2
-        },
-        {
-          "name": "Legend_Bloodline",
-          "image": "Legend_Bloodline.WEBP",
-          "type": 3
-        },
-        {
-          "name": "Legend_Alacrity",
-          "image": "Legend_Alacrity.WEBP",
-          "type": 3
-        },
-        {
-          "name": "Legend_Tenacity",
-          "image": "Legend_Tenacity.WEBP",
-          "type": 3
-        }
-      ]
-    },
-    {
-      "Resolve": [
-        {
-          "name": "Font_of_Life",
-          "image": "Font_of_Life.WEBP",
-          "type": 1
-        },
-        {
-          "name": "Courage_of_the_Colossus",
-          "image": "Courage_of_the_Colossus.WEBP",
-          "type": 1
-        },
-        {
-          "name": "Nullifying_Orb",
-          "image": "Nullifying_Orb.WEBP",
-          "type": 1
-        },
-        {
-          "name": "Loyalty",
-          "image": "Loyalty.WEBP",
-          "type": 2
-        },
-        {
-          "name": "Second_Wind",
-          "image": "Second_Wind.WEBP",
-          "type": 2
-        },
-        {
-          "name": "Bone_Plating",
-          "image": "Bone_Plating.WEBP",
-          "type": 2
-        },
-        {
-          "name": "Overgrowth",
-          "image": "Overgrowth.WEBP",
-          "type": 3
-        },
-        {
-          "name": "Perseverance",
-          "image": "Perseverance.WEBP",
-          "type": 3
-        },
-        {
-          "name": "Revitalize",
-          "image": "Revitalize.WEBP",
-          "type": 3
-        },
-        {
-          "name": "Onslaught",
-          "image": "Onslaught.WEBP",
-          "type": 3
-        }
-      ]
-    }
+  "keystones": [
+    { "id": 1, "name": "aery" },
+    { "id": 2, "name": "pos-choque" },
+    { "id": 3, "name": "cometa-arcano" },
+    { "id": 4, "name": "conquistador" },
+    { "id": 5, "name": "colheita-sombria" },
+    { "id": 6, "name": "eletrocutar" },
+    { "id": 7, "name": "primeiro-ataque" },
+    { "id": 8, "name": "agilidade-nos-pes" },
+    { "id": 9, "name": "aprimoramento-glacial" },
+    { "id": 10, "name": "aperto-dos-mortos-vivos" },
+    { "id": 11, "name": "ritmo-fatal" },
+    { "id": 12, "name": "impeto-gradual" },
+    { "id": 13, "name": "pressione-o-ataque" }
+  ],
+  "dominacao": [
+    { "id": 101, "name": "assalto-em-cadeia", "tier": 2 },
+    { "id": 102, "name": "golpe-baixo", "tier": 2 },
+    { "id": 103, "name": "ataque-fortalecido", "tier": 2 },
+    { "id": 104, "name": "globos-oculares", "tier": 3 },
+    { "id": 105, "name": "cacador-engenhoso", "tier": 3 },
+    { "id": 106, "name": "onda-psiquica", "tier": 1 },
+    { "id": 107, "name": "chamuscar", "tier": 1 },
+    { "id": 108, "name": "golpe-de-escudo", "tier": 1 },
+    { "id": 109, "name": "impacto-repentino", "tier": 1 },
+    { "id": 110, "name": "tirano", "tier": 2 },
+    { "id": 111, "name": "sentinela-zumbi", "tier": 3 }
+  ],
+  "inspiracao": [
+    { "id": 201, "name": "arcanista-do-axioma", "tier": 2 },
+    { "id": 202, "name": "celeridade", "tier": 2 },
+    { "id": 203, "name": "demolir", "tier": 3 },
+    { "id": 204, "name": "mercado-do-futuro", "tier": 2 },
+    { "id": 205, "name": "hexflash", "tier": 1 },
+    { "id": 206, "name": "criacao-de-itens", "tier": 1 },
+    { "id": 207, "name": "pote-de-sementes-ixtalense", "tier": 3 },
+    { "id": 208, "name": "faixa-de-fluxo-de-mana", "tier": 3 },
+    { "id": 209, "name": "manto-de-nimbus", "tier": 3 },
+    { "id": 210, "name": "guloseima", "tier": 1 },
+    { "id": 211, "name": "transcendencia", "tier": 2 }
+  ],
+  "precisao": [
+    { "id": 301, "name": "brutal", "tier": 1 },
+    { "id": 302, "name": "golpe-de-misericordia", "tier": 2 },
+    { "id": 303, "name": "tempestade-crescente", "tier": 1 },
+    { "id": 304, "name": "mata-gigantes", "tier": 2 },
+    { "id": 305, "name": "ate-a-morte", "tier": 2 },
+    { "id": 306, "name": "lenda-espontaneidade", "tier": 3 },
+    { "id": 307, "name": "lenda-vampirismo", "tier": 3 },
+    { "id": 308, "name": "lenda-tenacidade", "tier": 3 },
+    { "id": 309, "name": "triunfo", "tier": 1 }
+  ],
+  "determinacao": [
+    { "id": 401, "name": "osso-revestido", "tier": 2 },
+    { "id": 402, "name": "coragem-do-colosso", "tier": 1 },
+    { "id": 403, "name": "fonte-da-vida", "tier": 1 },
+    { "id": 404, "name": "lealdade", "tier": 2 },
+    { "id": 405, "name": "orbe-anulador", "tier": 1 },
+    { "id": 406, "name": "crescimento-excessivo", "tier": 3 },
+    { "id": 407, "name": "perseveranca", "tier": 3 },
+    { "id": 408, "name": "revitalizar", "tier": 3 },
+    { "id": 409, "name": "ventos-revigorantes", "tier": 2 },
+    { "id": 410, "name": "inabalavel", "tier": 1 }
   ]
 }

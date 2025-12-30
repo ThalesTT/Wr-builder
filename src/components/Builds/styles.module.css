@@ -1,0 +1,73 @@
+.container {
+  padding: 20px;
+  max-width: 120rem;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 2rem;
+  color: #fff;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.buildList {
+  list-style: none;
+  padding: 0;
+  overflow-y: hidden;
+}
+
+.buildItem {
+  background-color: #1a1a1a;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 30px;
+  border: 1px solid #333;
+  transition: transform 0.2s ease;
+}
+
+.buildItem:hover {
+  border-color: #444;
+}
+
+/* Estilização do Nome da Build (Link) */
+.buildName {
+  text-decoration: none;
+  color: #00cfbc; /* Cor estilo Wild Rift */
+  font-size: 1.5rem;
+  display: inline-block;
+  margin-bottom: 15px;
+  transition: color 0.2s;
+}
+
+.buildName:hover {
+  color: #00fce5;
+  text-decoration: underline;
+}
+
+/* Informações extras (Data) */
+.saveInfo {
+  color: #888;
+  font-size: 0.85rem;
+  margin: 15px 0;
+}
+
+/* Estilização do Botão de Remover */
+.deleteButton {
+  background-color: transparent;
+  color: #ff4d4d;
+  border: 1px solid #ff4d4d;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+
+.deleteButton:hover {
+  background-color: #ff4d4d;
+  color: #fff;
+  box-shadow: 0 0 10px rgba(255, 77, 77, 0.3);
+}

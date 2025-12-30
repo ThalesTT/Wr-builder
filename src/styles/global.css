@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 html {
   font-size: 62.5%;
 }
@@ -22,4 +23,31 @@ body {
     rgba(11, 11, 38, 1) 100%,
     rgba(9, 93, 110, 1) 88%
   );
+}
+/* --- ESTILO GLOBAL DA SCROLLBAR --- */
+
+/* 1. Para Chrome, Edge, Safari e navegadores baseados em Webkit */
+::-webkit-scrollbar {
+  width: 6px; /* Largura da barra vertical */
+  height: 6px; /* Altura da barra horizontal */
+}
+
+::-webkit-scrollbar-track {
+  background: #010a13; /* Cor do fundo da trilha */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c89b3c; /* Cor do "puxador" (Dourado Hextech) */
+  border-radius: 10px; /* Arredondamento */
+  border: 1px solid #010a13; /* Cria um respiro entre o puxador e a borda */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #f0e6d2; /* Cor quando passa o mouse */
+}
+
+/* 2. Para Firefox (usa propriedades diferentes) */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #c89b3c #010a13;
 }

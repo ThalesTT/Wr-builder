@@ -1,21 +1,25 @@
 // Frame.tsx (Versão FINAL)
+import { useEffect, useState } from 'react';
 import styles from './styles.module.css';
 import { useInView } from 'react-intersection-observer';
 
-// --- Configurações ---
+// Define uma margem de 150px para começar a carregar a imagem antes dela aparecer na tela
 const ROOT_MARGIN_OFFSET = '150px 0px';
 
+// Mapeamento de classes CSS baseadas no tipo de uso do Frame
 const frames = {
   champion: styles.champion,
   item: styles.item,
   build: styles['item-in-build'],
 };
+
 type FrameProps = {
   name: string;
   picture: string;
-  remove?: boolean;
-  onClick?: () => void;
-  classStyles: keyof typeof frames;
+  remove?: boolean; // Exibe ou não o botão "X"
+  removeClick?: () => void; // Ação ao clicar no "X"
+  onClick?: () => void; // Ação ao clicar no card inteiro
+  classStyles: keyof typeof frames; // Determina se é layout de champ, item ou build
 };
 
 export function Frame({
@@ -23,24 +27,45 @@ export function Frame({
   picture,
   onClick,
   remove,
+  removeClick,
   classStyles,
 }: FrameProps) {
+  // Só aplicamos Lazy Load em listas grandes (Itens e Campeões) para poupar memória
   const isLazyLoadable = classStyles === 'item' || classStyles === 'champion';
 
+  // Define qual imagem mostrar caso o arquivo principal não seja encontrado
+  const noImage =
+    classStyles === 'item'
+      ? '/images/itens/no-item.WEBP'
+      : '/images/champs/no-champion.WEBP';
+
+  /**
+   * HOOK: useInView
+   * Detecta quando o componente entra na tela (viewport).
+   * triggerOnce: true garante que, uma vez carregado, não mude mais.
+   */
   const { ref, inView } = useInView({
     triggerOnce: true,
     rootMargin: ROOT_MARGIN_OFFSET,
-    skip: !isLazyLoadable,
+    skip: !isLazyLoadable, // Não faz lazy load se for um item da build fixa
   });
 
-  // --- Conteúdo da Imagem / Placeholder ---
-  // Este bloco é o que será dimensionado pelo seu CSS (ex: .item .image-container)
+  const [currentImg, setCurrentImg] = useState(picture);
+
+  // Sincroniza o estado interno se a imagem mudar via props (ex: trocar bota por encanto)
+  useEffect(() => {
+    setCurrentImg(picture);
+  }, [picture]);
+
+  /**
+   * SUB-COMPONENTE: ImageOrPlaceholder
+   * Lógica interna para decidir se mostra a <img>, um fallback ou um placeholder cinza.
+   */
   const ImageOrPlaceholder = () => {
-    // Se for Lazy Load e NÃO estiver visível, mostra o placeholder
+    // Se ainda não rolou a tela até aqui, mostra uma div cinza com "..."
     if (isLazyLoadable && !inView) {
       return (
         <div
-          // Esta div precisa ser dimensionada pelo CSS como se fosse a <img>
           className={styles['image-container']}
           style={{
             backgroundColor: '#222',
@@ -55,26 +80,51 @@ export function Frame({
       );
     }
 
-    // Em todos os outros casos (Imediato, ou Lazy Load visível), mostra a imagem real
-    return <img src={picture} alt={name} />;
+    // Se visível, renderiza a tag <img> com tratamento de erro
+    return (
+      <img
+        src={currentImg}
+        alt={name}
+        title={name}
+        loading='lazy'
+        onError={() => {
+          // Fallback: se a imagem der erro 404, tenta carregar a imagem padrão (noImage)
+          const fallback = noImage;
+          if (currentImg !== fallback) {
+            setCurrentImg(fallback);
+          } else {
+            // Se até a padrão falhar, mostra um pixel transparente (evita ícone de quebrado)
+            setCurrentImg(
+              'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7',
+            );
+          }
+        }}
+      />
+    );
   };
 
-  // --- Renderização Principal ---
   return (
     <div className={styles.frame} onClick={onClick}>
       <div
         className={frames[classStyles]}
-        // Anexamos o ref ao contêiner pai, que define o espaço da imagem e nome.
-        // O Flexbox garante que o espaço não salte.
-        ref={isLazyLoadable ? ref : null}
+        ref={isLazyLoadable ? ref : null} // Onde o observer "vigia" a visibilidade
       >
-        {/* 1. Botão de Remoção (Se existir) */}
-        {remove && <button onClick={onClick}>X</button>}
+        {/* 1. BOTÃO DE REMOÇÃO: Usado nos slots da build */}
+        {remove && (
+          <button
+            onClick={e => {
+              e.stopPropagation(); // Impede que o clique no "X" selecione o slot
+              removeClick?.();
+            }}
+          >
+            X
+          </button>
+        )}
 
-        {/* 2. O Conteúdo da Imagem (Agora com a classe que o CSS espera) */}
+        {/* 2. CONTAINER DA IMAGEM: Onde a mágica do Lazy Load acontece */}
         <div className={styles['image-container']}>{ImageOrPlaceholder()}</div>
 
-        {/* 3. O Nome (Obrigatório para o Flexbox) */}
+        {/* 3. NOME: Exibido abaixo da imagem */}
         <p className={styles.nome}>{name}</p>
       </div>
     </div>
